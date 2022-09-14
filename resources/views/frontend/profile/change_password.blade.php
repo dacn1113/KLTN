@@ -1,6 +1,10 @@
 @extends('frontend.main_master')
 @section('content')
 
+{{-- @php
+$user = DB::table('users')->where('id',Auth::user()->id)->first();   
+@endphp --}}
+
 <div class="body-content">
     <div class="container">
         <div class="row">
@@ -13,45 +17,35 @@
             <ul class="list-group list-group-flush">
                 <a href="{{route('dashboard')}}"class="btn btn-primary btn-sm btn-block">Home</a>
                 <a href="{{route('user.profile')}}"class="btn btn-primary btn-sm btn-block">Profile Update</a>
-                <a href="{{route('change.password')}}"class="btn btn-primary btn-sm btn-block">Change Password</a>
+                <a href=" "class="btn btn-primary btn-sm btn-block">Change Password</a>
                 <a href="{{route('user.logout')}}"class="btn btn-primary btn-sm btn-block">Logout</a>
             </ul>
         </div>
         <div class="col-md-6">
             <div class="card">
-                <h3 class="text-center" ><span class="text-danger">Hi...</span>
-                    <strong>
-                        {{Auth::user()->name}}.
-                    </strong>
-                    Update Your Profle
+                <h3 class="text-center" ><span class="text-danger"></span>
+                    Update Your Password
                 </h3>
                 <div class="card-body">
-                    <form method="POST" action="{{route('user.profile.store')}}" enctype="multipart/form-data">
+                    <form method="POST" action="{{route('user.password.update')}}">
                         @csrf
 
                         <div class="form-group">
-                            <label class="info-title" for="exampleInputEmail1">Name <span></span></label>
-                            <input  name="name" id="name" type="text" class="form-control unicase-form-control text-input" value="{{$user->name}}">
+                            <label class="info-title" for="exampleInputEmail1">Current Password <span></span></label>
+                            <input  name="oldpassword" id="current_password" type="password" class="form-control unicase-form-control text-input">
                         </div>
                 
                 
                         <div class="form-group">
-                            <label class="info-title" for="exampleInputEmail2">Email Address <span></span></label>
-                            <input name="email" id="email" type="email" class="form-control unicase-form-control text-input"value="{{$user->email}}">
+                            <label class="info-title" for="exampleInputEmail2">New Password<span></span></label>
+                            <input name="password" id="password" type="password" class="form-control unicase-form-control text-input">
                           </div>
 
                      
                         <div class="form-group">
-                            <label class="info-title" for="exampleInputEmail1">Phone Number <span></span></label>
-                            <input name="phone" type="text" class="form-control unicase-form-control text-input" id="phone"value="{{$user->phone}}">
+                            <label class="info-title" for="exampleInputEmail1">Confirm Passwor <span></span></label>
+                            <input id="password_confirmation" name="password_confirmation" type="password" class="form-control unicase-form-control text-input">
                         </div>
-                    
-
-                        <div class="form-group">
-                            <label class="info-title" for="exampleInputEmail2">User Image <span></span></label>
-                            <input type="file" name="profile_photo_path" class="form-control">
-                        </div>
-
                         
                         <div class="form-group">
                             <button type="submit" class="btn btn-danger">Update</button>
