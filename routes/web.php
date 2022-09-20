@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\AdminprofileController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Frontend\IndexController;
 use Illuminate\Support\Facades\Auth;
@@ -30,28 +31,28 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin:admin']], function ()
     Route::get('/login', [AdminController::class, 'loginForm']);
     Route::post('/login', [AdminController::class, 'store'])->name('admin.login');
 });
+Route::middleware(['auth:admin'])->group(function () {
 
-Route::middleware(['auth:sanctum,admin', 'verified'])->get('/admin/dashboard', function () {
-    return view('admin.index');
-})->name('dashboard');
+    Route::middleware(['auth:sanctum,admin', 'verified'])->get('/admin/dashboard', function () {
+        return view('admin.index');
+    })->name('dashboard')->middleware('auth:admin');
 
-// Route::middleware([
-//     'auth:sanctum', config('jetstream.auth_session'), 'verified'
-// ])->group(function () {
-//     Route::get('/dashboard', function () {
-//         return view('admin.index');
-//     })->name('dashboard');
-// });
+    // Route::middleware([
+    //     'auth:sanctum', config('jetstream.auth_session'), 'verified'
+    // ])->group(function () {
+    //     Route::get('/dashboard', function () {
+    //         return view('admin.index');
+    //     })->name('dashboard');
+    // });
 
-//Admin All routes
-Route::get('/admin/logout', [AdminController::class, 'destroy'])->name('admin.logout');
-Route::get('/admin/profile', [AdminprofileController::class, 'AdminProfile'])->name('admin.profile');
-Route::get('/admin/profile/edit', [AdminprofileController::class, 'AdminProfileEdit'])->name('admin.profile.edit');
-Route::post('/admin/profile/store', [AdminprofileController::class, 'AdminProfileStore'])->name('admin.profile.store');
-Route::get('/admin/change/password', [AdminprofileController::class, 'AdminChangePassword'])->name('admin.change.password');
-Route::post('/update/change/password', [AdminprofileController::class, 'AdminUpdateChangePassword'])->name('update.change.password');
-
-
+    //Admin All routes
+    Route::get('/admin/logout', [AdminController::class, 'destroy'])->name('admin.logout');
+    Route::get('/admin/profile', [AdminprofileController::class, 'AdminProfile'])->name('admin.profile');
+    Route::get('/admin/profile/edit', [AdminprofileController::class, 'AdminProfileEdit'])->name('admin.profile.edit');
+    Route::post('/admin/profile/store', [AdminprofileController::class, 'AdminProfileStore'])->name('admin.profile.store');
+    Route::get('/admin/change/password', [AdminprofileController::class, 'AdminChangePassword'])->name('admin.change.password');
+    Route::post('/update/change/password', [AdminprofileController::class, 'AdminUpdateChangePassword'])->name('update.change.password');
+});
 //User All routes
 Route::middleware(['auth:sanctum,web', 'verified'])->get('/dashboard', function () {
     $id = Auth::user()->id;
@@ -126,4 +127,24 @@ Route::prefix('product')->group(function () {
 
     Route::get('/active/{id}', [ProductController::class, 'ProductActive'])->name('product.active');
     Route::get('/delete/{id}', [ProductController::class, 'ProductDelete'])->name('product.delete');
+});
+
+
+// Admin Slider All Routes 
+
+Route::prefix('slider')->group(function () {
+
+    Route::get('/view', [SliderController::class, 'SliderView'])->name('manage-slider');
+
+    Route::post('/store', [SliderController::class, 'SliderStore'])->name('slider.store');
+
+    Route::get('/edit/{id}', [SliderController::class, 'SliderEdit'])->name('slider.edit');
+
+    Route::post('/update', [SliderController::class, 'SliderUpdate'])->name('slider.update');
+
+    Route::get('/delete/{id}', [SliderController::class, 'SliderDelete'])->name('slider.delete');
+
+    Route::get('/inactive/{id}', [SliderController::class, 'SliderInactive'])->name('slider.inactive');
+
+    Route::get('/active/{id}', [SliderController::class, 'SliderActive'])->name('slider.active');
 });
