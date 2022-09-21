@@ -20,7 +20,7 @@
                    <div class="table-responsive">
                     <form method="post" action="{{route('category.update',$categorys->id)}}" enctype="multipart/form-data">
                         @csrf
-                        <input type="hidden" name="id" value="{{$categorys->id}}">
+                     
                     
                     <div class="form-group">
                         <label for="example-text-input" class="col-sm-2 col-form-label">Category Name English</label>

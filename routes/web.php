@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Frontend\IndexController;
+use App\Http\Controllers\Frontend\LanguageController;
 use Illuminate\Support\Facades\Auth;
 use app\Models\User;
 
@@ -96,7 +97,7 @@ route::prefix('category')->group(
 
         Route::get('/sub/edit/{id}', [SubCategoryController::class, 'SubCategoryEdit'])->name('subcategory.edit');
 
-        Route::post('/update', [SubCategoryController::class, 'SubCategoryUpdate'])->name('subcategory.update');
+        Route::post('/update/{id}', [CategoryController::class, 'CategoryUpdate'])->name('category.update');
 
         Route::get('/sub/delete/{id}', [SubCategoryController::class, 'SubCategoryDelete'])->name('subcategory.delete');
 
@@ -148,3 +149,12 @@ Route::prefix('slider')->group(function () {
 
     Route::get('/active/{id}', [SliderController::class, 'SliderActive'])->name('slider.active');
 });
+
+
+
+//// Frontend All Routes /////
+/// Multi Language All Routes ////
+
+Route::get('/language/hindi', [LanguageController::class, 'Hindi'])->name('hindi.language');
+
+Route::get('/language/english', [LanguageController::class, 'English'])->name('english.language');
