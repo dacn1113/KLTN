@@ -158,3 +158,14 @@ Route::prefix('slider')->group(function () {
 Route::get('/language/hindi', [LanguageController::class, 'Hindi'])->name('hindi.language');
 
 Route::get('/language/english', [LanguageController::class, 'English'])->name('english.language');
+
+
+// Frontend Product Details Page url 
+Route::get('/product/details/{id}/{slug}', [IndexController::class, 'ProductDetails']);
+
+
+// Frontend Product Tags Page 
+Route::get('/product/tag/{tag}', [IndexController::class, 'TagWiseProduct']);
+
+// Frontend SubCategory wise Data
+Route::get('/subcategory/product/{subcat_id}/{slug}', [IndexController::class, 'SubCatWiseProduct']);
