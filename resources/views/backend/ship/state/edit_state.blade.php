@@ -3,18 +3,18 @@
 
 
   <!-- Content Wrapper. Contains page content -->
-
+  
 	  <div class="container-full">
 		<!-- Content Header (Page header) -->
-
+		 
 
 		<!-- Main content -->
 		<section class="content">
 		  <div class="row">
+			   
+		 
 
-
-
-
+		 
 
 <!--   ------------ Add State Page -------- -->
 
@@ -30,9 +30,9 @@
 					<div class="table-responsive">
 
 
-                        <form method="post" action="{{ route('state.update',$state->id) }}" >
+ <form method="post" action="{{ route('state.update',$state->id) }}" >
 	 	@csrf
-
+				
 
 
 <div class="form-group">
@@ -78,8 +78,8 @@
 	 @enderror 
 	</div>
 	</div>
-
-
+ 
+					 
 
 			 <div class="text-xs-right">
 	<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update">					 
@@ -89,7 +89,7 @@
 
 
 
-
+					  
 					</div>
 				</div>
 				<!-- /.box-body -->
@@ -97,16 +97,16 @@
 			  <!-- /.box --> 
 			</div>
 
-
+ 
 
 
 		  </div>
 		  <!-- /.row -->
 		</section>
 		<!-- /.content -->
-
+	  
 	  </div>
-
+  
 
 
 
