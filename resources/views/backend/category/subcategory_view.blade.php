@@ -18,7 +18,7 @@
 
 			 <div class="box">
 				<div class="box-header with-border">
-				  <h3 class="box-title">SubCategory List</h3>
+				  <h3 class="box-title">Danh mục con</h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
@@ -26,10 +26,10 @@
 					  <table id="example1" class="table table-bordered table-striped">
 						<thead>
 							<tr>
-								<th>Category </th>
-								<th>SubCategory En</th>
-								<th>SubCategory Hin </th>
-								<th>Action</th>
+								<th>Danh mục </th>
+								<th>Danh mục con En</th>
+								<th>Danh mục con Vn </th>
+								<th>Hành động</th>
 
 							</tr>
 						</thead>
@@ -40,8 +40,8 @@
 		<td>{{ $item->subcategory_name_en }}</td>
 		 <td>{{ $item->subcategory_name_hin }}</td>
 		 <td width="30%">
-			<a href="{{ route('subcategory.edit',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i> </a>
-			<a href="{{ route('subcategory.delete',$item->id) }}" class="btn btn-danger" title="Delete Data" id="delete">
+			<a href="{{ route('subcategory.edit',$item->id) }}" class="btn btn-info" title="Chỉnh sửa"><i class="fa fa-pencil"></i> </a>
+			<a href="{{ route('subcategory.delete',$item->id) }}" class="btn btn-danger" title="Xóa " id="delete">
  	<i class="fa fa-trash"></i></a>
 		</td>
 
@@ -68,7 +68,7 @@
 
 			 <div class="box">
 				<div class="box-header with-border">
-				  <h3 class="box-title">Add SubCategory </h3>
+				  <h3 class="box-title">Thêm danh mục con mới </h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
@@ -80,10 +80,10 @@
 
 
 	 <div class="form-group">
-	<h5>Category Select <span class="text-danger">*</span></h5>
+	<h5>Chọn danh mục <span class="text-danger">*</span></h5>
 	<div class="controls">
 		<select name="category_id" class="form-control"  >
-			<option value="" selected="" disabled="">Select Category</option>
+			<option value="" selected="" disabled="">Chọn</option>
 			@foreach($categories as $category)
 			<option value="{{ $category->id }}">{{ $category->category_name_en }}</option>	
 			@endforeach
@@ -96,7 +96,7 @@
 
 
 	<div class="form-group">
-		<h5>SubCategory English <span class="text-danger">*</span></h5>
+		<h5>Danh mục con En <span class="text-danger">*</span></h5>
 		<div class="controls">
 			<input type="text" name="subcategory_name_en" class="form-control" >
 			@error('subcategory_name_en') 
@@ -107,7 +107,7 @@
 
 
 	<div class="form-group">
-		<h5>SubCategory Hindi  <span class="text-danger">*</span></h5>
+		<h5>Danh mục con Vn <span class="text-danger">*</span></h5>
 		<div class="controls">
 			<input type="text" name="subcategory_name_hin" class="form-control" >
 			@error('subcategory_name_hin') 
@@ -118,7 +118,7 @@
 
 
 			 <div class="text-xs-right">
-	<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add New">					 
+	<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Thêm ">					 
 						</div>
 					</form>
 

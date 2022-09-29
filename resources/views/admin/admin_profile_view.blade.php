@@ -6,9 +6,9 @@
 				<div class="box box-widget widget-user">
 					<!-- Add the bg color to the header using any of the bg-* classes -->
 					<div class="widget-user-header bg-black">
-					  <h3 class="widget-user-username">Admin Name: {{ $adminData->name}}</h3>
-					  <a href="{{route('admin.profile.edit')}}" style="float: right;" class="btn btn-rounded btn-success mb-5">Edit profile</a>
-					  <h6 class="widget-user-desc">Admin Email: {{ $adminData->email}}</h6>
+					  <h3 class="widget-user-username">Tên quản trị viên: {{ $adminData->name}}</h3>
+					  <a href="{{route('admin.profile.edit')}}" style="float: right;" class="btn btn-rounded btn-success mb-5">Chỉnh sửa thông tin</a>
+					  <h6 class="widget-user-desc">Địa chỉ Email: {{ $adminData->email}}</h6>
 					</div>
 					<div class="widget-user-image">
 					  <img class="rounded-circle" src="{{ (!empty($adminData->profile_photo_path))? url('upload/admin_images/'
@@ -19,7 +19,7 @@
 						<div class="col-sm-4">
 						  <div class="description-block">
 							<h5 class="description-header">12K</h5>
-							<span class="description-text">FOLLOWERS</span>
+							<span class="description-text">Người theo dõi</span>
 						  </div>
 						  <!-- /.description-block -->
 						</div>
@@ -27,7 +27,7 @@
 						<div class="col-sm-4 br-1 bl-1">
 						  <div class="description-block">
 							<h5 class="description-header">550</h5>
-							<span class="description-text">FOLLOWERS</span>
+							<span class="description-text">Người theo dõi</span>
 						  </div>
 						  <!-- /.description-block -->
 						</div>

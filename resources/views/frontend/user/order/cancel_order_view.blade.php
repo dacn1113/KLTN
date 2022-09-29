@@ -44,7 +44,7 @@
               </tr>
 
 
-              @foreach($orders as $order)
+              @forelse($orders as $order)
        <tr>
                 <td class="col-md-1">
                   <label for=""> {{ $order->order_date }}</label>
@@ -63,37 +63,12 @@
                   <label for=""> {{ $order->invoice_no }}</label>
                 </td>
 
-         <td class="col-md-2">
-          <label for=""> 
+                 <td class="col-md-2">
+                  <label for=""> 
+                    <span class="badge badge-pill badge-warning" style="background: #418DB9;">{{ $order->status }} </span>
 
-    @if($order->status == 'Pending')        
-        <span class="badge badge-pill badge-warning" style="background: #800080;"> Pending </span>
-        @elseif($order->status == 'confirm')
-         <span class="badge badge-pill badge-warning" style="background: #0000FF;"> Confirm </span>
-
-          @elseif($order->status == 'processing')
-         <span class="badge badge-pill badge-warning" style="background: #FFA500;"> Processing </span>
-
-          @elseif($order->status == 'picked')
-         <span class="badge badge-pill badge-warning" style="background: #808000;"> Picked </span>
-
-          @elseif($order->status == 'shipped')
-         <span class="badge badge-pill badge-warning" style="background: #808080;"> Shipped </span>
-
-          @elseif($order->status == 'delivered')
-         <span class="badge badge-pill badge-warning" style="background: #008000;"> Delivered </span>
-
-          @if($order->return_order == 1) 
-           <span class="badge badge-pill badge-warning" style="background:red;">Return Requested </span>
-
-          @endif
-
-         @else
-  <span class="badge badge-pill badge-warning" style="background: #FF0000;"> Cancel </span>
-
-      @endif
-            </label>
-        </td>
+                    </label>
+                </td>
 
          <td class="col-md-1">
           <a href="{{ url('user/order_details/'.$order->id ) }}" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i> View</a>
@@ -103,7 +78,11 @@
         </td>
                 
               </tr>
-              @endforeach
+
+              @empty
+              <h2 class="text-danger">Order Not Found</h2>
+
+              @endforelse
 
 
 

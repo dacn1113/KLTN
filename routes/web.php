@@ -12,17 +12,28 @@ use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\ShippingAreaController;
+use App\Http\Controllers\Backend\OrderController;
+use App\Http\Controllers\Backend\ReportController;
+use App\Http\Controllers\Backend\BlogController;
+use App\Http\Controllers\Backend\SiteSettingController;
+use App\Http\Controllers\Backend\ReturnController;
+use App\Http\Controllers\Backend\AdminUserController;
 
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\LanguageController;
 use App\Http\Controllers\Frontend\CartController;
-use App\Http\Controllers\User\AllUserController;
+use App\Http\Controllers\Frontend\HomeBlogController;
+
 use App\Http\Controllers\User\WishlistController;
 use App\Http\Controllers\User\CartPageController;
-use App\Http\Controllers\User\CashController;
 use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\User\StripeController;
+use App\Http\Controllers\User\CashController;
+use App\Http\Controllers\User\ReviewController;
 
+use App\Http\Controllers\User\AllUserController;
+
+use App\Http\Controllers\Frontend\ShopController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -227,7 +238,7 @@ Route::get('/minicart/product-remove/{rowId}', [CartController::class, 'RemoveMi
 Route::post('/add-to-wishlist/{product_id}', [CartController::class, 'AddToWishlist']);
 
 
-
+/////////////////////  User Must Login  ////
 Route::group(['prefix' => 'user', 'middleware' => ['user', 'auth'], 'namespace' => 'User'], function () {
 
     // Wishlist page
@@ -244,6 +255,18 @@ Route::group(['prefix' => 'user', 'middleware' => ['user', 'auth'], 'namespace' 
     Route::get('/my/orders', [AllUserController::class, 'MyOrders'])->name('my.orders');
 
     Route::get('/order_details/{order_id}', [AllUserController::class, 'OrderDetails']);
+
+    Route::get('/invoice_download/{order_id}', [AllUserController::class, 'InvoiceDownload']);
+
+    Route::post('/return/order/{order_id}', [AllUserController::class, 'ReturnOrder'])->name('return.order');
+
+    Route::get('/return/order/list', [AllUserController::class, 'ReturnOrderList'])->name('return.order.list');
+
+    Route::get('/cancel/orders', [AllUserController::class, 'CancelOrders'])->name('cancel.orders');
+
+
+    /// Order Traking Route 
+    Route::post('/order/tracking', [AllUserController::class, 'OrderTraking'])->name('order.tracking');
 });
 
 
@@ -320,12 +343,182 @@ Route::prefix('shipping')->group(function () {
 // Frontend Coupon Option
 
 Route::post('/coupon-apply', [CartController::class, 'CouponApply']);
+
 Route::get('/coupon-calculation', [CartController::class, 'CouponCalculation']);
+
 Route::get('/coupon-remove', [CartController::class, 'CouponRemove']);
+
 // Checkout Routes 
 
 Route::get('/checkout', [CartController::class, 'CheckoutCreate'])->name('checkout');
+
 Route::get('/district-get/ajax/{division_id}', [CheckoutController::class, 'DistrictGetAjax']);
 
 Route::get('/state-get/ajax/{district_id}', [CheckoutController::class, 'StateGetAjax']);
+
 Route::post('/checkout/store', [CheckoutController::class, 'CheckoutStore'])->name('checkout.store');
+
+
+
+// Admin Order All Routes 
+
+Route::prefix('orders')->group(function () {
+
+    Route::get('/pending/orders', [OrderController::class, 'PendingOrders'])->name('pending-orders');
+
+    Route::get('/pending/orders/details/{order_id}', [OrderController::class, 'PendingOrdersDetails'])->name('pending.order.details');
+
+    Route::get('/confirmed/orders', [OrderController::class, 'ConfirmedOrders'])->name('confirmed-orders');
+
+    Route::get('/processing/orders', [OrderController::class, 'ProcessingOrders'])->name('processing-orders');
+
+    Route::get('/picked/orders', [OrderController::class, 'PickedOrders'])->name('picked-orders');
+
+    Route::get('/shipped/orders', [OrderController::class, 'ShippedOrders'])->name('shipped-orders');
+
+    Route::get('/delivered/orders', [OrderController::class, 'DeliveredOrders'])->name('delivered-orders');
+
+    Route::get('/cancel/orders', [OrderController::class, 'CancelOrders'])->name('cancel-orders');
+
+    // Update Status 
+    Route::get('/pending/confirm/{order_id}', [OrderController::class, 'PendingToConfirm'])->name('pending-confirm');
+
+    Route::get('/confirm/processing/{order_id}', [OrderController::class, 'ConfirmToProcessing'])->name('confirm.processing');
+
+    Route::get('/processing/picked/{order_id}', [OrderController::class, 'ProcessingToPicked'])->name('processing.picked');
+
+    Route::get('/picked/shipped/{order_id}', [OrderController::class, 'PickedToShipped'])->name('picked.shipped');
+
+    Route::get('/shipped/delivered/{order_id}', [OrderController::class, 'ShippedToDelivered'])->name('shipped.delivered');
+
+    Route::get('/invoice/download/{order_id}', [OrderController::class, 'AdminInvoiceDownload'])->name('invoice.download');
+});
+
+// Admin Reports Routes 
+Route::prefix('reports')->group(function () {
+
+    Route::get('/view', [ReportController::class, 'ReportView'])->name('all-reports');
+
+    Route::post('/search/by/date', [ReportController::class, 'ReportByDate'])->name('search-by-date');
+
+    Route::post('/search/by/month', [ReportController::class, 'ReportByMonth'])->name('search-by-month');
+
+    Route::post('/search/by/year', [ReportController::class, 'ReportByYear'])->name('search-by-year');
+});
+
+
+
+// Admin Get All User Routes 
+Route::prefix('alluser')->group(function () {
+
+    Route::get('/view', [AdminProfileController::class, 'AllUsers'])->name('all-users');
+});
+
+
+// Admin Blog  Routes 
+Route::prefix('blog')->group(function () {
+
+    Route::get('/category', [BlogController::class, 'BlogCategory'])->name('blog.category');
+
+    Route::post('/store', [BlogController::class, 'BlogCategoryStore'])->name('blogcategory.store');
+
+    Route::get('/category/edit/{id}', [BlogController::class, 'BlogCategoryEdit'])->name('blog.category.edit');
+
+
+    Route::post('/update', [BlogController::class, 'BlogCategoryUpdate'])->name('blogcategory.update');
+
+    // Admin View Blog Post Routes 
+
+    Route::get('/list/post', [BlogController::class, 'ListBlogPost'])->name('list.post');
+
+    Route::get('/add/post', [BlogController::class, 'AddBlogPost'])->name('add.post');
+
+    Route::post('/post/store', [BlogController::class, 'BlogPostStore'])->name('post-store');
+});
+
+//  Frontend Blog Show Routes 
+
+Route::get('/blog', [HomeBlogController::class, 'AddBlogPost'])->name('home.blog');
+
+Route::get('/post/details/{id}', [HomeBlogController::class, 'DetailsBlogPost'])->name('post.details');
+
+Route::get('/blog/category/post/{category_id}', [HomeBlogController::class, 'HomeBlogCatPost']);
+
+
+
+// Admin Site Setting Routes 
+Route::prefix('setting')->group(function () {
+
+    Route::get('/site', [SiteSettingController::class, 'SiteSetting'])->name('site.setting');
+    Route::post('/site/update', [SiteSettingController::class, 'SiteSettingUpdate'])->name('update.sitesetting');
+
+    Route::get('/seo', [SiteSettingController::class, 'SeoSetting'])->name('seo.setting');
+
+    Route::post('/seo/update', [SiteSettingController::class, 'SeoSettingUpdate'])->name('update.seosetting');
+});
+
+
+
+// Admin Return Order Routes 
+Route::prefix('return')->group(function () {
+
+    Route::get('/admin/request', [ReturnController::class, 'ReturnRequest'])->name('return.request');
+
+    Route::get('/admin/return/approve/{order_id}', [ReturnController::class, 'ReturnRequestApprove'])->name('return.approve');
+
+    Route::get('/admin/all/request', [ReturnController::class, 'ReturnAllRequest'])->name('all.request');
+});
+
+/// Frontend Product Review Routes
+
+Route::post('/review/store', [ReviewController::class, 'ReviewStore'])->name('review.store');
+
+
+// Admin Manage Review Routes 
+Route::prefix('review')->group(function () {
+
+    Route::get('/pending', [ReviewController::class, 'PendingReview'])->name('pending.review');
+
+    Route::get('/admin/approve/{id}', [ReviewController::class, 'ReviewApprove'])->name('review.approve');
+
+    Route::get('/publish', [ReviewController::class, 'PublishReview'])->name('publish.review');
+
+    Route::get('/delete/{id}', [ReviewController::class, 'DeleteReview'])->name('delete.review');
+});
+
+
+
+// Admin Manage Stock Routes 
+Route::prefix('stock')->group(function () {
+
+    Route::get('/product', [ProductController::class, 'ProductStock'])->name('product.stock');
+});
+
+
+
+// Admin User Role Routes 
+Route::prefix('adminuserrole')->group(function () {
+
+    Route::get('/all', [AdminUserController::class, 'AllAdminRole'])->name('all.admin.user');
+
+    Route::get('/add', [AdminUserController::class, 'AddAdminRole'])->name('add.admin');
+
+    Route::post('/store', [AdminUserController::class, 'StoreAdminRole'])->name('admin.user.store');
+
+    Route::get('/edit/{id}', [AdminUserController::class, 'EditAdminRole'])->name('edit.admin.user');
+
+    Route::post('/update', [AdminUserController::class, 'UpdateAdminRole'])->name('admin.user.update');
+
+    Route::get('/delete/{id}', [AdminUserController::class, 'DeleteAdminRole'])->name('delete.admin.user');
+});
+
+/// Product Search Route 
+Route::post('/search', [IndexController::class, 'ProductSearch'])->name('product.search');
+
+// Advance Search Routes 
+Route::post('search-product', [IndexController::class, 'SearchProduct']);
+
+
+// Shop Page Route 
+Route::get('/shop', [ShopController::class, 'ShopPage'])->name('shop.page');
+Route::post('/shop/filter', [ShopController::class, 'ShopFilter'])->name('shop.filter');

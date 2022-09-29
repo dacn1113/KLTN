@@ -7,7 +7,7 @@
                 <!-- Basic Forms -->
                  <div class="box">
                    <div class="box-header with-border">
-                     <h4 class="box-title">Admin Profile Edit</h4>
+                     <h4 class="box-title">Trang thông tin quản trị viên</h4>
                      <h6 class="box-subtitle">Bootstrap Form Validation check the <a class="text-warning" href="http://reactiveraven.github.io/jqBootstrapValidation/">official website </a></h6>
                    </div>
                    <!-- /.box-header -->
@@ -22,7 +22,7 @@
                                   <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <h5>Admin User Name <span class="text-danger">*</span></h5>
+                                            <h5>Tên người dùng <span class="text-danger">*</span></h5>
                                             <div class="controls">
                                                 <input type="text" name="name" class="form-control" required="" value="{{$editData->name}}"></div>
                                         </div>
@@ -30,7 +30,7 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <h5>Admin Email <span class="text-danger">*</span></h5>
+                                            <h5>Email <span class="text-danger">*</span></h5>
                                             <div class="controls">
                                                 <input type="email" name="email" class="form-control" required=""value="{{$editData->email}}"></div>
                                         </div>
@@ -41,7 +41,7 @@
                                    <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <h5>Profile Image <span class="text-danger">*</span></h5>
+                                            <h5>Ảnh đại diện<span class="text-danger">*</span></h5>
                                             <div class="controls">
                                                 <input type="file" name="profile_photo_path" class="form-control" required="" id="image"></div>
                                         </div>
@@ -53,7 +53,7 @@
                                    </div>
                                    
                                <div class="text-xs-right">
-                                   <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update">
+                                   <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Cập nhật">
                                </div>
                            </form>
        

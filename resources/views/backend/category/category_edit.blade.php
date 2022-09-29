@@ -13,7 +13,7 @@
 
             <div class="box">
                <div class="box-header with-border">
-                 <h3 class="box-title">Category Brand </h3>
+                 <h3 class="box-title">Chỉnh sửa chuyên mục </h3>
                </div>
                <!-- /.box-header -->
                <div class="box-body">
@@ -23,7 +23,7 @@
                      
                     
                     <div class="form-group">
-                        <label for="example-text-input" class="col-sm-2 col-form-label">Category Name English</label>
+                        <label for="example-text-input" class="col-sm-2 col-form-label">Tên tiếng Anh</label>
                         <div class="col-sm-10">
                             <input name="category_name_en" class="form-control" type="text" value="{{$categorys->category_name_en}}">
                             @error('category_name_en')
@@ -33,7 +33,7 @@
                     </div>
         
                     <div class="form-group">
-                        <label for="example-text-input" class="col-sm-2 col-form-label">Category Name Hindi</label>
+                        <label for="example-text-input" class="col-sm-2 col-form-label">Tên tiếng Việt</label>
                         <div class="col-sm-10">
                             <input name="category_name_hin" class="form-control" type="text"value="{{$categorys->category_name_hin}}">
                             @error('category_name_hin')
@@ -43,7 +43,7 @@
                     </div>
         
                     <div class="form-group">
-                        <label for="example-text-input" class="col-sm-2 col-form-label">Category Icon</label>
+                        <label for="example-text-input" class="col-sm-2 col-form-label">Icon</label>
                         <div class="col-sm-10">
                             <input name="category_icon" class="form-control" type="text" value="{{$categorys->category_icon}}">
                             @error('category_icon')
@@ -52,7 +52,7 @@
                         </div>
                     </div>
                 
-                    <input type="submit" class="btn btn-info waves-effect waves-light" value="Add New">
+                    <input type="submit" class="btn btn-info waves-effect waves-light" value="Cập nhật">
                     </form>
                    </div>
                </div>

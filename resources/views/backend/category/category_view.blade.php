@@ -14,7 +14,7 @@
 
            <div class="box">
               <div class="box-header with-border">
-                <h3 class="box-title">Category List</h3>
+                <h3 class="box-title">Danh sách chuyên mục</h3>
               </div>
               <!-- /.box-header -->
               <div class="box-body">
@@ -22,10 +22,10 @@
                     <table id="example1" class="table table-bordered table-striped">
                       <thead>
                           <tr>
-                              <th>Category Name</th>
-                              <th>Category Hind</th>
-                              <th>Icon</th>
-                              <th>Action</th>
+                              <th>Tên chuyên mục</th>
+                              <th>Tên tiếng việt</th>
+                              <th>Biểu tượng</th>
+                              <th>Hành động</th>
                           </tr>
                       </thead>
                       <tbody>
@@ -55,7 +55,7 @@
 
             <div class="box">
                <div class="box-header with-border">
-                 <h3 class="box-title">Add Category </h3>
+                 <h3 class="box-title">Thêm chuyên mục </h3>
                </div>
                <!-- /.box-header -->
                <div class="box-body">
@@ -64,7 +64,7 @@
                         @csrf
         
                     <div class="form-group">
-                        <label for="example-text-input" class="col-sm-2 col-form-label">Category Name English</label>
+                        <label for="example-text-input" class="col-sm-2 col-form-label">Chuyên mục tiếng Anh</label>
                         <div class="col-sm-10">
                             <input name="category_name_en" class="form-control" type="text" >
                             @error('category_name_en')
@@ -74,7 +74,7 @@
                     </div>
         
                     <div class="form-group">
-                        <label for="example-text-input" class="col-sm-2 col-form-label">Category Name Hindi</label>
+                        <label for="example-text-input" class="col-sm-2 col-form-label">Chuyên mục tiếng Việt</label>
                         <div class="col-sm-10">
                             <input name="category_name_hin" class="form-control" type="text">
                             @error('category_name_hin')
@@ -84,7 +84,7 @@
                     </div>
         
                     <div class="form-group">
-                        <label for="example-text-input" class="col-sm-2 col-form-label">Brand Icon</label>
+                        <label for="example-text-input" class="col-sm-2 col-form-label">Logo thương hiệu</label>
                         <div class="col-sm-10">
                             <input name="category_icon" class="form-control" type="text">
                             @error('category_icon')
@@ -93,7 +93,7 @@
                         </div>
                     </div>
                 
-                    <input type="submit" class="btn btn-info waves-effect waves-light" value="Add New">
+                    <input type="submit" class="btn btn-info waves-effect waves-light" value="Thêm">
                     </form>
                    </div>
                </div>

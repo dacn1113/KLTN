@@ -1,117 +1,125 @@
 @extends('admin.admin_master')
 @section('admin')
-      
+
+
   <!-- Content Wrapper. Contains page content -->
   
-    <div class="container-full">
+	  <div class="container-full">
+		<!-- Content Header (Page header) -->
+		 
 
-      <!-- Main content -->
-      <section class="content">
-        <div class="row">
-            
-   
-          <div class="col-8">
+		<!-- Main content -->
+		<section class="content">
+		  <div class="row">
+			<div class="col-8">
 
-           <div class="box">
-              <div class="box-header with-border">
-                <h3 class="box-title">Brand List</h3>
-              </div>
-              <!-- /.box-header -->
-              <div class="box-body">
-                  <div class="table-responsive">
-                    <table id="example1" class="table table-bordered table-striped">
-                      <thead>
-                          <tr>
-                              <th>Brand Name</th>
-                              <th>Brand Hind</th>
-                              <th>Image</th>
-                              <th>Action</th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                        @foreach ($brands as $item)
-                          <tr>
-                              <td>{{$item->brand_name_en}}</td>
-                              <td>{{$item->brand_name_hin}}</td>
-                              <td><img src="{{asset($item->brand_image)}}" style="width: 70px;height:40px;"></td>
-                              <td>
-                                <a href="{{route('brand.edit',$item->id)}}" class="btn btn-info" ><i class="fa fa-pencil"></i></a>
-                                <a href="{{route('brand.delete',$item->id)}}" id="delete"class="btn btn-danger"><i class="fa fa-trash"></i></a>
-                              <td>    
-                          </tr>
-                        @endforeach
-                    </table>
-                  </div>
-              </div>
-              <!-- /.box-body -->
-            </div>
-            <!-- /.box -->
+			 <div class="box">
+				<div class="box-header with-border">
+				  <h3 class="box-title">Danh sách thương hiệu <span class="badge badge-pill badge-danger"> {{ count($brands) }} </span></h3>
+				</div>
+				<!-- /.box-header -->
+				<div class="box-body">
+					<div class="table-responsive">
+					  <table id="example1" class="table table-bordered table-striped">
+						<thead>
+							<tr>
+								<th>Thương hiệu tiếng Anh </th>
+								<th>Thương hiệu tiếng Việt </th>
+								<th>Hình ảnh</th>
+								<th>Hoạt động</th>
+								 
+							</tr>
+						</thead>
+						<tbody>
+	 @foreach($brands as $item)
+	 <tr>
+		<td>{{ $item->brand_name_en }}</td>
+		<td>{{ $item->brand_name_hin }}</td>
+		<td><img src="{{ asset($item->brand_image) }}" style="width: 70px; height: 40px;"> </td>
+		<td>
+ <a href="{{ route('brand.edit',$item->id) }}" class="btn btn-info" title="Chỉnh sửa"><i class="fa fa-pencil"></i> </a>
+ <a href="{{ route('brand.delete',$item->id) }}" class="btn btn-danger" title="Xóa" id="delete">
+ 	<i class="fa fa-trash"></i></a>
+		</td>
+							 
+	 </tr>
+	  @endforeach
+						</tbody>
+						 
+					  </table>
+					</div>
+				</div>
+				<!-- /.box-body -->
+			  </div>
+			  <!-- /.box -->
 
-            <!-- /.box -->          
-          </div>
-          <!-- /.col -->
+			          
+			</div>
+			<!-- /.col -->
 
+
+<!--   ------------ Add Brand Page -------- -->
           <div class="col-4">
+			 <div class="box">
+				<div class="box-header with-border">
+				  <h3 class="box-title">Thêm mới thương hiệu </h3>
+				</div>
+				<!-- /.box-header -->
+				<div class="box-body">
+					<div class="table-responsive">
 
-            <div class="box">
-               <div class="box-header with-border">
-                 <h3 class="box-title">Add Brand </h3>
-               </div>
-               <!-- /.box-header -->
-               <div class="box-body">
-                   <div class="table-responsive">
-                    <form method="post" action="{{route('brand.store')}}" enctype="multipart/form-data">
-                        @csrf
-        
-                    <div class="form-group">
-                        <label for="example-text-input" class="col-sm-2 col-form-label">Brand Name Englist</label>
-                        <div class="col-sm-10">
-                            <input name="brand_name_en" class="form-control" type="text" >
-                            @error('brand_name_en')
-                                <span class="text-danger">{{$message}}</span>
-                            @enderror
-                        </div>
-                    </div>
-        
-                    <div class="form-group">
-                        <label for="example-text-input" class="col-sm-2 col-form-label">Brand Name Hindi</label>
-                        <div class="col-sm-10">
-                            <input name="brand_name_hin" class="form-control" type="text">
-                            @error('brand_name_hin')
-                            <span class="text-danger">{{$message}}</span>
-                        @enderror
-                        </div>
-                    </div>
-        
-                    <div class="form-group">
-                        <label for="example-text-input" class="col-sm-2 col-form-label">Brand Image</label>
-                        <div class="col-sm-10">
-                            <input name="brand_image" class="form-control" type="file">
-                            @error('brand_image_en')
-                            <span class="text-danger">{{$message}}</span>
-                        @enderror
-                        </div>
-                    </div>
-                
-                    <input type="submit" class="btn btn-info waves-effect waves-light" value="Add New">
-                    </form>
-                   </div>
-               </div>
-               <!-- /.box-body -->
-             </div>
-             <!-- /.box -->
- 
-             <!-- /.box -->          
-           </div>
+
+ <form method="post" action="{{ route('brand.store') }}" enctype="multipart/form-data">
+	 	@csrf
+					   
+
+	 <div class="form-group">
+		<h5>Tên thương hiệu tiếng Anh <span class="text-danger">*</span></h5>
+		<div class="controls">
+	 <input type="text"  name="brand_name_en" class="form-control" > 
+	 @error('brand_name_en') 
+	 <span class="text-danger">{{ $message }}</span>
+	 @enderror 
+	</div>
+	</div>
+
+
+	<div class="form-group">
+		<h5>Tên thương hiệu tiếng Việt <span class="text-danger">*</span></h5>
+		<div class="controls">
+	 <input type="text" name="brand_name_hin" class="form-control" >
+     @error('brand_name_hin') 
+	 <span class="text-danger">{{ $message }}</span>
+	 @enderror 
+	  </div>
+	</div>
 
 
 
+	<div class="form-group">
+		<h5>Hình ảnh thương hiệu <span class="text-danger">*</span></h5>
+		<div class="controls">
+	 <input type="file" name="brand_image" class="form-control" >
+     @error('brand_image') 
+	 <span class="text-danger">{{ $message }}</span>
+	 @enderror 
+	  </div>
+	</div>
+					 
 
-        </div>
-        <!-- /.row -->
-      </section>
-      <!-- /.content -->
-    
-    </div>
-
+			 <div class="text-xs-right">
+	<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Thêm">					 
+						</div>
+					</form>
+					</div>
+				</div>
+				<!-- /.box-body -->
+			  </div>
+			  <!-- /.box --> 
+			</div>
+		  </div>
+		  <!-- /.row -->
+		</section>
+		<!-- /.content -->
+	  </div>
 @endsection

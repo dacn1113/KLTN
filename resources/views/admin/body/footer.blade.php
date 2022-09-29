@@ -5,9 +5,9 @@
 			<a class="nav-link" href="javascript:void(0)">FAQ</a>
 		  </li>
 		  <li class="nav-item">
-			<a class="nav-link" href="#">www.Shopnhanh.com</a>
+			<a class="nav-link" href="#">www.Shop.com</a>
 		  </li>
 		</ul>
     </div>
-	  &copy; 2020 <a href="#">Shop nhanh</a>. All Rights Reserved.
+	  &copy; 2022 <a href="#">Shop</a>. Chưa đăng ký Bản quyền.
   </footer>

@@ -14,27 +14,13 @@
 					<i class="nav-link-icon mdi mdi-crop-free"></i>
 			    </a>
 			</li>			
-			<li class="btn-group nav-item d-none d-xl-inline-block">
-				<a href="#" class="waves-effect waves-light nav-link rounded svg-bt-icon" title="">
-					<i class="ti-check-box"></i>
-			    </a>
-			</li>
-			<li class="btn-group nav-item d-none d-xl-inline-block">
-				<a href="calendar.html" class="waves-effect waves-light nav-link rounded svg-bt-icon" title="">
-					<i class="ti-calendar"></i>
-			    </a>
-			</li>
+			
 		  </ul>
 	  </div>
 		
       <div class="navbar-custom-menu r-side">
         <ul class="nav navbar-nav">
-		  <!-- full Screen -->
-	      <li class="search-bar">		  
-			  <div class="lookup lookup-circle lookup-right">
-			     <input type="text" name="s">
-			  </div>
-		  </li>			
+		  		
 		  <!-- Notifications -->
 		  <li class="dropdown notifications-menu">
 			<a href="#" class="waves-effect waves-light rounded dropdown-toggle" data-toggle="dropdown" title="Notifications">
@@ -46,10 +32,10 @@
 				<div class="p-20">
 					<div class="flexbox">
 						<div>
-							<h4 class="mb-0 mt-0">Notifications</h4>
+							<h4 class="mb-0 mt-0">Thông báo</h4>
 						</div>
 						<div>
-							<a href="#" class="text-danger">Clear All</a>
+							<a href="#" class="text-danger">Xóa hết</a>
 						</div>
 					</div>
 				</div>
@@ -114,18 +100,14 @@ $adminData = DB::table('admins')->first();
 			</a>
 			<ul class="dropdown-menu animated flipInX">
 			  <li class="user-body">
-				 <a class="dropdown-item" href="{{route('admin.profile')}}"><i class="ti-user text-muted mr-2"></i> Profile</a>
-				 <a class="dropdown-item" href="{{route('admin.change.password')}}"><i class="ti-wallet text-muted mr-2"></i>Change Password</a>
-				 <a class="dropdown-item" href="#"><i class="ti-settings text-muted mr-2"></i> Settings</a>
-				 <div class="dropdown-divider"></div>
-				 <a class="dropdown-item" href="{{route('admin.logout')}}"><i class="ti-lock text-muted mr-2"></i> Logout</a>
+				 <a class="dropdown-item" href="{{route('admin.profile')}}"><i class="ti-user text-muted mr-2"></i> Thông tin người dùng</a>
+				 <a class="dropdown-item" href="{{route('admin.change.password')}}"><i class="ti-wallet text-muted mr-2"></i>Đổi mật khẩu</a>
+				 <a class="dropdown-item" href="{{route('admin.logout')}}"><i class="ti-lock text-muted mr-2"></i> Đăng xuất</a>
 			  </li>
 			</ul>
           </li>	
 		  <li>
-              <a href="#" data-toggle="control-sidebar" title="Setting" class="waves-effect waves-light">
-			  	<i class="ti-settings"></i>
-			  </a>
+              
           </li>
 			
         </ul>

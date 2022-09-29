@@ -13,7 +13,7 @@
 
             <div class="box">
                <div class="box-header with-border">
-                 <h3 class="box-title">Edit Brand </h3>
+                 <h3 class="box-title">Chỉnh sửa thương hiệu </h3>
                </div>
                <!-- /.box-header -->
                <div class="box-body">
@@ -23,7 +23,7 @@
                         <input type="hidden" name="id" value="{{$brands->id}}">
                         <input type="hidden" name="old_image" value="{{$brands->brand_image}}">
                     <div class="form-group">
-                        <label for="example-text-input" class="col-sm-2 col-form-label">Brand Name English</label>
+                        <label for="example-text-input" class="col-sm-2 col-form-label">Tên tiếng anh</label>
                         <div class="col-sm-10">
                             <input name="brand_name_en" class="form-control" type="text" value="{{$brands->brand_name_en}}">
                             @error('brand_name_en')
@@ -33,7 +33,7 @@
                     </div>
         
                     <div class="form-group">
-                        <label for="example-text-input" class="col-sm-2 col-form-label">Brand Name Hindi</label>
+                        <label for="example-text-input" class="col-sm-2 col-form-label">Tên tiếng việt</label>
                         <div class="col-sm-10">
                             <input name="brand_name_hin" class="form-control" type="text"value="{{$brands->brand_name_hin}}">
                             @error('brand_name_hin')
@@ -43,7 +43,7 @@
                     </div>
         
                     <div class="form-group">
-                        <label for="example-text-input" class="col-sm-2 col-form-label">Brand Image</label>
+                        <label for="example-text-input" class="col-sm-2 col-form-label">Hình ảnh thương hiệu</label>
                         <div class="col-sm-10">
                             <input name="brand_image" class="form-control" type="file">
                             @error('brand_image_en')
@@ -52,7 +52,7 @@
                         </div>
                     </div>
                 
-                    <input type="submit" class="btn btn-info waves-effect waves-light" value="Add New">
+                    <input type="submit" class="btn btn-info waves-effect waves-light" value="Cập nhật ">
                     </form>
                    </div>
                </div>
