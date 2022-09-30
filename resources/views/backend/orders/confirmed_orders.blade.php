@@ -18,7 +18,7 @@
 
 			 <div class="box">
 				<div class="box-header with-border">
-				  <h3 class="box-title">Confirmed Orders List</h3>
+				  <h3 class="box-title">Danh sách đơn hàng đã xác nhận</h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
@@ -26,12 +26,12 @@
 					  <table id="example1" class="table table-bordered table-striped">
 						<thead>
 							<tr>
-								<th>Date </th>
-								<th>Invoice </th>
-								<th>Amount </th>
-								<th>Payment </th>
-								<th>Status </th>
-								<th>Action</th>
+								<th>Ngày  </th>
+								<th>Hóa đơn </th>
+								<th>Số tiền </th>
+								<th>Thanh toán </th>
+								<th>Trạng thái </th>
+								<th>Hành động</th>
 								 
 							</tr>
 						</thead>

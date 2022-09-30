@@ -18,7 +18,7 @@
 
 			 <div class="box">
 				<div class="box-header with-border">
-				  <h3 class="box-title">Total User <span class="badge badge-pill badge-danger"> {{ count($users) }} </span> </h3>
+				  <h3 class="box-title">Tổng số người dùng <span class="badge badge-pill badge-danger"> {{ count($users) }} </span> </h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
@@ -26,12 +26,12 @@
 					  <table id="example1" class="table table-bordered table-striped">
 						<thead>
 							<tr>
-								<th>Image </th>
-								<th>Name </th>
+								<th>Ảnh đại diện </th>
+								<th>Tên  </th>
 								<th>Email</th>
-								<th>Phone</th>
-								<th>Status</th>
-								<th>Action</th>
+								<th>Điện thoại</th>
+								<th>Trạng thái</th>
+								<th>Hành động</th>
 								 
 							</tr>
 						</thead>
@@ -45,7 +45,7 @@
  
 		<td> 
 	    @if($user->UserOnline())
-         <span class="badge badge-pill badge-success">Active Now</span>
+         <span class="badge badge-pill badge-success">Đang hoạt động</span>
 		@else
             <span class="badge badge-pill badge-danger">{{ Carbon\Carbon::parse($user->last_seen)->diffForHumans() }}</span>
 		@endif 

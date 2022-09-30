@@ -3,7 +3,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 @section('title')
-Stripe Payment Page 
+Trang thanh toán Stripe 
 @endsection
 
 
@@ -63,7 +63,7 @@ Stripe Payment Page
 	<div class="panel-group">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-		    	<h4 class="unicase-checkout-title">Your Shopping Amount </h4>
+		    	<h4 class="unicase-checkout-title">Thông tin sắm của bạn </h4>
 		    </div>
 		    <div class="">
 				<ul class="nav nav-checkout-progress list-unstyled">
@@ -73,24 +73,24 @@ Stripe Payment Page
 		 <li>
 		 	@if(Session::has('coupon'))
 
-<strong>SubTotal: </strong> ${{ $cartTotal }} <hr>
+<strong>Giá gốc: </strong> ${{ $cartTotal }} <hr>
 
-<strong>Coupon Name : </strong> {{ session()->get('coupon')['coupon_name'] }}
+<strong>Tên phiếu giảm giá  : </strong> {{ session()->get('coupon')['coupon_name'] }}
 ( {{ session()->get('coupon')['coupon_discount'] }} % )
  <hr>
 
- <strong>Coupon Discount : </strong> ${{ session()->get('coupon')['discount_amount'] }} 
+ <strong>Số tiền giảm : </strong> ${{ session()->get('coupon')['discount_amount'] }} 
  <hr>
 
-  <strong>Grand Total : </strong> ${{ session()->get('coupon')['total_amount'] }} 
+  <strong>Tổng tiền thanh toán : </strong> ${{ session()->get('coupon')['total_amount'] }} 
  <hr>
 
 
 		 	@else
 
-<strong>SubTotal: </strong> ${{ $cartTotal }} <hr>
+<strong>Giá gốc: </strong> ${{ $cartTotal }} <hr>
 
-<strong>Grand Total : </strong> ${{ $cartTotal }} <hr>
+<strong>Tổng thanh toán: </strong> ${{ $cartTotal }} <hr>
 
 
 		 	@endif 
@@ -119,7 +119,7 @@ Stripe Payment Page
 	<div class="panel-group">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-		    	<h4 class="unicase-checkout-title">Select Payment Method</h4>
+		    	<h4 class="unicase-checkout-title">Thanh toán bằng Stripe</h4>
 		    </div>
 
 <form action="{{ route('stripe.order') }}" method="post" id="payment-form">
@@ -143,7 +143,7 @@ Stripe Payment Page
             <div id="card-errors" role="alert"></div>
         </div>
         <br>
-        <button class="btn btn-primary">Submit Payment</button>
+        <button class="btn btn-primary">Thanh toán</button>
         </form>
 		    
  

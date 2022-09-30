@@ -2,7 +2,7 @@
 @section('content')
 
 @section('title')
-My Cart Page 
+Trang giỏ hàng của tôi
 @endsection
 
 
@@ -11,7 +11,7 @@ My Cart Page
 		<div class="breadcrumb-inner">
 			<ul class="list-inline list-unstyled">
 				<li><a href="home.html">Home</a></li>
-				<li class='active'>MyCart</li>
+				<li class='active'>Giỏ hàng của tôi</li>
 			</ul>
 		</div><!-- /.breadcrumb-inner -->
 	</div><!-- /.container -->
@@ -26,13 +26,13 @@ My Cart Page
 		<table class="table">
 			<thead>
 				<tr>
-					<th class="cart-romove item">Image</th>
-					<th class="cart-description item">Name</th>
-					<th class="cart-product-name item">Color</th>
-					<th class="cart-edit item">Size</th>
-					<th class="cart-qty item">Quantity</th>
-					<th class="cart-sub-total item">Subtotal</th>
-					<th class="cart-total last-item">Remove</th>
+					<th class="cart-romove item">Hình ảnh</th>
+					<th class="cart-description item">Tên</th>
+					<th class="cart-product-name item">Màu sắc</th>
+					<th class="cart-edit item">Kích thước</th>
+					<th class="cart-qty item">Số lượng</th>
+					<th class="cart-sub-total item">Giá gốc</th>
+					<th class="cart-total last-item">Xóa</th>
 				</tr>
 			</thead><!-- /thead -->
 			<tbody id="cartPage">
@@ -58,8 +58,8 @@ My Cart Page
 		<thead>
 			<tr>
 				<th>
-					<span class="estimate-title">Discount Code</span>
-					<p>Enter your coupon code if you have one..</p>
+					<span class="estimate-title">Mã giảm giá</span>
+					<p>Nhập mã phiếu giảm giá của bạn nếu bạn có ..</p>
 				</th>
 			</tr>
 		</thead>
@@ -70,7 +70,7 @@ My Cart Page
 			<input type="text" class="form-control unicase-form-control text-input" placeholder="You Coupon.." id="coupon_name">
 		</div>
 		<div class="clearfix pull-right">
-			<button type="submit" class="btn-upper btn btn-primary" onclick="applyCoupon()">APPLY COUPON</button>
+			<button type="submit" class="btn-upper btn btn-primary" onclick="applyCoupon()">Thêm phiếu</button>
 		</div>
 	</td>
 </tr>
@@ -94,7 +94,7 @@ My Cart Page
 				<tr>
 					<td>
 						<div class="cart-checkout-btn pull-right">
-							<a href="{{ route('checkout') }}" type="submit" class="btn btn-primary checkout-btn">PROCCED TO CHEKOUT</a>
+							<a href="{{ route('checkout') }}" type="submit" class="btn btn-primary checkout-btn">Thanh toán</a>
 							 
 						</div>
 					</td>

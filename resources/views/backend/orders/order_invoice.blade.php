@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Invoice</title>
+<title>Hóa đơn</title>
 
 <style type="text/css">
     * {
@@ -48,14 +48,14 @@
     <tr>
         <td valign="top">
           <!-- {{-- <img src="" alt="" width="150"/> --}} -->
-          <h2 style="color: green; font-size: 26px;"><strong>EasyShop</strong></h2>
+          <h2 style="color: green; font-size: 26px;"><strong>Shop</strong></h2>
         </td>
         <td align="right">
             <pre class="font" >
                EasyShop Head Office
-               Email:support@easylearningbd.com <br>
-               Mob: 1245454545 <br>
-               Dhaka 1207,Dhanmondi:#4 <br>
+               Email:admin@example.com <br>
+               Mob: 1212121212 <br>
+               Tp HCM ,Tân Bình: <br>
               
             </pre>
         </td>
@@ -70,9 +70,9 @@
     <tr>
         <td>
           <p class="font" style="margin-left: 20px;">
-           <strong>Name:</strong> {{ $order->name }}<br>
+           <strong>Tên:</strong> {{ $order->name }}<br>
            <strong>Email:</strong> {{ $order->email }} <br>
-           <strong>Phone:</strong> {{ $order->phone }} <br>
+           <strong>Điện thoại:</strong> {{ $order->phone }} <br>
 
            @php
             $div = $order->division->division_name;
@@ -80,35 +80,35 @@
             $state = $order->state->state_name;
            @endphp
             
-           <strong>Address:</strong> {{ $div }},{{ $dis }}.{{ $state }} <br>
-           <strong>Post Code:</strong> {{ $order->post_code }}
+           <strong>Địa chỉ:</strong> {{ $div }},{{ $dis }}.{{ $state }} <br>
+           <strong>Mã bưu điện:</strong> {{ $order->post_code }}
          </p>
         </td>
         <td>
           <p class="font">
-            <h3><span style="color: green;">Invoice:</span> #{{ $order->invoice_no}}</h3>
-            Order Date: {{ $order->order_date }} <br>
-             Delivery Date: {{ $order->delivered_date }} <br>
-            Payment Type : {{ $order->payment_method }} </span>
+            <h3><span style="color: green;">Hóa đơn:</span> #{{ $order->invoice_no}}</h3>
+            Ngày đặt hàng: {{ $order->order_date }} <br>
+            Ngày giao hàng: {{ $order->delivered_date }} <br>
+            Hình thức thanh toán : {{ $order->payment_method }} </span>
          </p>
         </td>
     </tr>
   </table>
   <br/>
-<h3>Products</h3>
+<h3>Sản phẩm</h3>
 
 
   <table width="100%">
     <thead style="background-color: green; color:#FFFFFF;">
       <tr class="font">
-        <th>Image</th>
-        <th>Product Name</th>
-        <th>Size</th>
-        <th>Color</th>
-        <th>Code</th>
-        <th>Quantity</th>
-        <th>Unit Price </th>
-        <th>Total </th>
+        <th>Hình ảnh</th>
+        <th>Tên sản phẩm</th>
+        <th>Kích thước</th>
+        <th>Màu sắc</th>
+        <th>Mã sản phẩm</th>
+        <th>Số lượng</th>
+        <th>Đơn giá </th>
+        <th>Tổng tiền </th>
       </tr>
     </thead>
     <tbody>

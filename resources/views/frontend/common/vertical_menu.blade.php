@@ -4,7 +4,7 @@ $categories = App\Models\Category::orderBy('category_name_en','ASC')->get();
 
 
  <div class="side-menu animate-dropdown outer-bottom-xs">
-          <div class="head"><i class="icon fa fa-align-justify fa-fw"></i> Categories</div>
+          <div class="head"><i class="icon fa fa-align-justify fa-fw"></i> Danh mục</div>
           <nav class="yamm megamenu-horizontal">
             <ul class="nav">
 
@@ -24,7 +24,7 @@ $categories = App\Models\Category::orderBy('category_name_en','ASC')->get();
 
              @foreach($subcategories as $subcategory)
                       <div class="col-sm-12 col-md-3">
-                        <a href="{{ url('subcategory/product/'.$subcategory->id.'/'.$subcategory->subcategory_slug_en ) }}">  
+                        <a href="{{ url('subcategory/product/'.$subcategory->id.'/'.$subcategory->subcategory_slug_hin ) }}">  
  <h2 class="title">
 @if(session()->get('language') == 'hindi') {{ $subcategory->subcategory_name_hin }} @else {{ $subcategory->subcategory_name_en }} @endif
 </h2> </a>
@@ -60,20 +60,7 @@ $categories = App\Models\Category::orderBy('category_name_en','ASC')->get();
 
 
 
-              <li class="dropdown menu-item"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon fa fa-paper-plane"></i>Kids and Babies</a> 
-                <!-- /.dropdown-menu --> </li>
-              <!-- /.menu-item -->
-
-              <li class="dropdown menu-item"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon fa fa-futbol-o"></i>Sports</a> 
-                <!-- ================================== MEGAMENU VERTICAL ================================== --> 
-                <!-- /.dropdown-menu --> 
-                <!-- ================================== MEGAMENU VERTICAL ================================== --> </li>
-              <!-- /.menu-item -->
-
-              <li class="dropdown menu-item"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon fa fa-envira"></i>Home and Garden</a> 
-                <!-- /.dropdown-menu --> </li>
-              <!-- /.menu-item -->
-
+            
             </ul>
             <!-- /.nav --> 
           </nav>

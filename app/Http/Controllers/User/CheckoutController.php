@@ -21,10 +21,10 @@ class CheckoutController extends Controller
 
     public function StateGetAjax($district_id)
     {
-
         $ship = ShipState::where('district_id', $district_id)->orderBy('state_name', 'ASC')->get();
         return json_encode($ship);
     } // end method 
+
     public function CheckoutStore(Request $request)
     {
         // dd($request->all());
@@ -48,8 +48,5 @@ class CheckoutController extends Controller
             return view('frontend.payment.cash', compact('data', 'cartTotal'));
         }
     } // end mehtod. 
-
-
-
 
 }

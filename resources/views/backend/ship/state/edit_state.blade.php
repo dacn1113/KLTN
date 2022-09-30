@@ -23,7 +23,7 @@
 
 			 <div class="box">
 				<div class="box-header with-border">
-				  <h3 class="box-title">Edit State </h3>
+				  <h3 class="box-title">Chỉnh sửa địa chỉ </h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
@@ -36,10 +36,10 @@
 
 
 <div class="form-group">
-	<h5>Division Select <span class="text-danger">*</span></h5>
+	<h5>Chọn đơn vị vận chuyển <span class="text-danger">*</span></h5>
 	<div class="controls">
 		<select name="division_id" class="form-control"  >
-			<option value="" selected="" disabled="">Select Division</option>
+			<option value="" selected="" disabled="">Chọn </option>
 			@foreach($division as $div)
 			<option value="{{ $div->id }}" {{ $div->id == $state->division_id ? 'selected': '' }}>{{ $div->division_name }}</option>	
 			@endforeach
@@ -53,10 +53,10 @@
 
 
 <div class="form-group">
-	<h5>District Select <span class="text-danger">*</span></h5>
+	<h5>Chọn khu vực <span class="text-danger">*</span></h5>
 	<div class="controls">
 		<select name="district_id" class="form-control"  >
-			<option value="" selected="" disabled="">Select District</option>
+			<option value="" selected="" disabled="">Chọn </option>
 			@foreach($district as $dis)
 			<option value="{{ $dis->id }}" {{ $dis->id == $state->district_id ? 'selected': '' }}>{{ $dis->district_name }}</option>	
 			@endforeach
@@ -70,7 +70,7 @@
 
 
 	 <div class="form-group">
-		<h5>State Name  <span class="text-danger">*</span></h5>
+		<h5>Tên địa chỉ  <span class="text-danger">*</span></h5>
 		<div class="controls">
 	 <input type="text"  name="state_name" class="form-control" value="{{ $state->state_name }}"> 
 	 @error('state_name	') 
@@ -82,7 +82,7 @@
 					 
 
 			 <div class="text-xs-right">
-	<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update">					 
+	<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Cập nhật">					 
 						</div>
 					</form>
 

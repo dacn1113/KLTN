@@ -47,15 +47,15 @@
 		  
         <li class="treeview {{ ($prefix == '/category')?'active':'' }}  ">
           <a href="#">
-            <i data-feather="mail"></i> <span>Loại hình sản phẩm </span>
+            <i data-feather="mail"></i> <span>Danh mục sản phẩm </span>
             <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-         <li class="{{ ($route == 'all.category')? 'active':'' }}"><a href="{{ route('all.category') }}"><i class="ti-more"></i>Tất cả các loại</a></li>
-         <li class="{{ ($route == 'all.subcategory')? 'active':'' }}"><a href="{{ route('all.subcategory') }}"><i class="ti-more"></i>Danh mục phụ</a></li>
-<li class="{{ ($route == 'all.subsubcategory')? 'active':'' }}"><a href="{{ route('all.subsubcategory') }}"><i class="ti-more"></i>Tất cả danh mục phụ -> Phụ </a></li>
+         <li class="{{ ($route == 'all.category')? 'active':'' }}"><a href="{{ route('all.category') }}"><i class="ti-more"></i>Danh mục cấp 1</a></li>
+         <li class="{{ ($route == 'all.subcategory')? 'active':'' }}"><a href="{{ route('all.subcategory') }}"><i class="ti-more"></i>Danh mục cấp 2</a></li>
+<li class="{{ ($route == 'all.subsubcategory')? 'active':'' }}"><a href="{{ route('all.subsubcategory') }}"><i class="ti-more"></i>Danh mục cấp 3</a></li>
 
 
                       </ul>
@@ -64,7 +64,7 @@
         <li class="treeview {{ ($prefix == '/product')?'active':'' }}  ">
           <a href="#">
             <i data-feather="file"></i>
-            <span>Các sản phẩm</span>
+            <span>Sản phẩm cửa hàng</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
             </span>
@@ -119,17 +119,17 @@
          <li class="treeview {{ ($prefix == '/shipping')?'active':'' }}  ">
           <a href="#">
             <i data-feather="file"></i>
-            <span>Khu vực vận chuyển </span>
+            <span>Vận chuyển </span>
             <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-        <li class="{{ ($route == 'manage-division')? 'active':'' }}"><a href="{{ route('manage-division') }}"><i class="ti-more"></i>Đơn vị vận chuyển</a></li>
+        <li class="{{ ($route == 'manage-division')? 'active':'' }}"><a href="{{ route('manage-division') }}"><i class="ti-more"></i>Khu vực vận chuyển</a></li>
 
-         <li class="{{ ($route == 'manage-district')? 'active':'' }}"><a href="{{ route('manage-district') }}"><i class="ti-more"></i>Quận</a></li>
+         <li class="{{ ($route == 'manage-district')? 'active':'' }}"><a href="{{ route('manage-district') }}"><i class="ti-more"></i>Danh sách quận</a></li>
 
-         <li class="{{ ($route == 'manage-state')? 'active':'' }}"><a href="{{ route('manage-state') }}"><i class="ti-more"></i>Khu phố</a></li>
+         <li class="{{ ($route == 'manage-state')? 'active':'' }}"><a href="{{ route('manage-state') }}"><i class="ti-more"></i>Địa chỉ </a></li>
 
              
              

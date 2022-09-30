@@ -8,7 +8,7 @@
 					<div class="box">
 						<div class="box-header">
 							<h4 class="box-title align-items-start flex-column">
-								Chào mừng đến với trang quản lý của hàng
+								Chào mừng đến với hệ thống quản lý shop
 								
 							</h4>
 						</div>	

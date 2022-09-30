@@ -18,7 +18,7 @@
 
 			 <div class="box">
 				<div class="box-header with-border">
-				  <h3 class="box-title">Slider List</h3>
+				  <h3 class="box-title">Danh sách trình chiếu</h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
@@ -26,11 +26,11 @@
 					  <table id="example1" class="table table-bordered table-striped">
 						<thead>
 							<tr>
-								<th>Slider Image </th>
-								<th>Title</th>
-								<th>Decription</th>
-								<th>Status</th>
-								<th>Action</th>
+								<th>Ảnh trình chiếu </th>
+								<th>Tiêu đề</th>
+								<th>Mô tả</th>
+								<th>Trạng thái</th>
+								<th>Hoạt động</th>
 
 							</tr>
 						</thead>
@@ -41,7 +41,7 @@
  <td><img src="{{ asset($item->slider_img) }}" style="width: 70px; height: 40px;"> </td>
 		<td>
             @if($item->title == NULL)
-		 	<span class="badge badge-pill badge-danger"> No Title </span>
+		 	<span class="badge badge-pill badge-danger"> Không tiêu đề </span>
 		 	@else
              {{ $item->title }}
 		 	@endif
@@ -50,9 +50,9 @@
 		<td>{{ $item->description }}</td>
 		<td>
 		 	@if($item->status == 1)
-		 	<span class="badge badge-pill badge-success"> Active </span>
+		 	<span class="badge badge-pill badge-success"> Hoạt động </span>
 		 	@else
-           <span class="badge badge-pill badge-danger"> InActive </span>
+           <span class="badge badge-pill badge-danger"> Không hoạt động </span>
 		 	@endif
 
 		 </td>
@@ -94,7 +94,7 @@
 
 			 <div class="box">
 				<div class="box-header with-border">
-				  <h3 class="box-title">Add Slider </h3>
+				  <h3 class="box-title">Thêm trình chiếu </h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
@@ -106,7 +106,7 @@
 
 
 	 <div class="form-group">
-		<h5>Slider Title  <span class="text-danger">*</span></h5>
+		<h5>Tiêu đề  <span class="text-danger">*</span></h5>
 		<div class="controls">
 	 <input type="text"  name="title" class="form-control" > 
 
@@ -115,7 +115,7 @@
 
 
 	<div class="form-group">
-		<h5>Slider Decription <span class="text-danger">*</span></h5>
+		<h5>Mô tả <span class="text-danger">*</span></h5>
 		<div class="controls">
 	 <input type="text" name="description" class="form-control" >
 
@@ -125,7 +125,7 @@
 
 
 	<div class="form-group">
-		<h5>Slider Image <span class="text-danger">*</span></h5>
+		<h5>Hình ảnh <span class="text-danger">*</span></h5>
 		<div class="controls">
 	 <input type="file" name="slider_img" class="form-control" >
      @error('slider_img') 
@@ -136,7 +136,7 @@
 
 
 			 <div class="text-xs-right">
-	<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add New">					 
+	<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Thêm mới">					 
 						</div>
 					</form>
 

@@ -22,7 +22,7 @@
 
 			 <div class="box">
 				<div class="box-header with-border">
-				  <h3 class="box-title">Edit Division </h3>
+				  <h3 class="box-title">Chỉnh sửa khu vực </h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
@@ -34,7 +34,7 @@
 					   
 
 	 <div class="form-group">
-		<h5>Division Name  <span class="text-danger">*</span></h5>
+		<h5>Tên khu vực <span class="text-danger">*</span></h5>
 		<div class="controls">
 	 <input type="text"  name="division_name" class="form-control" value="{{ $divisions->division_name }}" > 
 	 @error('division_name') 
@@ -46,7 +46,7 @@
 					 
 
 			 <div class="text-xs-right">
-	<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update">					 
+	<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Cập nhật">					 
 						</div>
 					</form>
 

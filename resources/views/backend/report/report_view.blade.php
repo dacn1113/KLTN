@@ -24,7 +24,7 @@
 
 			 <div class="box">
 				<div class="box-header with-border">
-				  <h3 class="box-title">Search By Date </h3>
+				  <h3 class="box-title">Tìm kiếm theo ngày </h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
@@ -36,7 +36,7 @@
 					   
 
 	 <div class="form-group">
-		<h5>Select Date <span class="text-danger">*</span></h5>
+		<h5>Chọn ngày <span class="text-danger">*</span></h5>
 		<div class="controls">
 	 <input type="date" name="date" class="form-control" > 
 	 @error('date') 
@@ -47,7 +47,7 @@
  	 
 
 			 <div class="text-xs-right">
-	<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Search">					 
+	<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Tìm">					 
 						</div>
 					</form>
  
@@ -66,7 +66,7 @@
 
 			 <div class="box">
 				<div class="box-header with-border">
-				  <h3 class="box-title">Search By Month </h3>
+				  <h3 class="box-title">Tìm kiếm theo tháng </h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
@@ -78,23 +78,23 @@
 					   
 
 	 <div class="form-group">
-		<h5>Select Month  <span class="text-danger">*</span></h5>
+		<h5>Chọn tháng  <span class="text-danger">*</span></h5>
 		<div class="controls">
 	
 		<select name="month" class="form-control">
-			<option label="Choose One"></option>
-			<option value="January">January</option>
-			<option value="February">February</option>
-			<option value="March">March</option>
-			<option value="April">April</option>
-			<option value="May">May</option>
-			<option value="Jun">Jun</option>
-			<option value="July">July</option>
-			<option value="August">August</option>
-			<option value="September">September</option>
-			<option value="October">October</option>
-			<option value="November">November</option>
-			<option value="December">December</option>
+			<option label="Chọn 1"></option>
+			<option value="January">Tháng 1</option>
+			<option value="February">Tháng 2</option>
+			<option value="March">Tháng 3</option>
+			<option value="April">Tháng 4</option>
+			<option value="May">Tháng 5</option>
+			<option value="Jun">Tháng 6</option>
+			<option value="July">Tháng 7</option>
+			<option value="August">Tháng 8</option>
+			<option value="September">Tháng 9</option>
+			<option value="October">Tháng 10</option>
+			<option value="November">Tháng 11</option>
+			<option value="December">Tháng 12</option>
 
 
 		</select> 
@@ -107,11 +107,11 @@
 
 
  <div class="form-group">
-		<h5>Select Year  <span class="text-danger">*</span></h5>
+		<h5>Chọn năm  <span class="text-danger">*</span></h5>
 		<div class="controls">
 	
 		<select name="year_name" class="form-control">
-			<option label="Choose One"></option>
+			<option label="Chọn 1"></option>
 			<option value="2020">2020</option>
 			<option value="2021">2021</option>
 			<option value="2022">2022</option>
@@ -128,7 +128,7 @@
 	</div>  
 
 			 <div class="text-xs-right">
-	<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Search">					 
+	<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Tìm">					 
 						</div>
 					</form>
  
@@ -148,7 +148,7 @@
 
 			 <div class="box">
 				<div class="box-header with-border">
-				  <h3 class="box-title">Select Year </h3>
+				  <h3 class="box-title">Chọn năm </h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
@@ -159,11 +159,11 @@
 	 	@csrf
 					   
 <div class="form-group">
-		<h5>Select Year  <span class="text-danger">*</span></h5>
+		<h5>Chọn năm <span class="text-danger">*</span></h5>
 		<div class="controls">
 	
 		<select name="year" class="form-control">
-			<option label="Choose One"></option>
+			<option label="Chọn 1"></option>
 			<option value="2020">2020</option>
 			<option value="2021">2021</option>
 			<option value="2022">2022</option>
@@ -180,7 +180,7 @@
 	</div>   
 
 			 <div class="text-xs-right">
-	<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Search">					 
+	<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Tìm">					 
 						</div>
 					</form>
  

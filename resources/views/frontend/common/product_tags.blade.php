@@ -7,7 +7,7 @@ $tags_hin = App\Models\Product::groupBy('product_tags_hin')->select('product_tag
 
 
      <div class="sidebar-widget product-tag wow fadeInUp">
-          <h3 class="section-title">Product tags</h3>
+          <h3 class="section-title">Thẻ sản phẩm</h3>
           <div class="sidebar-widget-body outer-top-xs"> 
 
 <div class="tag-list"> 

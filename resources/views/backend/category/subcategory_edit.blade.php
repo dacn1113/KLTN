@@ -21,7 +21,7 @@
 
                 <div class="box">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Edit SubCategory </h3>
+                        <h3 class="box-title">Chỉnh sửa danh cấp 2 </h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
@@ -33,10 +33,10 @@
 
                                 <input type="hidden" name="id" value="{{ $subcategory->id }}">		
                                 <div class="form-group">
-                                    <h5>Category Select <span class="text-danger">*</span></h5>
+                                    <h5>Chọn danh mục cấp 1 <span class="text-danger">*</span></h5>
                                     <div class="controls">
                                         <select name="category_id" class="form-control">
-                                            <option value="" selected="" disabled="">Select Category</option>
+                                            <option value="" selected="" disabled="">Chọn danh mục</option>
                                             @foreach($categories as $category)
                                             <option value="{{ $category->id }}"
                                                 {{ $category->id == $subcategory->category_id ? 'selected': ''}}>
@@ -51,7 +51,7 @@
 
 
                                 <div class="form-group">
-                                    <h5>SubCategory English <span class="text-danger">*</span></h5>
+                                    <h5>Danh mục cấp 2 En <span class="text-danger">*</span></h5>
                                     <div class="controls">
                                         <input type="text" name="subcategory_name_en" class="form-control"
                                             value="{{ $subcategory->subcategory_name_en }}">
@@ -63,7 +63,7 @@
 
 
                                 <div class="form-group">
-                                    <h5>SubCategory Hindi <span class="text-danger">*</span></h5>
+                                    <h5>Danh mục cấp 2 Vn <span class="text-danger">*</span></h5>
                                     <div class="controls">
                                         <input type="text" name="subcategory_name_hin" class="form-control"
                                             value="{{ $subcategory->subcategory_name_hin }}">
@@ -75,7 +75,7 @@
 
 
                                 <div class="text-xs-right">
-                                    <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update">
+                                    <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Cập nhật">
                                 </div>
                             </form>
 

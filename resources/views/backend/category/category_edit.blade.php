@@ -13,7 +13,7 @@
 
             <div class="box">
                <div class="box-header with-border">
-                 <h3 class="box-title">Chỉnh sửa chuyên mục </h3>
+                 <h3 class="box-title">Chỉnh sửa danh mục chính </h3>
                </div>
                <!-- /.box-header -->
                <div class="box-body">

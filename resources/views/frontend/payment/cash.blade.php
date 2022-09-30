@@ -14,7 +14,7 @@ Cash On Delivery
 		<div class="breadcrumb-inner">
 			<ul class="list-inline list-unstyled">
 				<li><a href="home.html">Home</a></li>
-				<li class='active'>Cash On Delivery</li>
+				<li class='active'>Thanh toán khi giao hàng</li>
 			</ul>
 		</div><!-- /.breadcrumb-inner -->
 	</div><!-- /.container -->
@@ -38,7 +38,7 @@ Cash On Delivery
 	<div class="panel-group">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-		    	<h4 class="unicase-checkout-title">Your Shopping Amount </h4>
+		    	<h4 class="unicase-checkout-title">Số tiền mua sắm của bạn </h4>
 		    </div>
 		    <div class="">
 				<ul class="nav nav-checkout-progress list-unstyled">
@@ -48,24 +48,24 @@ Cash On Delivery
 		 <li>
 		 	@if(Session::has('coupon'))
 
-<strong>SubTotal: </strong> ${{ $cartTotal }} <hr>
+<strong>Giá gốc: </strong> ${{ $cartTotal }} <hr>
 
-<strong>Coupon Name : </strong> {{ session()->get('coupon')['coupon_name'] }}
+<strong>Tên mã giảm giá : </strong> {{ session()->get('coupon')['coupon_name'] }}
 ( {{ session()->get('coupon')['coupon_discount'] }} % )
  <hr>
 
- <strong>Coupon Discount : </strong> ${{ session()->get('coupon')['discount_amount'] }} 
+ <strong>Số tiền giảm : </strong> ${{ session()->get('coupon')['discount_amount'] }} 
  <hr>
 
-  <strong>Grand Total : </strong> ${{ session()->get('coupon')['total_amount'] }} 
+  <strong>Tổng thanh toán : </strong> ${{ session()->get('coupon')['total_amount'] }} 
  <hr>
 
 
 		 	@else
 
-<strong>SubTotal: </strong> ${{ $cartTotal }} <hr>
+<strong>Giá gốc: </strong> ${{ $cartTotal }} <hr>
 
-<strong>Grand Total : </strong> ${{ $cartTotal }} <hr>
+<strong>Tổng thanh toán: </strong> ${{ $cartTotal }} <hr>
 
 
 		 	@endif 

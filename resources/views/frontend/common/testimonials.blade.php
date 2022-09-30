@@ -1,4 +1,4 @@
-<div class="sidebar-widget  wow fadeInUp outer-top-vs ">
+{{-- <div class="sidebar-widget  wow fadeInUp outer-top-vs ">
     <div id="advertisement" class="advertisement">
       <div class="item"> 
         <div class="avatar"><img src="{{ asset('frontend/assets/images/testimonials/member1.png') }}" alt="Image"></div>
@@ -25,4 +25,4 @@
 
     </div>
     <!-- /.owl-carousel --> 
-  </div>
+  </div> --}}

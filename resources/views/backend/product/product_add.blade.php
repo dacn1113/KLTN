@@ -13,7 +13,7 @@
 		 <!-- Basic Forms -->
 		  <div class="box">
 			<div class="box-header with-border">
-			  <h4 class="box-title">Add Product </h4>
+			  <h4 class="box-title">Thêm sản phẩm</h4>
 			   
 			</div>
 			<!-- /.box-header -->
@@ -32,7 +32,7 @@
 			<div class="col-md-4">
 
 	 <div class="form-group">
-	<h5>Brand Select <span class="text-danger">*</span></h5>
+	<h5>Lựa chọn thương hiệu <span class="text-danger">*</span></h5>
 	<div class="controls">
 		<select name="brand_id" class="form-control" required="" >
 			<option value="" selected="" disabled="">Select Brand</option>
@@ -51,7 +51,7 @@
 			<div class="col-md-4">
 
 				 <div class="form-group">
-	<h5>Category Select <span class="text-danger">*</span></h5>
+	<h5>Chọn danh mục 1 <span class="text-danger">*</span></h5>
 	<div class="controls">
 		<select name="category_id" class="form-control" required="" >
 			<option value="" selected="" disabled="">Select Category</option>
@@ -71,7 +71,7 @@
 			<div class="col-md-4">
 
 				 <div class="form-group">
-	<h5>SubCategory Select <span class="text-danger">*</span></h5>
+	<h5>Chọn danh mục 2 <span class="text-danger">*</span></h5>
 	<div class="controls">
 		<select name="subcategory_id" class="form-control" required="" >
 			<option value="" selected="" disabled="">Select SubCategory</option>
@@ -93,7 +93,7 @@
 			<div class="col-md-4">
 
 	 <div class="form-group">
-	<h5>SubSubCategory Select <span class="text-danger">*</span></h5>
+	<h5>Chọn danh mục 3 <span class="text-danger">*</span></h5>
 	<div class="controls">
 		<select name="subsubcategory_id" class="form-control" required="" >
 			<option value="" selected="" disabled="">Select SubSubCategory</option>
@@ -110,7 +110,7 @@
 			<div class="col-md-4">
 
 				 <div class="form-group">
-			<h5>Product Name En <span class="text-danger">*</span></h5>
+			<h5>Tên sản phẩm En  <span class="text-danger">*</span></h5>
 			<div class="controls">
 				<input type="text" name="product_name_en" class="form-control" required="">
      @error('product_name_en') 
@@ -125,7 +125,7 @@
 			<div class="col-md-4">
 
 				 <div class="form-group">
-			<h5>Product Name Hin <span class="text-danger">*</span></h5>
+			<h5>Tên sản phẩm Vn  <span class="text-danger">*</span></h5>
 			<div class="controls">
 				<input type="text" name="product_name_hin" class="form-control" required="">
      @error('product_name_hin') 
@@ -144,7 +144,7 @@
 			<div class="col-md-4">
 
 	  <div class="form-group">
-			<h5>Product Code <span class="text-danger">*</span></h5>
+			<h5>Mã sản phẩm <span class="text-danger">*</span></h5>
 			<div class="controls">
 				<input type="text" name="product_code" class="form-control" required="">
      @error('product_code') 
@@ -158,7 +158,7 @@
 			<div class="col-md-4">
 
 				 <div class="form-group">
-			<h5>Product Quantity <span class="text-danger">*</span></h5>
+			<h5>Số lượng sản phẩm <span class="text-danger">*</span></h5>
 			<div class="controls">
 				<input type="text" name="product_qty" class="form-control" required="">
      @error('product_qty') 
@@ -173,7 +173,7 @@
 			<div class="col-md-4">
 
 				 <div class="form-group">
-			<h5>Product Tags En <span class="text-danger">*</span></h5>
+			<h5>Thẻ sản phẩm En <span class="text-danger">*</span></h5>
 			<div class="controls">
 	 <input type="text" name="product_tags_en" class="form-control" value="Lorem,Ipsum,Amet" data-role="tagsinput" required="">
      @error('product_tags_en') 
@@ -195,7 +195,7 @@
 			<div class="col-md-4">
 
 	    <div class="form-group">
-			<h5>Product Tags Hin <span class="text-danger">*</span></h5>
+			<h5>Thẻ sản phẩm Vn <span class="text-danger">*</span></h5>
 			<div class="controls">
 	 <input type="text" name="product_tags_hin" class="form-control" value="Lorem,Ipsum,Amet" data-role="tagsinput" required="">
      @error('product_tags_hin') 
@@ -209,7 +209,7 @@
 			<div class="col-md-4">
 
 				 <div class="form-group">
-			<h5>Product Size En <span class="text-danger">*</span></h5>
+			<h5>Kích thước En <span class="text-danger">*</span></h5>
 			<div class="controls">
 	 <input type="text" name="product_size_en" class="form-control" value="Small,Midium,Large" data-role="tagsinput" required="">
      @error('product_size_en') 
@@ -224,7 +224,7 @@
 			<div class="col-md-4">
 
 				 <div class="form-group">
-			<h5>Product Size Hin <span class="text-danger">*</span></h5>
+			<h5>Kích thước Vn <span class="text-danger">*</span></h5>
 			<div class="controls">
 	 <input type="text" name="product_size_hin" class="form-control" value="Small,Midium,Large" data-role="tagsinput" required="">
      @error('product_size_hin') 
@@ -243,7 +243,7 @@
 			<div class="col-md-4">
 
 	    <div class="form-group">
-			<h5>Product Color En <span class="text-danger">*</span></h5>
+			<h5>Màu sắc sản phẩm En <span class="text-danger">*</span></h5>
 			<div class="controls">
 	 <input type="text" name="product_color_en" class="form-control" value="red,Black,Amet" data-role="tagsinput" required="">
      @error('product_color_en') 
@@ -257,7 +257,7 @@
 			<div class="col-md-4">
 
 				 <div class="form-group">
-			<h5>Product Color Hin <span class="text-danger">*</span></h5>
+			<h5>àu sắc sản phẩm Vn <span class="text-danger">*</span></h5>
 			<div class="controls">
 	 <input type="text" name="product_color_hin" class="form-control" value="red,Black,Large" data-role="tagsinput" required="">
      @error('product_color_hin') 
@@ -272,7 +272,7 @@
 			<div class="col-md-4">
 
 				<div class="form-group">
-			<h5>Product Selling Price <span class="text-danger">*</span></h5>
+			<h5>Giá gốc sản phẩm <span class="text-danger">*</span></h5>
 			<div class="controls">
 				<input type="text" name="selling_price" class="form-control" required="">
      @error('selling_price') 
@@ -292,7 +292,7 @@
 			<div class="col-md-4">
 
 	    <div class="form-group">
-			<h5>Product Discount Price <span class="text-danger">*</span></h5>
+			<h5>Giá chiết khấu <span class="text-danger">*</span></h5>
 			<div class="controls">
 	 <input type="text" name="discount_price" class="form-control"  required="">
      @error('discount_price') 
@@ -306,7 +306,7 @@
 			<div class="col-md-4">
 
 	    <div class="form-group">
-			<h5>Main Thambnail <span class="text-danger">*</span></h5>
+			<h5>Ảnh chính  <span class="text-danger">*</span></h5>
 			<div class="controls">
 	 <input type="file" name="product_thambnail" class="form-control" onChange="mainThamUrl(this)" required="" >
      @error('product_thambnail') 
@@ -323,7 +323,7 @@
 			<div class="col-md-4">
 
 	    <div class="form-group">
-			<h5>Multiple Image <span class="text-danger">*</span></h5>
+			<h5>Nhiều hình ảnh <span class="text-danger">*</span></h5>
 			<div class="controls">
 	 <input type="file" name="multi_img[]" class="form-control" multiple="" id="multiImg" required="" >
      @error('multi_img') 
@@ -347,7 +347,7 @@
 			<div class="col-md-6">
 
 	    <div class="form-group">
-			<h5>Short Description English <span class="text-danger">*</span></h5>
+			<h5>Mô tả ngắn En <span class="text-danger">*</span></h5>
 			<div class="controls">
 	<textarea name="short_descp_en" id="textarea" class="form-control" required placeholder="Textarea text"></textarea>     
 	 		 </div>
@@ -358,7 +358,7 @@
 			<div class="col-md-6">
 
 	     <div class="form-group">
-			<h5>Short Description Hindi <span class="text-danger">*</span></h5>
+			<h5>Mô tả ngắn Vn <span class="text-danger">*</span></h5>
 			<div class="controls">
 	<textarea name="short_descp_hin" id="textarea" class="form-control" required placeholder="Textarea text"></textarea>     
 	 		 </div>
@@ -377,7 +377,7 @@
 			<div class="col-md-6">
 
 	    <div class="form-group">
-			<h5>Long Description English <span class="text-danger">*</span></h5>
+			<h5>Mô tả dài English <span class="text-danger">*</span></h5>
 			<div class="controls">
 	<textarea id="editor1" name="long_descp_en" rows="10" cols="80" required="">
 		Long Description English
@@ -390,10 +390,10 @@
 			<div class="col-md-6">
 
 	     <div class="form-group">
-			<h5>Long Description Hindi <span class="text-danger">*</span></h5>
+			<h5>Mô tả dài Vn <span class="text-danger">*</span></h5>
 			<div class="controls">
 	<textarea id="editor2" name="long_descp_hin" rows="10" cols="80">
-		Long Description Hindi
+		Mô tả dài Vn
 						</textarea>       
 	 		 </div>
 		</div>
@@ -416,11 +416,11 @@
 		<div class="controls">
 			<fieldset>
 				<input type="checkbox" id="checkbox_2" name="hot_deals" value="1">
-				<label for="checkbox_2">Hot Deals</label>
+				<label for="checkbox_2">Ưu đãi lớn</label>
 			</fieldset>
 			<fieldset>
 				<input type="checkbox" id="checkbox_3" name="featured" value="1">
-				<label for="checkbox_3">Featured</label>
+				<label for="checkbox_3">Đặc sắc</label>
 			</fieldset>
 		</div>
 	</div>
@@ -434,11 +434,11 @@
 		<div class="controls">
 			<fieldset>
 				<input type="checkbox" id="checkbox_4" name="special_offer" value="1">
-				<label for="checkbox_4">Special Offer</label>
+				<label for="checkbox_4">Đề nghị đặc biệt</label>
 			</fieldset>
 			<fieldset>
 				<input type="checkbox" id="checkbox_5" name="special_deals" value="1">
-				<label for="checkbox_5">Special Deals</label>
+				<label for="checkbox_5">Ưu đãi đặc biệt</label>
 			</fieldset>
 		</div>
 			</div>
@@ -446,7 +446,7 @@
 						</div>
 						 
 						<div class="text-xs-right">
-<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add Product">
+<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Thêm sản phẩm">
 						</div>
 					</form>
 

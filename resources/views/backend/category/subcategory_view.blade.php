@@ -18,7 +18,7 @@
 
 			 <div class="box">
 				<div class="box-header with-border">
-				  <h3 class="box-title">Danh mục con</h3>
+				  <h3 class="box-title">Danh mục cấp 2</h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
@@ -26,9 +26,9 @@
 					  <table id="example1" class="table table-bordered table-striped">
 						<thead>
 							<tr>
-								<th>Danh mục </th>
-								<th>Danh mục con En</th>
-								<th>Danh mục con Vn </th>
+								<th>Danh mục cấp 1 </th>
+								<th>Danh mục cấp 2 En</th>
+								<th>Danh mục cấp 2 Vn </th>
 								<th>Hành động</th>
 
 							</tr>
@@ -68,7 +68,7 @@
 
 			 <div class="box">
 				<div class="box-header with-border">
-				  <h3 class="box-title">Thêm danh mục con mới </h3>
+				  <h3 class="box-title">Thêm danh mục cấp 2</h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
@@ -80,7 +80,7 @@
 
 
 	 <div class="form-group">
-	<h5>Chọn danh mục <span class="text-danger">*</span></h5>
+	<h5>Chọn danh mục cấp 1 <span class="text-danger">*</span></h5>
 	<div class="controls">
 		<select name="category_id" class="form-control"  >
 			<option value="" selected="" disabled="">Chọn</option>
@@ -96,7 +96,7 @@
 
 
 	<div class="form-group">
-		<h5>Danh mục con En <span class="text-danger">*</span></h5>
+		<h5>Danh mục cấp 2 En <span class="text-danger">*</span></h5>
 		<div class="controls">
 			<input type="text" name="subcategory_name_en" class="form-control" >
 			@error('subcategory_name_en') 
@@ -107,7 +107,7 @@
 
 
 	<div class="form-group">
-		<h5>Danh mục con Vn <span class="text-danger">*</span></h5>
+		<h5>Danh mục cấp 2 Vn <span class="text-danger">*</span></h5>
 		<div class="controls">
 			<input type="text" name="subcategory_name_hin" class="form-control" >
 			@error('subcategory_name_hin') 

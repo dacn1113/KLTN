@@ -18,7 +18,7 @@
 
 			 <div class="box">
 				<div class="box-header with-border">
-				  <h3 class="box-title">District List</h3>
+				  <h3 class="box-title">Danh sách quận</h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
@@ -26,9 +26,9 @@
 					  <table id="example1" class="table table-bordered table-striped">
 						<thead>
 							<tr>
-								<th>Division Name </th> 
-								<th>District Name </th>
-								<th>Action</th>
+								<th>Tên khu vực </th> 
+								<th>Tên quận </th>
+								<th>Hoạt động</th>
 								 
 							</tr>
 						</thead>
@@ -67,7 +67,7 @@
 
 			 <div class="box">
 				<div class="box-header with-border">
-				  <h3 class="box-title">Add District </h3>
+				  <h3 class="box-title">Thêm quận </h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
@@ -80,10 +80,10 @@
 
 
 <div class="form-group">
-	<h5>Division Select <span class="text-danger">*</span></h5>
+	<h5>Chọn khu vực <span class="text-danger">*</span></h5>
 	<div class="controls">
 		<select name="division_id" class="form-control"  >
-			<option value="" selected="" disabled="">Select Division</option>
+			<option value="" selected="" disabled="">Chọn</option>
 			@foreach($division as $div)
 			<option value="{{ $div->id }}">{{ $div->division_name }}</option>	
 			@endforeach
@@ -97,7 +97,7 @@
 
 
 	 <div class="form-group">
-		<h5>District Name  <span class="text-danger">*</span></h5>
+		<h5>Tên quận <span class="text-danger">*</span></h5>
 		<div class="controls">
 	 <input type="text"  name="district_name" class="form-control" > 
 	 @error('district_name') 
@@ -109,7 +109,7 @@
 					 
 
 			 <div class="text-xs-right">
-	<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add New">					 
+	<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Thêm">					 
 						</div>
 					</form>
 

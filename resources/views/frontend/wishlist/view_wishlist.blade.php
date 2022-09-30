@@ -2,7 +2,7 @@
 @section('content')
 
 @section('title')
- Wish List Page 
+Trang sản phẩm yêu thích
 @endsection
 
 
@@ -11,7 +11,7 @@
 		<div class="breadcrumb-inner">
 			<ul class="list-inline list-unstyled">
 				<li><a href="home.html">Home</a></li>
-				<li class='active'>Wishlist</li>
+				<li class='active'>Yêu thích</li>
 			</ul>
 		</div><!-- /.breadcrumb-inner -->
 	</div><!-- /.container -->
@@ -26,7 +26,7 @@
 		<table class="table">
 			<thead>
 				<tr>
-					<th colspan="4" class="heading-title">My Wishlist</th>
+					<th colspan="4" class="heading-title">Danh sách yêu thích</th>
 				</tr>
 			</thead>
 			<tbody id="wishlist">
@@ -38,7 +38,7 @@
 
 
 <br>
- @include('frontend.body.brands')
+ {{-- @include('frontend.body.brands') --}}
 </div>
 
 

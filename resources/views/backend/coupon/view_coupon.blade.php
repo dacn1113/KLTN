@@ -18,7 +18,7 @@
 
 			 <div class="box">
 				<div class="box-header with-border">
-				  <h3 class="box-title">Coupon List</h3>
+				  <h3 class="box-title">Danh sách phiếu giảm giá</h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
@@ -26,11 +26,11 @@
 					  <table id="example1" class="table table-bordered table-striped">
 						<thead>
 							<tr>
-								<th>Coupon Name </th>
-								<th>Coupon Discount</th>
-								<th>Validity </th>
-								<th>Status </th>
-								<th>Action</th>
+								<th>Tên phiếu </th>
+								<th>Mức giảm</th>
+								<th>Thời gian kết thúc</th>
+								<th>Trạng thái </th>
+								<th>Hoạt động</th>
 								 
 							</tr>
 						</thead>
@@ -81,7 +81,7 @@
 
 			 <div class="box">
 				<div class="box-header with-border">
-				  <h3 class="box-title">Add Coupon </h3>
+				  <h3 class="box-title">Thêm phiếu giảm giá </h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
@@ -93,7 +93,7 @@
 					   
 
 	 <div class="form-group">
-		<h5>Coupon Name  <span class="text-danger">*</span></h5>
+		<h5>Tên phiếu <span class="text-danger">*</span></h5>
 		<div class="controls">
 	 <input type="text"  name="coupon_name" class="form-control" > 
 	 @error('coupon_name') 
@@ -104,7 +104,7 @@
 
 
 	<div class="form-group">
-		<h5>Coupon Discount(%) <span class="text-danger">*</span></h5>
+		<h5>Mức giảm(%) <span class="text-danger">*</span></h5>
 		<div class="controls">
 	 <input type="text" name="coupon_discount" class="form-control" >
      @error('coupon_discount') 
@@ -115,7 +115,7 @@
 
 
 	<div class="form-group">
-		<h5>Coupon Validity Date  <span class="text-danger">*</span></h5>
+		<h5>Thời gian kết thúc  <span class="text-danger">*</span></h5>
 		<div class="controls">
 	 <input type="date" name="coupon_validity" class="form-control" min="{{ Carbon\Carbon::now()->format('Y-m-d') }}">
      @error('coupon_validity') 
@@ -126,7 +126,7 @@
 					 
 
 			 <div class="text-xs-right">
-	<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add New">					 
+	<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Thêm mới ">					 
 						</div>
 					</form>
 

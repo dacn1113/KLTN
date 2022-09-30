@@ -11,12 +11,12 @@
 <div class="content-header">
 			<div class="d-flex align-items-center">
 				<div class="mr-auto">
-					<h3 class="page-title">Order Details</h3>
+					<h3 class="page-title">Chi tiết đơn hàng</h3>
 					<div class="d-inline-block align-items-center">
 						<nav>
 							<ol class="breadcrumb">
 								<li class="breadcrumb-item"><a href="#"><i class="mdi mdi-home-outline"></i></a></li>
-								<li class="breadcrumb-item" aria-current="page">Order Details</li>
+								<li class="breadcrumb-item" aria-current="page">Chi tiết đơn hàng</li>
 								 
 							</ol>
 						</nav>
@@ -35,48 +35,53 @@
 <div class="col-md-6 col-12">
 				<div class="box box-bordered border-primary">
 				  <div class="box-header with-border">
-					<h4 class="box-title"><strong>Shipping Details</strong> </h4>
+					<h4 class="box-title"><strong>Chi tiết vận chuyển</strong> </h4>
 				  </div>
 				  
 
 <table class="table">
             <tr>
-              <th> Shipping Name : </th>
+              <th> Tên người nhận: </th>
                <th> {{ $order->name }} </th>
             </tr>
 
              <tr>
-              <th> Shipping Phone : </th>
+              <th> Số điện thoại người nhận : </th>
                <th> {{ $order->phone }} </th>
             </tr>
 
              <tr>
-              <th> Shipping Email : </th>
+              <th> Email : </th>
                <th> {{ $order->email }} </th>
             </tr>
 
              <tr>
-              <th> Division : </th>
+              <th> Khu vực : </th>
                <th> {{ $order->division->division_name }} </th>
             </tr>
 
              <tr>
-              <th> District : </th>
+              <th> Quận : </th>
                <th> {{ $order->district->district_name }} </th>
             </tr>
 
              <tr>
-              <th> State : </th>
+              <th> Địa chỉ : </th>
                <th>{{ $order->state->state_name }} </th>
             </tr>
 
             <tr>
-              <th> Post Code : </th>
+              <th> Địa chỉ chi tiết: </th>
+               <th>{{ $order->notes }} </th>
+            </tr>
+
+            <tr>
+              <th> Mã bưu điện : </th>
                <th> {{ $order->post_code }} </th>
             </tr>
 
             <tr>
-              <th> Order Date : </th>
+              <th> Ngày gửi : </th>
                <th> {{ $order->order_date }} </th>
             </tr>
              
@@ -91,43 +96,43 @@
 <div class="col-md-6 col-12">
 				<div class="box box-bordered border-primary">
 				  <div class="box-header with-border">
-					<h4 class="box-title"><strong>Order Details</strong><span class="text-danger"> Invoice : {{ $order->invoice_no }}</span></h4>
+					<h4 class="box-title"><strong>Chi tiết đơn hàng</strong><span class="text-danger"> Hóa đơn : {{ $order->invoice_no }}</span></h4>
 				  </div>
 				   
 
 <table class="table">
             <tr>
-              <th>  Name : </th>
+              <th>  Tên : </th>
                <th> {{ $order->user->name }} </th>
             </tr>
 
              <tr>
-              <th>  Phone : </th>
+              <th>  Diện thoại : </th>
                <th> {{ $order->user->phone }} </th>
             </tr>
 
              <tr>
-              <th> Payment Type : </th>
+              <th> Thanh toán : </th>
                <th> {{ $order->payment_method }} </th>
             </tr>
 
              <tr>
-              <th> Tranx ID : </th>
+              <th> CMND : </th>
                <th> {{ $order->transaction_id }} </th>
             </tr>
 
              <tr>
-              <th> Invoice  : </th>
+              <th> Hóa đơn  : </th>
                <th class="text-danger"> {{ $order->invoice_no }} </th>
             </tr>
 
              <tr>
-              <th> Order Total : </th>
-               <th>${{ $order->amount }} </th>
+              <th>Giá thanh toán: </th>
+               <th>{{ $order->amount }} VND </th>
             </tr>
 
             <tr>
-              <th> Order : </th>
+              <th> Trạng thái : </th>
                <th>   
                 <span class="badge badge-pill badge-warning" style="background: #418DB9;">{{ $order->status }} </span> </th>
             </tr>
@@ -137,19 +142,19 @@
               <th>  </th>
                <th> 
                	@if($order->status == 'Pending')
-               	<a href="{{ route('pending-confirm',$order->id) }}" class="btn btn-block btn-success" id="confirm">Confirm Order</a>
+               	<a href="{{ route('pending-confirm',$order->id) }}" class="btn btn-block btn-success" id="confirm">Nhận đơn</a>
 
                	@elseif($order->status == 'confirm')
-               	<a href="{{ route('confirm.processing',$order->id) }}" class="btn btn-block btn-success" id="processing">Processing Order</a>
+               	<a href="{{ route('confirm.processing',$order->id) }}" class="btn btn-block btn-success" id="processing">Xử lý đơn hàng</a>
 
                	@elseif($order->status == 'processing')
-               	<a href="{{ route('processing.picked',$order->id) }}" class="btn btn-block btn-success" id="picked">Picked Order</a>
+               	<a href="{{ route('processing.picked',$order->id) }}" class="btn btn-block btn-success" id="picked">Xác nhận đơn hàng được vận chuyển</a>
 
                	@elseif($order->status == 'picked')
-               	<a href="{{ route('picked.shipped',$order->id) }}" class="btn btn-block btn-success" id="shipped">Shipped Order</a>
+               	<a href="{{ route('picked.shipped',$order->id) }}" class="btn btn-block btn-success" id="shipped">Chuyển đơn hàng </a>
 
                	@elseif($order->status == 'shipped')
-                <a href="{{ route('shipped.delivered',$order->id) }}" class="btn btn-block btn-success" id="delivered">Delivered Order</a>
+                <a href="{{ route('shipped.delivered',$order->id) }}" class="btn btn-block btn-success" id="delivered">Đã giao hàng</a>
 
                	@endif
 
@@ -182,34 +187,37 @@
   
               <tr>
                 <td width="10%">
-                  <label for=""> Image</label>
+                  <label for=""> Hình ảnh</label>
                 </td>
 
                  <td width="20%">
-                  <label for=""> Product Name </label>
+                  <label for=""> Tên sản phẩm </label>
                 </td>
 
              <td width="10%">
-                  <label for=""> Product Code</label>
+                  <label for=""> Mã sản phẩm</label>
                 </td>
 
 
                <td width="10%">
-                  <label for=""> Color </label>
+                  <label for=""> Màu sắc </label>
                 </td>
 
                 <td width="10%">
-                  <label for=""> Size </label>
+                  <label for=""> Kích cỡ </label>
                 </td>
 
                   <td width="10%">
-                  <label for=""> Quantity </label>
+                  <label for=""> Số lượng </label>
                 </td>
 
                <td width="10%">
-                  <label for=""> Price </label>
+                  <label for=""> Đơn giá </label>
                 </td>
                 
+               <td width="10%">
+                <label for=""> Tổng </label>
+              </td>
               </tr>
 
 
@@ -241,7 +249,10 @@
                 </td>
 
          <td width="10%">
-                  <label for=""> ${{ $item->price }}  ( $ {{ $item->price * $item->qty}} ) </label>
+                  <label for=""> {{ $item->price }}đ</label>
+                </td>
+                <td width="10%">
+                  <label for=""> {{ $item->price * $item->qty}}đ </label>
                 </td>
                 
               </tr>

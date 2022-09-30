@@ -3,7 +3,7 @@ $hot_deals = App\Models\Product::where('hot_deals',1)->where('discount_price','!
      @endphp
 
      <div class="sidebar-widget hot-deals wow fadeInUp outer-bottom-xs">
-          <h3 class="section-title">hot deals</h3>
+          <h3 class="section-title">Ửu đãi lớn</h3>
           <div class="owl-carousel sidebar-carousel custom-carousel owl-theme outer-top-ss">
 
 
@@ -54,7 +54,7 @@ $hot_deals = App\Models\Product::where('hot_deals',1)->where('discount_price','!
      @if ($product->discount_price == NULL)
  <div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span>  </div>
      @else
- <div class="product-price"> <span class="price"> ${{ $product->discount_price }} </span> <span class="price-before-discount">${{ $product->selling_price }}</span> </div>
+ <div class="product-price"> <span class="price"> {{ $product->discount_price }} VND</span> <span class="price-before-discount">{{ $product->selling_price }} VND</span> </div>
      @endif
 
 
@@ -67,7 +67,7 @@ $hot_deals = App\Models\Product::where('hot_deals',1)->where('discount_price','!
                   <div class="action">
                     <div class="add-cart-button btn-group">
                       <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
-                      <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
+                      <button class="btn btn-primary cart-btn" type="button">Thêm giỏ hàng</button>
                     </div>
                   </div>
                   <!-- /.action --> 

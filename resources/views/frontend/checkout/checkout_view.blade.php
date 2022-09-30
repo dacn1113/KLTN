@@ -42,14 +42,14 @@ My Checkout
 
 				<!-- guest-login -->			
 			 <div class="col-md-6 col-sm-6 already-registered-login">
-		 <h4 class="checkout-subtitle"><b>Shipping Address</b></h4>
+		 <h4 class="checkout-subtitle"><b>Thông tin giao hàng</b></h4>
 					 
 	<form class="register-form" action="{{ route('checkout.store') }}" method="POST">
 		@csrf
 
 
 		<div class="form-group">
-	    <label class="info-title" for="exampleInputEmail1"><b>Shipping Name</b>  <span>*</span></label>
+	    <label class="info-title" for="exampleInputEmail1"><b>Tên người nhận</b>  <span>*</span></label>
 	    <input type="text" name="shipping_name" class="form-control unicase-form-control text-input" id="exampleInputEmail1" placeholder="Full Name" value="{{ Auth::user()->name }}" required="">
 	  </div>  <!-- // end form group  -->
 	 
@@ -61,13 +61,13 @@ My Checkout
 
 
 <div class="form-group">
-	    <label class="info-title" for="exampleInputEmail1"><b>Phone</b>  <span>*</span></label>
+	    <label class="info-title" for="exampleInputEmail1"><b>Số điện thoại</b>  <span>*</span></label>
 	    <input type="number" name="shipping_phone" class="form-control unicase-form-control text-input" id="exampleInputEmail1" placeholder="Phone" value="{{ Auth::user()->phone }}" required="">
 	  </div>  <!-- // end form group  -->
 
 
 	  <div class="form-group">
-	    <label class="info-title" for="exampleInputEmail1"><b>Post Code </b> <span>*</span></label>
+	    <label class="info-title" for="exampleInputEmail1"><b>Mã bưu chính </b> <span>*</span></label>
 	    <input type="text" name="post_code" class="form-control unicase-form-control text-input" id="exampleInputEmail1" placeholder="Post Code" required="">
 	  </div>  <!-- // end form group  -->
 
@@ -85,10 +85,10 @@ My Checkout
 					 
 
 <div class="form-group">
-	<h5><b>Division Select </b> <span class="text-danger">*</span></h5>
+	<h5><b>Chọn khu vực </b> <span class="text-danger">*</span></h5>
 	<div class="controls">
 		<select name="division_id" class="form-control" required="" >
-			<option value="" selected="" disabled="">Select Division</option>
+			<option value="" selected="" disabled="">Chọn khu vực</option>
 			@foreach($divisions as $item)
  <option value="{{ $item->id }}">{{ $item->division_name }}</option>	
 			@endforeach
@@ -101,10 +101,10 @@ My Checkout
 
 
 		 <div class="form-group">
-	<h5><b>District Select</b>  <span class="text-danger">*</span></h5>
+	<h5><b>Chọn quận/huyện</b>  <span class="text-danger">*</span></h5>
 	<div class="controls">
 		<select name="district_id" class="form-control" required="" >
-			<option value="" selected="" disabled="">Select District</option>
+			<option value="" selected="" disabled="">Chọn quận/huyện</option>
 			 
 		</select>
 		@error('district_id') 
@@ -115,10 +115,10 @@ My Checkout
 
 
 		 <div class="form-group">
-	<h5><b>State Select</b> <span class="text-danger">*</span></h5>
+	<h5><b>Chọn địa chỉ</b> <span class="text-danger">*</span></h5>
 	<div class="controls">
 		<select name="state_id" class="form-control" required="" >
-			<option value="" selected="" disabled="">Select State</option>
+			<option value="" selected="" disabled="">Chọn</option>
 			 
 		</select>
 		@error('state_id') 
@@ -129,7 +129,7 @@ My Checkout
 				 
 					 
     <div class="form-group">
-	 <label class="info-title" for="exampleInputEmail1">Notes <span>*</span></label>
+	 <label class="info-title" for="exampleInputEmail1">Địa chỉ chi tiết <span>*</span></label>
 	     <textarea class="form-control" cols="30" rows="5" placeholder="Notes" name="notes"></textarea>
 	  </div>  <!-- // end form group  -->
 
@@ -166,25 +166,25 @@ My Checkout
 	<div class="panel-group">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-		    	<h4 class="unicase-checkout-title">Your Checkout Progress</h4>
+		    	<h4 class="unicase-checkout-title">Thông tin thanh toán của bạn</h4>
 		    </div>
 		    <div class="">
 				<ul class="nav nav-checkout-progress list-unstyled">
 
 					@foreach($carts as $item)
 					<li> 
-						<strong>Image: </strong>
+						<strong>Hình ảnh: </strong>
 						<img src="{{ asset($item->options->image) }}" style="height: 50px; width: 50px;">
 					</li>
 
 					<li> 
-						<strong>Qty: </strong>
+						<strong>Số lượng: </strong>
 						 ( {{ $item->qty }} )
 
-						 <strong>Color: </strong>
+						 <strong>Màu sắc: </strong>
 						 {{ $item->options->color }}
 
-						 <strong>Size: </strong>
+						 <strong>Kích cỡ: </strong>
 						 {{ $item->options->size }}
 					</li>
                     @endforeach 
@@ -192,24 +192,24 @@ My Checkout
 		 <li>
 		 	@if(Session::has('coupon'))
 
-<strong>SubTotal: </strong> ${{ $cartTotal }} <hr>
+<strong>Giá gốc: </strong> ${{ $cartTotal }} <hr>
 
-<strong>Coupon Name : </strong> {{ session()->get('coupon')['coupon_name'] }}
+<strong>Tên mã giảm giá: </strong> {{ session()->get('coupon')['coupon_name'] }}
 ( {{ session()->get('coupon')['coupon_discount'] }} % )
  <hr>
 
- <strong>Coupon Discount : </strong> ${{ session()->get('coupon')['discount_amount'] }} 
+ <strong>Số tiền được giảm : </strong> ${{ session()->get('coupon')['discount_amount'] }} 
  <hr>
 
-  <strong>Grand Total : </strong> ${{ session()->get('coupon')['total_amount'] }} 
+  <strong>Tổng thanh toán : </strong> ${{ session()->get('coupon')['total_amount'] }} 
  <hr>
 
 
 		 	@else
 
-<strong>SubTotal: </strong> ${{ $cartTotal }} <hr>
+<strong>Giá gốc: </strong> ${{ $cartTotal }} <hr>
 
-<strong>Grand Total : </strong> ${{ $cartTotal }} <hr>
+<strong>Tổng thanh toán : </strong> ${{ $cartTotal }} <hr>
 
 
 		 	@endif 
@@ -237,7 +237,7 @@ My Checkout
 	<div class="panel-group">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-		    	<h4 class="unicase-checkout-title">Select Payment Method</h4>
+		    	<h4 class="unicase-checkout-title">Chọn phương thức thanh toán</h4>
 		    </div>
 
 
@@ -255,7 +255,7 @@ My Checkout
 		    	</div> <!-- end col md 4 -->
 
 		    	<div class="col-md-4">
-		    		<label for="">Cash</label> 		
+		    		<label for="">Trả sau</label> 		
        <input type="radio" name="payment_method" value="cash">	
 	   <img src="{{ asset('frontend/assets/images/payments/6.png') }}">   		
 		    	</div> <!-- end col md 4 -->
@@ -263,7 +263,7 @@ My Checkout
 				 	
 			</div> <!-- // end row  -->
 <hr>
-  <button type="submit" class="btn-upper btn btn-primary checkout-page-button">Payment Step</button>
+  <button type="submit" class="btn-upper btn btn-primary checkout-page-button">Tiếp tục thanh toán</button>
 
 
 		</div>

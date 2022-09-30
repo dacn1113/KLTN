@@ -761,10 +761,10 @@ function addToWishList(product_id){
                     `<tr>
                 <th>
                     <div class="cart-sub-total">
-                        Subtotal<span class="inner-left-md">$ ${data.total}</span>
+                        Giá gốc:<span class="inner-left-md">$ ${data.total} VND</span>
                     </div>
                     <div class="cart-grand-total">
-                        Grand Total<span class="inner-left-md">$ ${data.total}</span>
+                        Tổng cộng:<span class="inner-left-md">$ ${data.total} VND</span>
                     </div>
                 </th>
             </tr>`
@@ -776,20 +776,20 @@ function addToWishList(product_id){
                     `<tr>
         <th>
             <div class="cart-sub-total">
-                Subtotal<span class="inner-left-md">$ ${data.subtotal}</span>
+                Giá gốc:<span class="inner-left-md"> ${data.subtotal} VND</span>
             </div>
             <div class="cart-sub-total">
-                Coupon<span class="inner-left-md">$ ${data.coupon_name}</span>
+                Mã giảm giá:<span class="inner-left-md"> ${data.coupon_name}</span>
                 <button type="submit" onclick="couponRemove()"><i class="fa fa-times"></i>  </button>
             </div>
 
              <div class="cart-sub-total">
-                Discount Amount<span class="inner-left-md">$ ${data.discount_amount}</span>
+                Số tiền giảm:<span class="inner-left-md"> ${data.discount_amount} VND</span>
             </div>
 
 
             <div class="cart-grand-total">
-                Grand Total<span class="inner-left-md">$ ${data.total_amount}</span>
+                Tổng giá:<span class="inner-left-md"> ${data.total_amount} VND</span>
             </div>
         </th>
             </tr>`

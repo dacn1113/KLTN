@@ -2,7 +2,7 @@
 @section('content')
 
 @section('title')
-{{ $product->product_name_en }} Product Details
+{{ $product->product_name_en }} Thông tin chi tiết sản phẩm
 @endsection
 
 
@@ -11,11 +11,11 @@
 <div class="breadcrumb">
 	<div class="container">
 		<div class="breadcrumb-inner">
-			<ul class="list-inline list-unstyled">
+			{{-- <ul class="list-inline list-unstyled">
 				<li><a href="#">Home</a></li>
 				<li><a href="#">Clothing</a></li>
 				<li class='active'>Floral Print Buttoned</li>
-			</ul>
+			</ul> --}}
 		</div><!-- /.breadcrumb-inner -->
 	</div><!-- /.container -->
 </div><!-- /.breadcrumb -->
@@ -25,56 +25,14 @@
 			<div class='col-md-3 sidebar'>
 				<div class="sidebar-module-container">
 				<div class="home-banner outer-top-n">
-<img src="{{ asset('frontend/assets/images/banners/LHS-banner.jpg') }}" alt="Image">
+
 </div>		
   
-    
     
     	<!-- ====== === HOT DEALS ==== ==== -->
    @include('frontend.common.hot_deals')
 <!-- ===== ===== HOT DEALS: END ====== ====== -->					
 
-<!-- ============================================== NEWSLETTER ============================================== -->
-<div class="sidebar-widget newsletter wow fadeInUp outer-bottom-small outer-top-vs">
-	<h3 class="section-title">Newsletters</h3>
-	<div class="sidebar-widget-body outer-top-xs">
-		<p>Sign Up for Our Newsletter!</p>
-        <form>
-        	 <div class="form-group">
-			    <label class="sr-only" for="exampleInputEmail1">Email address</label>
-			    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Subscribe to our newsletter">
-			  </div>
-			<button class="btn btn-primary">Subscribe</button>
-		</form>
-	</div><!-- /.sidebar-widget-body -->
-</div><!-- /.sidebar-widget -->
-<!-- ============================================== NEWSLETTER: END ============================================== -->
-
-<!-- ============================================== Testimonials============================================== -->
-<div class="sidebar-widget  wow fadeInUp outer-top-vs ">
-	<div id="advertisement" class="advertisement">
-        <div class="item"> 
-            <div class="avatar"><img src="{{ asset('frontend/assets/images/testimonials/member1.png') }} " alt="Image"></div>
-		<div class="testimonials"><em>"</em> Vtae sodales aliq uam morbi non sem lacus port mollis. Nunc condime tum metus eud molest sed consectetuer.<em>"</em></div>
-		<div class="clients_author">John Doe	<span>Abc Company</span>	</div><!-- /.container-fluid -->
-        </div><!-- /.item -->
-
-         <div class="item">
-         	<div class="avatar"><img src="{{ asset('frontend/assets/images/testimonials/member3.png') }} " alt="Image"></div>
-		<div class="testimonials"><em>"</em>Vtae sodales aliq uam morbi non sem lacus port mollis. Nunc condime tum metus eud molest sed consectetuer.<em>"</em></div>
-		<div class="clients_author">Stephen Doe	<span>Xperia Designs</span>	</div>    
-        </div><!-- /.item -->
-
-        <div class="item">
-            <div class="avatar"><img src="{{ asset('frontend/assets/images/testimonials/member2.png') }} " alt="Image"></div>
-		<div class="testimonials"><em>"</em> Vtae sodales aliq uam morbi non sem lacus port mollis. Nunc condime tum metus eud molest sed consectetuer.<em>"</em></div>
-		<div class="clients_author">Saraha Smith	<span>Datsun &amp; Co</span>	</div><!-- /.container-fluid -->
-        </div><!-- /.item -->
-
-    </div><!-- /.owl-carousel -->
-</div>
-    
-<!-- ===== ========== Testimonials: END ======== =============== -->
 
  
 
@@ -139,7 +97,7 @@
 									</div>
 									<div class="col-sm-8">
 										<div class="reviews">
-											<a href="#" class="lnk">(13 Reviews)</a>
+											<a href="#" class="lnk">(13 Nhận xét)</a>
 										</div>
 									</div>
 								</div><!-- /.row -->		
@@ -149,12 +107,12 @@
 								<div class="row">
 									<div class="col-sm-2">
 										<div class="stock-box">
-											<span class="label">Availability :</span>
+											<span class="label">Tình trạng :</span>
 										</div>	
 									</div>
 									<div class="col-sm-9">
 										<div class="stock-box">
-											<span class="value">In Stock</span>
+											<span class="value">Trong kho</span>
 										</div>	
 									</div>
 								</div><!-- /.row -->	
@@ -208,9 +166,9 @@
 
 <div class="form-group">
 
-	<label class="info-title control-label">Choose Color <span> </span></label>
+	<label class="info-title control-label">Chọn màu <span> </span></label>
 	<select class="form-control unicase-form-control selectpicker" style="display: none;" id="color">
-		<option selected="" disabled="">--Choose Color--</option>
+		<option selected="" disabled="">--Chọn--</option>
 		@foreach($product_color_en as $color)
 		<option value="{{ $color }}">{{ ucwords($color) }}</option>
 		 @endforeach
@@ -227,9 +185,9 @@
 
 	@else	
 
-	<label class="info-title control-label">Choose Size <span> </span></label>
+	<label class="info-title control-label">Chọn kích cở <span> </span></label>
 	<select class="form-control unicase-form-control selectpicker" style="display: none;" id="size">
-		<option selected="" disabled="">--Choose Size--</option>
+		<option selected="" disabled="">--Chọn--</option>
 		@foreach($product_size_en as $size)
 		<option value="{{ $size }}">{{ ucwords($size) }}</option>
 		 @endforeach
@@ -277,7 +235,7 @@
 			<input type="hidden" id="product_id" value="{{ $product->id }}" min="1">
 
 			<div class="col-sm-7">
-				<button type="submit" onclick="addToCart()" class="btn btn-primary"><i class="fa fa-shopping-cart inner-right-vs"></i> ADD TO CART</button>
+				<button type="submit" onclick="addToCart()" class="btn btn-primary"><i class="fa fa-shopping-cart inner-right-vs"></i> Thêm vào giỏ</button>
 			</div>
 
 			
@@ -298,9 +256,9 @@
 					<div class="row">
 						<div class="col-sm-3">
 							<ul id="product-tabs" class="nav nav-tabs nav-tab-cell">
-								<li class="active"><a data-toggle="tab" href="#description">DESCRIPTION</a></li>
-								<li><a data-toggle="tab" href="#review">REVIEW</a></li>
-								<li><a data-toggle="tab" href="#tags">TAGS</a></li>
+								<li class="active"><a data-toggle="tab" href="#description">Mô tả</a></li>
+								<li><a data-toggle="tab" href="#review">Nhận xét</a></li>
+					
 							</ul><!-- /.nav-tabs #product-tabs -->
 						</div>
 						<div class="col-sm-9">
@@ -318,12 +276,12 @@
 									<div class="product-tab">
 																				
 										<div class="product-reviews">
-											<h4 class="title">Customer Reviews</h4>
+											<h4 class="title">Phản hồi khách hàng</h4>
 
 											<div class="reviews">
 												<div class="review">
-													<div class="review-title"><span class="summary">We love this product</span><span class="date"><i class="fa fa-calendar"></i><span>1 days ago</span></span></div>
-													<div class="text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit.Aliquam suscipit."</div>
+													<div class="review-title"><span class="summary">Chúng tôi yêu sản phẩm này</span><span class="date"><i class="fa fa-calendar"></i><span>1 ngày trước</span></span></div>
+													<div class="text">"Sản phẩm này rất tốt tôi hài lòng về nó."</div>
 																										</div>
 											
 											</div><!-- /.reviews -->
@@ -332,39 +290,23 @@
 
 										
 										<div class="product-add-review">
-											<h4 class="title">Write your own review</h4>
+											<h4 class="title">Viết đánh giá của riêng bạn</h4>
 											<div class="review-table">
 												<div class="table-responsive">
 													<table class="table">	
 														<thead>
 															<tr>
 																<th class="cell-label">&nbsp;</th>
-																<th>1 star</th>
-																<th>2 stars</th>
-																<th>3 stars</th>
-																<th>4 stars</th>
-																<th>5 stars</th>
+																<th>1 Sao</th>
+																<th>2 Sao</th>
+																<th>3 Sao</th>
+																<th>4 Sao</th>
+																<th>5 Sao</th>
 															</tr>
 														</thead>	
 														<tbody>
 															<tr>
-																<td class="cell-label">Quality</td>
-																<td><input type="radio" name="quality" class="radio" value="1"></td>
-																<td><input type="radio" name="quality" class="radio" value="2"></td>
-																<td><input type="radio" name="quality" class="radio" value="3"></td>
-																<td><input type="radio" name="quality" class="radio" value="4"></td>
-																<td><input type="radio" name="quality" class="radio" value="5"></td>
-															</tr>
-															<tr>
-																<td class="cell-label">Price</td>
-																<td><input type="radio" name="quality" class="radio" value="1"></td>
-																<td><input type="radio" name="quality" class="radio" value="2"></td>
-																<td><input type="radio" name="quality" class="radio" value="3"></td>
-																<td><input type="radio" name="quality" class="radio" value="4"></td>
-																<td><input type="radio" name="quality" class="radio" value="5"></td>
-															</tr>
-															<tr>
-																<td class="cell-label">Value</td>
+																<td class="cell-label">Đánh giá</td>
 																<td><input type="radio" name="quality" class="radio" value="1"></td>
 																<td><input type="radio" name="quality" class="radio" value="2"></td>
 																<td><input type="radio" name="quality" class="radio" value="3"></td>
@@ -413,33 +355,7 @@
 							        </div><!-- /.product-tab -->
 								</div><!-- /.tab-pane -->
 
-								<div id="tags" class="tab-pane">
-									<div class="product-tag">
-										
-										<h4 class="title">Product Tags</h4>
-										<form role="form" class="form-inline form-cnt">
-											<div class="form-container">
-									
-												<div class="form-group">
-													<label for="exampleInputTag">Add Your Tags: </label>
-													<input type="email" id="exampleInputTag" class="form-control txt">
-													
-
-												</div>
-
-												<button class="btn btn-upper btn-primary" type="submit">ADD TAGS</button>
-											</div><!-- /.form-container -->
-										</form><!-- /.form-cnt -->
-
-										<form role="form" class="form-inline form-cnt">
-											<div class="form-group">
-												<label>&nbsp;</label>
-												<span class="text col-md-offset-3">Use spaces to separate tags. Use single quotes (') for phrases.</span>
-											</div>
-										</form><!-- /.form-cnt -->
-
-									</div><!-- /.product-tab -->
-								</div><!-- /.tab-pane -->
+								
 
 							</div><!-- /.tab-content -->
 						</div><!-- /.col -->
@@ -448,7 +364,7 @@
 
 				<!-- ===== ======= UPSELL PRODUCTS ==== ========== -->
 <section class="section featured-product wow fadeInUp">
-	<h3 class="section-title">Releted products</h3>
+	<h3 class="section-title">Sản phẩm liên quan</h3>
 	<div class="owl-carousel home-owl-carousel upsell-product custom-carousel owl-theme outer-top-xs">
 
 
