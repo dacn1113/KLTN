@@ -26,21 +26,18 @@ $hot_deals = App\Models\Product::where('hot_deals',1)->where('discount_price','!
                     off</span></div>
               @endif
 
-
-
-
                   <div class="timing-wrapper">
                     <div class="box-wrapper">
-                      <div class="date box"> <span class="key">120</span> <span class="value">DAYS</span> </div>
+                      <div class="date box"> <span class="key">120</span> <span class="value">Ngày</span> </div>
                     </div>
                     <div class="box-wrapper">
-                      <div class="hour box"> <span class="key">20</span> <span class="value">HRS</span> </div>
+                      <div class="hour box"> <span class="key">20</span> <span class="value">Giờ</span> </div>
                     </div>
                     <div class="box-wrapper">
-                      <div class="minutes box"> <span class="key">36</span> <span class="value">MINS</span> </div>
+                      <div class="minutes box"> <span class="key">36</span> <span class="value">Phút</span> </div>
                     </div>
                     <div class="box-wrapper hidden-md">
-                      <div class="seconds box"> <span class="key">60</span> <span class="value">SEC</span> </div>
+                      <div class="seconds box"> <span class="key">60</span> <span class="value">Giây</span> </div>
                     </div>
                   </div>
                 </div>

@@ -14,7 +14,7 @@
 
            <div class="box">
               <div class="box-header with-border">
-                <h3 class="box-title">Danh sách chuyên mục</h3>
+                <h3 class="box-title">Danh sách chính</h3>
               </div>
               <!-- /.box-header -->
               <div class="box-body">
@@ -22,7 +22,7 @@
                     <table id="example1" class="table table-bordered table-striped">
                       <thead>
                           <tr>
-                              <th>Tên chuyên mục</th>
+                              <th>Tên danh mục</th>
                               <th>Tên tiếng việt</th>
                               <th>Biểu tượng</th>
                               <th>Hành động</th>
@@ -84,7 +84,7 @@
                     </div>
         
                     <div class="form-group">
-                        <label for="example-text-input" class="col-sm-2 col-form-label">Logo thương hiệu</label>
+                        <label for="example-text-input" class="col-sm-2 col-form-label">Icon danh mục</label>
                         <div class="col-sm-10">
                             <input name="category_icon" class="form-control" type="text">
                             @error('category_icon')

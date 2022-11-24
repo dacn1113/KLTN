@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\SubCategory;
 use App\Models\SubSubCategory;
 use App\Models\Brand;
+
 use App\Models\Product;
 use App\Models\MultiImg;
 use Carbon\Carbon;
@@ -18,14 +19,26 @@ class ProductController extends Controller
 
     public function AddProduct()
     {
-
         $categories = Category::latest()->get();
         $brands = Brand::latest()->get();
         return view('backend.product.product_add', compact('categories', 'brands'));
     }
 
+
     public function StoreProduct(Request $request)
     {
+
+        $request->validate([
+            'file' => 'required|mimes:jpeg,png,jpg,zip,pdf|max:2048',
+        ]);
+
+        if ($files = $request->file('file')) {
+            $destinationPath = 'upload/pdf'; // upload path
+            $digitalItem = date('YmdHis') . "." . $files->getClientOriginalExtension();
+            $files->move($destinationPath, $digitalItem);
+        }
+
+
 
         $image = $request->file('product_thambnail');
         $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
@@ -64,6 +77,8 @@ class ProductController extends Controller
             'special_deals' => $request->special_deals,
 
             'product_thambnail' => $save_url,
+
+            'digital_file' => $digitalItem,
             'status' => 1,
             'created_at' => Carbon::now(),
 
@@ -77,6 +92,7 @@ class ProductController extends Controller
             $make_name = hexdec(uniqid()) . '.' . $img->getClientOriginalExtension();
             Image::make($img)->resize(917, 1000)->save('upload/products/multi-image/' . $make_name);
             $uploadPath = 'upload/products/multi-image/' . $make_name;
+
             MultiImg::insert([
 
                 'product_id' => $product_id,
@@ -97,14 +113,19 @@ class ProductController extends Controller
         return redirect()->route('manage-product')->with($notification);
     } // end method
 
+
+
     public function ManageProduct()
     {
 
         $products = Product::latest()->get();
         return view('backend.product.product_view', compact('products'));
     }
+
+
     public function EditProduct($id)
     {
+
         $multiImgs = MultiImg::where('product_id', $id)->get();
 
         $categories = Category::latest()->get();
@@ -114,6 +135,8 @@ class ProductController extends Controller
         $products = Product::findOrFail($id);
         return view('backend.product.product_edit', compact('categories', 'brands', 'subcategory', 'subsubcategory', 'products', 'multiImgs'));
     }
+
+
     public function ProductDataUpdate(Request $request)
     {
 
@@ -161,6 +184,8 @@ class ProductController extends Controller
 
         return redirect()->route('manage-product')->with($notification);
     } // end method 
+
+
     /// Multiple Image Update
     public function MultiImageUpdate(Request $request)
     {
@@ -189,6 +214,34 @@ class ProductController extends Controller
         return redirect()->back()->with($notification);
     } // end mehtod 
 
+
+    /// Product Main Thambnail Update /// 
+    public function ThambnailImageUpdate(Request $request)
+    {
+        $pro_id = $request->id;
+        $oldImage = $request->old_img;
+        unlink($oldImage);
+
+        $image = $request->file('product_thambnail');
+        $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+        Image::make($image)->resize(917, 1000)->save('upload/products/thambnail/' . $name_gen);
+        $save_url = 'upload/products/thambnail/' . $name_gen;
+
+        Product::findOrFail($pro_id)->update([
+            'product_thambnail' => $save_url,
+            'updated_at' => Carbon::now(),
+
+        ]);
+
+        $notification = array(
+            'message' => 'Product Image Thambnail Updated Successfully',
+            'alert-type' => 'info'
+        );
+
+        return redirect()->back()->with($notification);
+    } // end method
+
+
     //// Multi Image Delete ////
     public function MultiImageDelete($id)
     {
@@ -203,6 +256,8 @@ class ProductController extends Controller
 
         return redirect()->back()->with($notification);
     } // end method 
+
+
 
     public function ProductInactive($id)
     {
@@ -226,6 +281,9 @@ class ProductController extends Controller
 
         return redirect()->back()->with($notification);
     }
+
+
+
     public function ProductDelete($id)
     {
         $product = Product::findOrFail($id);
@@ -246,4 +304,13 @@ class ProductController extends Controller
         return redirect()->back()->with($notification);
     } // end method 
 
+
+
+    // product Stock 
+    public function ProductStock()
+    {
+
+        $products = Product::latest()->get();
+        return view('backend.product.product_stock', compact('products'));
+    }
 }

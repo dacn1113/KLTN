@@ -44,7 +44,7 @@
 			  <li>
 				<!-- inner menu: contains the actual data -->
 				<ul class="menu sm-scrol">
-				  <li>
+				  {{-- <li>
 					<a href="#">
 					  <i class="fa fa-users text-info"></i> Curabitur id eros quis nunc suscipit blandit.
 					</a>
@@ -78,7 +78,7 @@
 					<a href="#">
 					  <i class="fa fa-user text-success"></i> Nullam euismod dolor ut quam interdum, at scelerisque ipsum imperdiet.
 					</a>
-				  </li>
+				  </li> --}}
 				</ul>
 			  </li>
 			  <li class="footer">
@@ -88,15 +88,16 @@
 		  </li>	
 		  
 @php
-$adminData = DB::table('admins')->first();
+use App\Models\Admin;
+$id = auth()->guard('admin')->user()->id;
+$adminData = Admin::find($id);
 @endphp
 
 
 	      <!-- User Account-->
           <li class="dropdown user user-menu">	
 			<a href="#" class="waves-effect waves-light rounded dropdown-toggle p-0" data-toggle="dropdown" title="User">
-				<img src="{{ (!empty($adminData->profile_photo_path))? url('upload/admin_images/'
-				.$adminData->profile_photo_path):url('upload/no_image.jpg')}}" alt="">
+				<img src="{{ (!empty($adminData->profile_photo_path))? url('upload/admin_images/'.$adminData->profile_photo_path):url('upload/no_image.jpg')}}" alt="">
 			</a>
 			<ul class="dropdown-menu animated flipInX">
 			  <li class="user-body">

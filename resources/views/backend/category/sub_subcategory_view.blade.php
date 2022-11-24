@@ -14,7 +14,7 @@
 			<div class="col-8">
 			 <div class="box">
 				<div class="box-header with-border">
-				  <h3 class="box-title">Danh sách danh mục cấp 3</h3>
+				  <h3 class="box-title">Danh sách danh mục con</h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
@@ -22,9 +22,9 @@
 					  <table id="example1" class="table table-bordered table-striped">
 						<thead>
 							<tr>
-								<th>Danh mục 1 </th>
-								<th>Danh mục cấp 2</th>
-								<th>Danh mục cấp 3</th>
+								<th>Danh mục chính </th>
+								<th>Danh mục phụ</th>
+								<th>Danh mục con</th>
 								<th>Hành động</th>
 								 
 							</tr>
@@ -59,7 +59,7 @@
           <div class="col-4">
 			 <div class="box">
 				<div class="box-header with-border">
-				  <h3 class="box-title">Thêm danh mục cấp 3</h3>
+				  <h3 class="box-title">Thêm danh mục con</h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
@@ -68,7 +68,7 @@
 	 	@csrf
 					   
 	 <div class="form-group">
-	<h5>Chọn danh mục cấp 1 <span class="text-danger">*</span></h5>
+	<h5>Chọn danh mục chính <span class="text-danger">*</span></h5>
 	<div class="controls">
 		<select name="category_id" class="form-control"  >
 			<option value="" selected="" disabled="">Lựa chọn</option>
@@ -82,7 +82,7 @@
 	 </div>
 		 </div>
 		  <div class="form-group">
-	<h5>Chọn danh mục cấp 2 <span class="text-danger">*</span></h5>
+	<h5>Chọn danh mục phụ <span class="text-danger">*</span></h5>
 	<div class="controls">
 		<select name="subcategory_id" class="form-control"  >
 			<option value="" selected="" disabled="">Lựa chọn</option>
@@ -94,7 +94,7 @@
 	 </div>
 		 </div>
 	<div class="form-group">
-		<h5>Danh mục cấp 3 En <span class="text-danger">*</span></h5>
+		<h5>Danh mục con En <span class="text-danger">*</span></h5>
 		<div class="controls">
 	 <input type="text" name="subsubcategory_name_en" class="form-control" >
      @error('subsubcategory_name_en') 
@@ -103,7 +103,7 @@
 	  </div>
 	</div>
 	<div class="form-group">
-		<h5>Danh mục cấp 3 Vn  <span class="text-danger">*</span></h5>
+		<h5>Danh mục con Vn  <span class="text-danger">*</span></h5>
 		<div class="controls">
 	 <input type="text" name="subsubcategory_name_hin" class="form-control" >
      @error('subsubcategory_name_hin') 

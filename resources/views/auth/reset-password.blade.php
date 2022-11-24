@@ -18,7 +18,7 @@
 			<div class="row">
 				
 <div class="col-md-6 col-sm-6 sign-in">
-	<h4 class="">Reset Password</h4>
+	<h4 class="">Đổi mật khẩu</h4>
 
     <form method="POST" action="{{ route('password.update') }}">
             @csrf
@@ -29,15 +29,15 @@
                 <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email', $request->email)" required autofocus />
             </div>
         <div class="form-group">
-		    <label class="info-title" for="exampleInputEmail1">Password <span>*</span></label>
+		    <label class="info-title" for="exampleInputEmail1">Mật khẩu <span>*</span></label>
 		    <input id="password" name="password" type="password" class="form-control unicase-form-control text-input">
 		</div>
         <div class="form-group">
-		    <label class="info-title" for="exampleInputEmail1">Confirm Password <span>*</span></label>
+		    <label class="info-title" for="exampleInputEmail1">Nhập lại mật khẩu <span>*</span></label>
 		    <input id="password_confirmation" name="password_confirmation" type="password" class="form-control unicase-form-control text-input">
 		</div>
 	  
-	  	<button type="submit" class="btn-upper btn btn-primary checkout-page-button">Reset Password </button>
+	  	<button type="submit" class="btn-upper btn btn-primary checkout-page-button">Cài đặt lại mật khẩu mới </button>
 	</form>					
 </div>
 <!-- Sign-in -->

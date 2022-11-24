@@ -7,7 +7,11 @@ $tags_hin = App\Models\Product::groupBy('product_tags_hin')->select('product_tag
 
 
      <div class="sidebar-widget product-tag wow fadeInUp">
+      @if(session()->get('language') == 'hindi') 
           <h3 class="section-title">Thẻ sản phẩm</h3>
+      @else
+      <h3 class="section-title">Tags</h3>
+      @endif
           <div class="sidebar-widget-body outer-top-xs"> 
 
 <div class="tag-list"> 
@@ -15,14 +19,14 @@ $tags_hin = App\Models\Product::groupBy('product_tags_hin')->select('product_tag
 @if(session()->get('language') == 'hindi') 
 
 @foreach($tags_hin as $tag)
-<a class="item active" title="Phone" href="{{ url('product/tag/'.$tag->product_tags_hin) }}">
+<a class="item active" title="Phone" href="{{ url('product/tagvn/'.$tag->product_tags_hin) }}">
 	{{ str_replace(',',' ',$tag->product_tags_hin)  }}</a> 
 @endforeach
 
  @else 
 
 @foreach($tags_en as $tag)
-<a class="item active" title="Phone" href="{{ url('product/tag/'.$tag->product_tags_en) }}">
+<a class="item active" title="Phone" href="{{ url('product/tagen/'.$tag->product_tags_en) }}">
 	{{ str_replace(',',' ',$tag->product_tags_en)  }}</a> 
 @endforeach
 

@@ -44,6 +44,7 @@ class AdminProfileController extends Controller
             @unlink(public_path('upload/admin_images/' . $data->profile_photo_path));
             $filename = date('YmdHi') . $file->getClientOriginalName();
             $file->move(public_path('upload/admin_images'), $filename);
+            // $save_url = 'upload/admin_images/' . $filename;
             $data['profile_photo_path'] = $filename;
         }
         $data->save();

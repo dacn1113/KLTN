@@ -1,82 +1,111 @@
 @extends('admin.admin_master')
 @section('admin')
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-		<div class="container-full">
-            <section class="content">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-                <!-- Basic Forms -->
-                 <div class="box">
-                   <div class="box-header with-border">
-                     <h4 class="box-title">Trang thông tin quản trị viên</h4>
-                     <h6 class="box-subtitle">Bootstrap Form Validation check the <a class="text-warning" href="http://reactiveraven.github.io/jqBootstrapValidation/">official website </a></h6>
-                   </div>
-                   <!-- /.box-header -->
-                   <div class="box-body">
-                     <div class="row">
-                       <div class="col">
-                        <form method="post" action="{{route('admin.profile.store')}}"enctype="multipart/form-data">
-                            @csrf
-                             <div class="row">
-                               <div class="col-12">						
-                                   
-                                  <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <h5>Tên người dùng <span class="text-danger">*</span></h5>
-                                            <div class="controls">
-                                                <input type="text" name="name" class="form-control" required="" value="{{$editData->name}}"></div>
-                                        </div>
-                                    </div>
+<div class="container-full">
 
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <h5>Email <span class="text-danger">*</span></h5>
-                                            <div class="controls">
-                                                <input type="email" name="email" class="form-control" required=""value="{{$editData->email}}"></div>
-                                        </div>
-                                    </div>
+	 <section class="content">
 
-                                  </div>
-                            
-                                   <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <h5>Ảnh đại diện<span class="text-danger">*</span></h5>
-                                            <div class="controls">
-                                                <input type="file" name="profile_photo_path" class="form-control" required="" id="image"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <img id="showImage" src="{{(!empty($editData->profile_photo_path))? url('upload/admin_images/'
-                                        .$editData->profile_photo_path):url('upload/no_image.jpg')}}" style="width:100px; height: 100px">
-                                    </div>
-                                   </div>
-                                   
-                               <div class="text-xs-right">
-                                   <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Cập nhật">
-                               </div>
-                           </form>
-       
-                       </div>
-                       <!-- /.col -->
-                     </div>
-                     <!-- /.row -->
-                   </div>
-                   <!-- /.box-body -->
-                 </div>
-                 <!-- /.box -->
-       
-               </section>
-        </div>
-        <script type="text/javascript">
-            $(document).ready(function(){
-                $('#image').change(function(e){
-                    var reader = new FileReader();
-                    reader.onload = function(e){
-                       $('#showImage').attr('src',e.target.result);
-                    }
-                    reader.readAsDataURL(e.target.files['0']);
-                });
-            });
-        </script>
+		 <!-- Basic Forms -->
+		  <div class="box">
+			<div class="box-header with-border">
+			  <h4 class="box-title">Chỉnh sửa thông tin</h4>
+			  
+			</div>
+			<!-- /.box-header -->
+			<div class="box-body">
+			  <div class="row">
+				<div class="col">
+	 <form method="post" action="{{ route('admin.profile.store') }}" enctype="multipart/form-data" >
+	 	@csrf
+					  <div class="row">
+						<div class="col-12">
+
+			<div class="row">
+				<div class="col-md-6">
+
+	 <div class="form-group">
+		<h5>Tên quản trị viên:  <span class="text-danger">*</span></h5>
+		<div class="controls">
+	 <input type="text" name="name" class="form-control" required="" value="{{ $editData->name }}"> </div>
+	</div>
+					
+				</div> <!-- end cold md 6 -->
+
+
+
+				<div class="col-md-6">
+
+	  <div class="form-group">
+		<h5> Email:  <span class="text-danger">*</span></h5>
+		<div class="controls">
+	 <input type="email" name="email" class="form-control" required="" value="{{ $editData->email }}"> </div>
+	</div>
+					
+				</div> <!-- end cold md 6 --> 
+				
+			</div>	<!-- end row 	 -->	
+ 
+
+	 <div class="row">
+
+				<div class="col-md-6">
+		<div class="form-group">
+		<h5>Ảnh đại diện:<span class="text-danger">*</span></h5>
+		<div class="controls">
+ <input type="file" name="profile_photo_path" class="form-control" required="" id="image"> </div>
+	</div>
+				</div><!-- end cold md 6 --> 
+
+				<div class="col-md-6">
+	<img id="showImage" src="{{ (!empty($editData->profile_photo_path))? url('upload/admin_images/'.$editData->profile_photo_path):url('upload/no_image.jpg') }}" style="width: 100px; height: 100px;">				
+
+				</div><!-- end cold md 6 --> 
+
+
+
+
+			</div><!-- end row 	 -->	
+	
+	 
+	
+					
+
+
+
+
+			 <div class="text-xs-right">
+	<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Cập nhật">					 
+						</div>
+					</form>
+
+				</div>
+				<!-- /.col -->
+			  </div>
+			  <!-- /.row -->
+			</div>
+			<!-- /.box-body -->
+		  </div>
+		  <!-- /.box -->
+
+		</section>
+ 
+
+
+	  </div>
+
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#image').change(function(e){
+			var reader = new FileReader();
+			reader.onload = function(e){
+			 $('#showImage').attr('src',e.target.result);	
+			}
+			reader.readAsDataURL(e.target.files['0']);
+		});
+	});
+</script>
+
+
 @endsection

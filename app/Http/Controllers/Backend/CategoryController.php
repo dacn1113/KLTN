@@ -56,8 +56,8 @@ class CategoryController extends Controller
         Category::findOrFail($id)->update([
             'category_name_en' => $request->category_name_en,
             'category_name_hin' => $request->category_name_hin,
-            'category_slug_en' => strtolower(str_replace(' ', '-', $request->category_slug_en)),
-            'category_slug_hin' => str_replace(' ', '-', $request->category_slug_hin),
+            'category_slug_en' =>  $request->category_name_en,
+            'category_slug_hin' => $request->category_name_hin,
             'category_icon' => $request->category_icon,
         ]);
 

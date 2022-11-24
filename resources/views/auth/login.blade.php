@@ -1,110 +1,156 @@
 @extends('frontend.main_master')
 @section('content')
 
-<div class="breadcrumb">
-	<div class="container">
-		<div class="breadcrumb-inner">
-			<ul class="list-inline list-unstyled">
-				<li><a href="home.html">Home</a></li>
-				<li class='active'>Login</li>
-			</ul>
-		</div><!-- /.breadcrumb-inner -->
-	</div><!-- /.container -->
-</div><!-- /.breadcrumb -->
+{{-- <div class="breadcrumb">
+    <div class="container">
+        <div class="breadcrumb-inner">
+            <ul class="list-inline list-unstyled">
+                <li><a href="home.html">Home</a></li>
+                <li class='active'>Login</li>
+            </ul>
+        </div><!-- /.breadcrumb-inner -->
+    </div><!-- /.container -->
+</div><!-- /.breadcrumb --> --}}
 
 <div class="body-content">
-	<div class="container">
-		<div class="sign-in-page">
-			<div class="row">
-				<!-- Sign-in -->			
+    <div class="container">
+        <div class="sign-in-page">
+            <div class="row">
+                <!-- Sign-in -->            
 <div class="col-md-6 col-sm-6 sign-in">
-	<h4 class="">Sign in</h4>
-	<p class="">Hello, Welcome to your account.</p>
+    <h4 class="">Đăng nhập</h4>
+    <p class="">Xin chào, Chào mừng bạn đến với đăng nhập và đăng ký</p>
+    <div class="social-sign-in outer-top-xs">
+        <a href="#" class="facebook-sign-in"><i class="fa fa-facebook"></i> Đăng nhập bằng facebook</a>
+        <a href="#" class="twitter-sign-in"><i class="fa fa-twitter"></i> Đăng nhập bằng Twitter</a>
+        <a></a>
+    </div>
+   
+
     <form method="POST" action="{{ isset($guard) ? url($guard.'/login') : route('login') }}">
-        @csrf
-		<div class="form-group">
-		    <label class="info-title" for="exampleInputEmail1">Email Address <span>*</span></label>
-		    <input id="email" name="email" type="email" class="form-control unicase-form-control text-input" id="exampleInputEmail1" >
-		</div>
-	  	<div class="form-group">
-		    <label class="info-title" for="exampleInputPassword1">Password <span>*</span></label>
-		    <input id="password" name="password" type="password" class="form-control unicase-form-control text-input" id="exampleInputPassword1" >
-		</div>
-		<div class="radio outer-xs">
-		  	<label>
-		    	<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Remember me!
-		  	</label>
-		  	<a href="{{Route::has('password.request')}}" class="forgot-password pull-right">Forgot your Password?</a>
-		</div>
-	  	<button type="submit" class="btn-upper btn btn-primary checkout-page-button">Login</button>
-	</form>					
+            @csrf 
+
+ 
+        <div class="form-group">
+            <label class="info-title" for="exampleInputEmail1">Email người dùng <span>*</span></label>
+            <input type="text" id="email" name="email" class="form-control unicase-form-control text-input">
+             @error('email')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+        </div>
+        <div class="form-group">
+            <label class="info-title" for="exampleInputPassword1">Mật khẩu <span>*</span></label>
+            <input type="password" id="password" name="password" class="form-control unicase-form-control text-input" id="exampleInputPassword1" >
+             @error('password')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+        </div>
+        <div class="checkbox outer-xs">
+            <label>
+                <input type="checkbox"  onclick="myFunction()" >Hiện mật khẩu
+            </label>
+            <a href="{{ route('password.request') }}" class="forgot-password pull-right">Bạn quên mật khẩu?</a>
+        </div>
+        <button type="submit" class="btn-upper btn btn-primary checkout-page-button">Đăng nhập</button>
+    </form>   
+<script>    
+    function myFunction() {
+        var x = document.getElementById("password");
+        if (x.type === "password") {
+          x.type = "text";
+        } else {
+          x.type = "password";
+        }
+      }
+</script>
 </div>
 <!-- Sign-in -->
 
 <!-- create a new account -->
 <div class="col-md-6 col-sm-6 create-new-account">
-	<h4 class="checkout-subtitle">Create a new account</h4>
-	<p class="text title-tag-line">Create your new account.</p>
+    <h4 class="checkout-subtitle">Tạo một tài khoản mới</h4>
+    <p class="text title-tag-line">Để tạo tài khoản vui lòng điền thông tin bên dưới!</p>
+   
     <form method="POST" action="{{ route('register') }}">
-        @csrf
+            @csrf
 
-        <div class="form-group">
-		    <label class="info-title" for="exampleInputEmail1">Name <span>*</span></label>
-		    <input  name="name" id="name" type="text" class="form-control unicase-form-control text-input">
-		</div>
-
-        @error('name')
-        <span class="invalid-feeback" role="alert">
-        <strong>{{$message}}</strong>
-        </span>
-        @enderror
-
-		<div class="form-group">
-	    	<label class="info-title" for="exampleInputEmail2">Email Address <span>*</span></label>
-	    	<input name="email" id="email" type="email" class="form-control unicase-form-control text-input">
-	  	</div>
-          @error('email')
-          <span class="invalid-feeback" role="alert">
-          <strong>{{$message}}</strong>
-          </span>
-          @enderror
-     
-        <div class="form-group">
-		    <label class="info-title" for="exampleInputEmail1">Phone Number <span>*</span></label>
-		    <input name="phone" type="text" class="form-control unicase-form-control text-input" id="phone" >
-		</div>
-        @error('phone')
-        <span class="invalid-feeback" role="alert">
-        <strong>{{$message}}</strong>
-        </span>
-        @enderror
-        <div class="form-group">
-		    <label class="info-title" for="exampleInputEmail1">Password <span>*</span></label>
-		    <input type="password" id="password" name="password" class="form-control unicase-form-control text-input">
-		</div>
-        @error('pasword')
-        <span class="invalid-feeback" role="alert">
-        <strong>{{$message}}</strong>
-        </span>
-        @enderror
          <div class="form-group">
-		    <label class="info-title" for="exampleInputEmail1">Confirm Password <span>*</span></label>
-		    <input type="password" name="password_confirmation" class="form-control unicase-form-control text-input" id="password_confirmation" >
-		</div>
-        @error('password_confirmation')
-        <span class="invalid-feeback" role="alert">
-        <strong>{{$message}}</strong>
-        </span>
-        @enderror
-	  	<button type="submit" class="btn-upper btn btn-primary checkout-page-button">Sign Up</button>
-	</form>
-	
-	
-</div>	
-<!-- create a new account -->			</div><!-- /.row -->
-		</div><!-- /.sigin-in-->
-		<!-- ============================================== BRANDS CAROUSEL ============================================== -->
+            <label class="info-title" for="exampleInputEmail1">Tên người dùng <span>* </span></label>
+            <input type="text" id="name" name="name" class="form-control unicase-form-control text-input">
+            @error('name')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror 
+        </div>
+
+        <div class="form-group">
+            <label class="info-title" for="exampleInputEmail2">Email <span>* </span></label>
+            <input type="email" id="email" name="email" class="form-control unicase-form-control text-input" >
+            @error('email')
+            <span class="invalid-feedback" role="alert">
+                <strong>Email đã tồn tại</strong>
+            </span>
+            @enderror
+        </div>
+        
+        <div class="form-group">
+            <label class="info-title" for="exampleInputEmail1">Số điện thoại <span>* </span></label>
+            <input type="text" id="phone" name="phone" class="form-control unicase-form-control text-input" maxlength="10">
+            @error('phone')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+        </div>
+
+        <div class="form-group">
+            <label class="info-title" for="exampleInputEmail1">Mật khẩu <span>*</span></label>
+            <input type="password" id="password" name="password" class="form-control unicase-form-control text-input" >
+            @error('password')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+        </div>
+         <div class="form-group">
+            <label class="info-title" for="exampleInputEmail1">Xác nhận mật khẩu <span>*</span></label>
+            <input type="password" id="password_confirmation" name="password_confirmation" class="form-control unicase-form-control text-input" >
+            @error('password_confirmation')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+        </div>
+        <button type="submit" class="btn-upper btn btn-primary checkout-page-button">Đăng ký</button>
+    </form>
+    
+    
+</div>  
+<!-- create a new account -->           </div><!-- /.row -->
+        </div><!-- /.sigin-in-->
+        <!-- ============================================== BRANDS CAROUSEL ============================================== -->
+
+
+
+
 @include('frontend.body.brands')
-<!-- ============================================== BRANDS CAROUSEL : END ============================================== -->	</div><!-- /.container -->
+
+
+<!-- ============================================== BRANDS CAROUSEL : END ============================================== -->    </div><!-- /.container -->
 </div><!-- /.body-content -->
+
+
+
+
+
+
 @endsection
+
+
+
+

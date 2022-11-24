@@ -3,11 +3,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 @section('title')
-My Checkout
+Thanh toán của tôi
 @endsection
 
 
-<div class="breadcrumb">
+{{-- <div class="breadcrumb">
 	<div class="container">
 		<div class="breadcrumb-inner">
 			<ul class="list-inline list-unstyled">
@@ -16,7 +16,7 @@ My Checkout
 			</ul>
 		</div><!-- /.breadcrumb-inner -->
 	</div><!-- /.container -->
-</div><!-- /.breadcrumb --> 
+</div><!-- /.breadcrumb -->  --}}
 
 
 
@@ -192,7 +192,7 @@ My Checkout
 		 <li>
 		 	@if(Session::has('coupon'))
 
-<strong>Giá gốc: </strong> ${{ $cartTotal }} <hr>
+<strong>Giá gốc: </strong> {{ $cartTotal }}đ <hr>
 
 <strong>Tên mã giảm giá: </strong> {{ session()->get('coupon')['coupon_name'] }}
 ( {{ session()->get('coupon')['coupon_discount'] }} % )
@@ -207,9 +207,9 @@ My Checkout
 
 		 	@else
 
-<strong>Giá gốc: </strong> ${{ $cartTotal }} <hr>
+<strong>Giá gốc: </strong> {{ $cartTotal }} đ <hr>
 
-<strong>Tổng thanh toán : </strong> ${{ $cartTotal }} <hr>
+<strong>Tổng thanh toán : </strong> {{ $cartTotal }} đ<hr>
 
 
 		 	@endif 

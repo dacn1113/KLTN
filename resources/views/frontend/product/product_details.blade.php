@@ -2,20 +2,26 @@
 @section('content')
 
 @section('title')
-{{ $product->product_name_en }} Thông tin chi tiết sản phẩm
+{{ $product->product_name_en }} Product Details
 @endsection
 
+<style>
+	.checked {
+  color: orange;
+}
+
+</style>
 
 
 <!-- ===== ======== HEADER : END ============================================== -->
 <div class="breadcrumb">
 	<div class="container">
 		<div class="breadcrumb-inner">
-			{{-- <ul class="list-inline list-unstyled">
+			<ul class="list-inline list-unstyled">
 				<li><a href="#">Home</a></li>
 				<li><a href="#">Clothing</a></li>
 				<li class='active'>Floral Print Buttoned</li>
-			</ul> --}}
+			</ul>
 		</div><!-- /.breadcrumb-inner -->
 	</div><!-- /.container -->
 </div><!-- /.breadcrumb -->
@@ -25,14 +31,56 @@
 			<div class='col-md-3 sidebar'>
 				<div class="sidebar-module-container">
 				<div class="home-banner outer-top-n">
-
+<img src="{{ asset('frontend/assets/images/banners/LHS-banner.jpg') }}" alt="Image">
 </div>		
   
+    
     
     	<!-- ====== === HOT DEALS ==== ==== -->
    @include('frontend.common.hot_deals')
 <!-- ===== ===== HOT DEALS: END ====== ====== -->					
 
+<!-- ============================================== NEWSLETTER ============================================== -->
+<div class="sidebar-widget newsletter wow fadeInUp outer-bottom-small outer-top-vs">
+	<h3 class="section-title">Newsletters</h3>
+	<div class="sidebar-widget-body outer-top-xs">
+		<p>Sign Up for Our Newsletter!</p>
+        <form>
+        	 <div class="form-group">
+			    <label class="sr-only" for="exampleInputEmail1">Email address</label>
+			    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Subscribe to our newsletter">
+			  </div>
+			<button class="btn btn-primary">Subscribe</button>
+		</form>
+	</div><!-- /.sidebar-widget-body -->
+</div><!-- /.sidebar-widget -->
+<!-- ============================================== NEWSLETTER: END ============================================== -->
+
+<!-- ============================================== Testimonials============================================== -->
+<div class="sidebar-widget  wow fadeInUp outer-top-vs ">
+	<div id="advertisement" class="advertisement">
+        <div class="item"> 
+            <div class="avatar"><img src="{{ asset('frontend/assets/images/testimonials/member1.png') }} " alt="Image"></div>
+		<div class="testimonials"><em>"</em> Vtae sodales aliq uam morbi non sem lacus port mollis. Nunc condime tum metus eud molest sed consectetuer.<em>"</em></div>
+		<div class="clients_author">John Doe	<span>Abc Company</span>	</div><!-- /.container-fluid -->
+        </div><!-- /.item -->
+
+         <div class="item">
+         	<div class="avatar"><img src="{{ asset('frontend/assets/images/testimonials/member3.png') }} " alt="Image"></div>
+		<div class="testimonials"><em>"</em>Vtae sodales aliq uam morbi non sem lacus port mollis. Nunc condime tum metus eud molest sed consectetuer.<em>"</em></div>
+		<div class="clients_author">Stephen Doe	<span>Xperia Designs</span>	</div>    
+        </div><!-- /.item -->
+
+        <div class="item">
+            <div class="avatar"><img src="{{ asset('frontend/assets/images/testimonials/member2.png') }} " alt="Image"></div>
+		<div class="testimonials"><em>"</em> Vtae sodales aliq uam morbi non sem lacus port mollis. Nunc condime tum metus eud molest sed consectetuer.<em>"</em></div>
+		<div class="clients_author">Saraha Smith	<span>Datsun &amp; Co</span>	</div><!-- /.container-fluid -->
+        </div><!-- /.item -->
+
+    </div><!-- /.owl-carousel -->
+</div>
+    
+<!-- ===== ========== Testimonials: END ======== =============== -->
 
  
 
@@ -81,7 +129,16 @@
         </div><!-- /.gallery-thumbs -->
 
     </div><!-- /.single-product-gallery -->
-</div><!-- /.gallery-holder -->        			
+</div><!-- /.gallery-holder -->   
+
+@php 
+	$reviewcount = App\Models\Review::where('product_id',$product->id)->where('status',1)->latest()->get();
+
+	$avarage = App\Models\Review::where('product_id',$product->id)->where('status',1)->avg('rating');
+
+@endphp
+
+
 					<div class='col-sm-6 col-md-7 product-info-block'>
 						<div class="product-info">
 
@@ -90,29 +147,68 @@
 @if(session()->get('language') == 'hindi') {{ $product->product_name_hin }} @else {{ $product->product_name_en }} @endif
 							 </h1>
 							
-							<div class="rating-reviews m-t-20">
-								<div class="row">
-									<div class="col-sm-3">
-										<div class="rating rateit-small"></div>
-									</div>
-									<div class="col-sm-8">
-										<div class="reviews">
-											<a href="#" class="lnk">(13 Nhận xét)</a>
-										</div>
-									</div>
-								</div><!-- /.row -->		
-							</div><!-- /.rating-reviews -->
+			<div class="rating-reviews m-t-20">
+				<div class="row"> 
+					<div class="col-sm-3">
+						 
+   @if($avarage == 0)
+   No Rating Yet 
+   @elseif($avarage == 1 || $avarage < 2)
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+   @elseif($avarage == 2 || $avarage < 3)
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+  @elseif($avarage == 3 || $avarage < 4)
+  <span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+
+  @elseif($avarage == 4 || $avarage < 5)
+  <span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+  @elseif($avarage == 5 || $avarage < 5)
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+   @endif
+
+
+					</div>
+
+
+
+					<div class="col-sm-8">
+						<div class="reviews">
+							<a href="#" class="lnk">({{ count($reviewcount) }} Reviews)</a>
+						</div>
+					</div>
+				</div><!-- /.row -->		
+			</div><!-- /.rating-reviews -->
 
 							<div class="stock-container info-container m-t-10">
 								<div class="row">
 									<div class="col-sm-2">
 										<div class="stock-box">
-											<span class="label">Tình trạng :</span>
+											<span class="label">Availability :</span>
 										</div>	
 									</div>
 									<div class="col-sm-9">
 										<div class="stock-box">
-											<span class="value">Trong kho</span>
+											<span class="value">In Stock</span>
 										</div>	
 									</div>
 								</div><!-- /.row -->	
@@ -166,9 +262,9 @@
 
 <div class="form-group">
 
-	<label class="info-title control-label">Chọn màu <span> </span></label>
+	<label class="info-title control-label">Choose Color <span> </span></label>
 	<select class="form-control unicase-form-control selectpicker" style="display: none;" id="color">
-		<option selected="" disabled="">--Chọn--</option>
+		<option selected="" disabled="">--Choose Color--</option>
 		@foreach($product_color_en as $color)
 		<option value="{{ $color }}">{{ ucwords($color) }}</option>
 		 @endforeach
@@ -185,9 +281,9 @@
 
 	@else	
 
-	<label class="info-title control-label">Chọn kích cở <span> </span></label>
+	<label class="info-title control-label">Choose Size <span> </span></label>
 	<select class="form-control unicase-form-control selectpicker" style="display: none;" id="size">
-		<option selected="" disabled="">--Chọn--</option>
+		<option selected="" disabled="">--Choose Size--</option>
 		@foreach($product_size_en as $size)
 		<option value="{{ $size }}">{{ ucwords($size) }}</option>
 		 @endforeach
@@ -224,10 +320,11 @@
 				<div class="cart-quantity">
 					<div class="quant-input">
 		                <div class="arrows">
-		                  <div class="arrow plus gradient"><span class="ir"><i class="icon fa fa-sort-asc"></i></span></div>
-		                  <div class="arrow minus gradient"><span class="ir"><i class="icon fa fa-sort-desc"></i></span></div>
+		                  {{-- <div class="arrow plus gradient"><span class="ir"><i class="icon fa fa-sort-asc"></i></span></div>
+		                  <div class="arrow minus gradient"><span class="ir"><i class="icon fa fa-sort-desc"></i></span></div> --}}
 		                </div>
-		                <input type="text" id="qty" value="1" min="1">
+		                <input type="number" class="form-control" id="qty" value="1" min="1">
+						
 	              </div>
 	            </div>
 			</div>
@@ -235,7 +332,7 @@
 			<input type="hidden" id="product_id" value="{{ $product->id }}" min="1">
 
 			<div class="col-sm-7">
-				<button type="submit" onclick="addToCart()" class="btn btn-primary"><i class="fa fa-shopping-cart inner-right-vs"></i> Thêm vào giỏ</button>
+				<button type="submit" onclick="addToCart()" class="btn btn-primary"><i class="fa fa-shopping-cart inner-right-vs"></i> ADD TO CART</button>
 			</div>
 
 			
@@ -244,6 +341,9 @@
 
 							
 
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+     <div class="addthis_inline_share_toolbox_8tvu"></div>
+            
 							
 
 							
@@ -256,9 +356,9 @@
 					<div class="row">
 						<div class="col-sm-3">
 							<ul id="product-tabs" class="nav nav-tabs nav-tab-cell">
-								<li class="active"><a data-toggle="tab" href="#description">Mô tả</a></li>
-								<li><a data-toggle="tab" href="#review">Nhận xét</a></li>
-					
+								<li class="active"><a data-toggle="tab" href="#description">DESCRIPTION</a></li>
+								<li><a data-toggle="tab" href="#review">REVIEW</a></li>
+								<li><a data-toggle="tab" href="#tags">TAGS</a></li>
 							</ul><!-- /.nav-tabs #product-tabs -->
 						</div>
 						<div class="col-sm-9">
@@ -272,90 +372,199 @@
 	</div>	
 								</div><!-- /.tab-pane -->
 
-								<div id="review" class="tab-pane">
-									<div class="product-tab">
-																				
-										<div class="product-reviews">
-											<h4 class="title">Phản hồi khách hàng</h4>
+<div id="review" class="tab-pane">
+	<div class="product-tab">
+												
+		<div class="product-reviews">
+			<h4 class="title">Customer Reviews</h4>
 
-											<div class="reviews">
-												<div class="review">
-													<div class="review-title"><span class="summary">Chúng tôi yêu sản phẩm này</span><span class="date"><i class="fa fa-calendar"></i><span>1 ngày trước</span></span></div>
-													<div class="text">"Sản phẩm này rất tốt tôi hài lòng về nó."</div>
-																										</div>
+@php
+$reviews = App\Models\Review::where('product_id',$product->id)->latest()->limit(5)->get();
+@endphp			
+
+	<div class="reviews">
+		 
+		@foreach($reviews as $item)
+		@if($item->status == 0)
+
+		@else
+
+		<div class="review">
+
+        <div class="row">
+			<div class="col-md-6">
+			<img style="border-radius: 50%" src="{{ (!empty($item->user->profile_photo_path))? url('upload/user_images/'.$item->user->profile_photo_path):url('upload/no_image.jpg') }}" width="40px;" height="40px;"><b> {{ $item->user->name }}</b>
+
+
+ @if($item->rating == NULL)
+
+ @elseif($item->rating == 1)
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+ @elseif($item->rating == 2)
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+
+ @elseif($item->rating == 3)
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+
+ @elseif($item->rating == 4)
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+ @elseif($item->rating == 5)
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+
+@endif
+
+
+
+			</div>
+
+			<div class="col-md-6">
+				
+			</div>			
+		</div> <!-- // end row -->
+
+
+
+			<div class="review-title"><span class="summary">{{ $item->summary }}</span><span class="date"><i class="fa fa-calendar"></i><span> {{ Carbon\Carbon::parse($item->created_at)->diffForHumans() }} </span></span></div>
+			<div class="text">"{{ $item->comment }}"</div>
+		 </div>
+
+		 @endif
+	@endforeach
+	</div><!-- /.reviews -->
+
+
+		</div><!-- /.product-reviews -->
+										
+
+										
+<div class="product-add-review">
+	<h4 class="title">Write your own review</h4>
+	<div class="review-table">
+		 
+	</div><!-- /.review-table -->
 											
-											</div><!-- /.reviews -->
-										</div><!-- /.product-reviews -->
-										
+		<div class="review-form">
+			@guest
+<p> <b> For Add Product Review. You Need to Login First <a href="{{ route('login') }}">Login Here</a> </b> </p>
 
-										
-										<div class="product-add-review">
-											<h4 class="title">Viết đánh giá của riêng bạn</h4>
-											<div class="review-table">
-												<div class="table-responsive">
-													<table class="table">	
-														<thead>
-															<tr>
-																<th class="cell-label">&nbsp;</th>
-																<th>1 Sao</th>
-																<th>2 Sao</th>
-																<th>3 Sao</th>
-																<th>4 Sao</th>
-																<th>5 Sao</th>
-															</tr>
-														</thead>	
-														<tbody>
-															<tr>
-																<td class="cell-label">Đánh giá</td>
-																<td><input type="radio" name="quality" class="radio" value="1"></td>
-																<td><input type="radio" name="quality" class="radio" value="2"></td>
-																<td><input type="radio" name="quality" class="radio" value="3"></td>
-																<td><input type="radio" name="quality" class="radio" value="4"></td>
-																<td><input type="radio" name="quality" class="radio" value="5"></td>
-															</tr>
-														</tbody>
-													</table><!-- /.table .table-bordered -->
-												</div><!-- /.table-responsive -->
-											</div><!-- /.review-table -->
-											
-											<div class="review-form">
-												<div class="form-container">
-													<form role="form" class="cnt-form">
-														
-														<div class="row">
-															<div class="col-sm-6">
-																<div class="form-group">
-																	<label for="exampleInputName">Your Name <span class="astk">*</span></label>
-																	<input type="text" class="form-control txt" id="exampleInputName" placeholder="">
-																</div><!-- /.form-group -->
-																<div class="form-group">
-																	<label for="exampleInputSummary">Summary <span class="astk">*</span></label>
-																	<input type="text" class="form-control txt" id="exampleInputSummary" placeholder="">
-																</div><!-- /.form-group -->
-															</div>
+			@else 
 
-															<div class="col-md-6">
-																<div class="form-group">
-																	<label for="exampleInputReview">Review <span class="astk">*</span></label>
-																	<textarea class="form-control txt txt-review" id="exampleInputReview" rows="4" placeholder=""></textarea>
-																</div><!-- /.form-group -->
-															</div>
-														</div><!-- /.row -->
-														
-														<div class="action text-right">
-															<button class="btn btn-primary btn-upper">SUBMIT REVIEW</button>
-														</div><!-- /.action -->
+			<div class="form-container">
 
-													</form><!-- /.cnt-form -->
-												</div><!-- /.form-container -->
-											</div><!-- /.review-form -->
+  <form role="form" class="cnt-form" method="post" action="{{ route('review.store') }}">
+  	@csrf
 
-										</div><!-- /.product-add-review -->										
-										
-							        </div><!-- /.product-tab -->
+  	<input type="hidden" name="product_id" value="{{ $product->id }}">
+
+
+<table class="table">	
+	<thead>
+		<tr>
+			<th class="cell-label">&nbsp;</th>
+			<th>1 star</th>
+			<th>2 stars</th>
+			<th>3 stars</th>
+			<th>4 stars</th>
+			<th>5 stars</th>
+		</tr>
+	</thead>	
+	<tbody>
+		<tr>
+			<td class="cell-label">Quality</td>
+			<td><input type="radio" name="quality" class="radio" value="1"></td>
+			<td><input type="radio" name="quality" class="radio" value="2"></td>
+			<td><input type="radio" name="quality" class="radio" value="3"></td>
+			<td><input type="radio" name="quality" class="radio" value="4"></td>
+			<td><input type="radio" name="quality" class="radio" value="5"></td>
+		</tr>
+		 
+	</tbody>
+</table>
+ 
+
+
+	
+	<div class="row">
+		<div class="col-sm-6">
+			 
+			<div class="form-group">
+				<label for="exampleInputSummary">Summary <span class="astk">*</span></label>
+	 <input type="text" name="summary" class="form-control txt" id="exampleInputSummary" placeholder="">
+			</div><!-- /.form-group -->
+		</div>
+
+		<div class="col-md-6">
+			<div class="form-group">
+				<label for="exampleInputReview">Review <span class="astk">*</span></label>
+ <textarea class="form-control txt txt-review" name="comment" id="exampleInputReview" rows="4" placeholder=""></textarea>
+			</div><!-- /.form-group -->
+		</div>
+	</div><!-- /.row -->
+	
+	<div class="action text-right">
+		<button type="submit" class="btn btn-primary btn-upper">SUBMIT REVIEW</button>
+	</div><!-- /.action -->
+
+</form><!-- /.cnt-form -->
+			</div><!-- /.form-container -->
+
+   @endguest
+
+
+		</div><!-- /.review-form -->
+
+	</div><!-- /.product-add-review -->										
+	
+</div><!-- /.product-tab -->
+</div><!-- /.tab-pane -->
+
+<div id="tags" class="tab-pane">
+<div class="product-tag">
+	
+	<h4 class="title">Product Tags</h4>
+	<form role="form" class="form-inline form-cnt">
+		<div class="form-container">
+
+			<div class="form-group">
+				<label for="exampleInputTag">Add Your Tags: </label>
+				<input type="email" id="exampleInputTag" class="form-control txt">
+				
+
+			</div>
+
+			<button class="btn btn-upper btn-primary" type="submit">ADD TAGS</button>
+		</div><!-- /.form-container -->
+	</form><!-- /.form-cnt -->
+
+	<form role="form" class="form-inline form-cnt">
+		<div class="form-group">
+			<label>&nbsp;</label>
+			<span class="text col-md-offset-3">Use spaces to separate tags. Use single quotes (') for phrases.</span>
+		</div>
+	</form><!-- /.form-cnt -->
+
+									</div><!-- /.product-tab -->
 								</div><!-- /.tab-pane -->
-
-								
 
 							</div><!-- /.tab-content -->
 						</div><!-- /.col -->
@@ -364,7 +573,7 @@
 
 				<!-- ===== ======= UPSELL PRODUCTS ==== ========== -->
 <section class="section featured-product wow fadeInUp">
-	<h3 class="section-title">Sản phẩm liên quan</h3>
+	<h3 class="section-title">Releted products</h3>
 	<div class="owl-carousel home-owl-carousel upsell-product custom-carousel owl-theme outer-top-xs">
 
 
@@ -460,13 +669,10 @@
 
 
 
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5e4b85f98de5201f"></script>
 
-
-
-
-
-
-
+ 
 
 
 @endsection

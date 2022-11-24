@@ -34,6 +34,8 @@ use App\Http\Controllers\User\ReviewController;
 use App\Http\Controllers\User\AllUserController;
 
 use App\Http\Controllers\Frontend\ShopController;
+use Illuminate\Support\Facades\Auth;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -83,6 +85,7 @@ Route::middleware(['auth:sanctum,web', 'verified'])->get('/dashboard', function 
 })->name('dashboard');
 
 Route::get('/', [IndexController::class, 'index']);
+
 Route::get('/user/logout', [IndexController::class, 'UserLogout'])->name('user.logout');
 
 Route::get('/user/profile', [IndexController::class, 'UserProfile'])->name('user.profile');
@@ -212,9 +215,10 @@ Route::get('/language/english', [LanguageController::class, 'English'])->name('e
 Route::get('/product/details/{id}/{slug}', [IndexController::class, 'ProductDetails']);
 
 
-// Frontend Product Tags Page 
-Route::get('/product/tag/{tag}', [IndexController::class, 'TagWiseProduct']);
 
+// Frontend Product Tags Page 
+Route::get('/product/tagen/{tag}', [IndexController::class, 'TagWiseProducten']);
+Route::get('/product/tagvn/{tag}', [IndexController::class, 'TagWiseProductvn']);
 // Frontend SubCategory wise Data
 Route::get('/subcategory/product/{subcat_id}/{slug}', [IndexController::class, 'SubCatWiseProduct']);
 

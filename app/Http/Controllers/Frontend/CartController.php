@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use Gloudemans\Shoppingcart\Facades\Cart;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Wishlist;
 use Carbon\Carbon;
 

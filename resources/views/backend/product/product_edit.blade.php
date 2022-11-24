@@ -13,7 +13,7 @@
 		 <!-- Basic Forms -->
 		  <div class="box">
 			<div class="box-header with-border">
-			  <h4 class="box-title">Chỉnh sữa sản phẩm</h4>
+			  <h4 class="box-title">Chỉnh sửa sản phẩm </h4>
 			   
 			</div>
 			<!-- /.box-header -->
@@ -32,10 +32,10 @@
 			<div class="col-md-4">
 
 	 <div class="form-group">
-	<h5>Lựa chọn thương hiệu<span class="text-danger">*</span></h5>
+	<h5>Thương hiệu <span class="text-danger">*</span></h5>
 	<div class="controls">
 		<select name="brand_id" class="form-control" required="" >
-			<option value="" selected="" disabled="">Chọn</option>
+			<option value="" selected="" disabled="">Select Brand</option>
 			@foreach($brands as $brand)
  <option value="{{ $brand->id }}" {{ $brand->id == $products->brand_id ? 'selected': '' }} >{{ $brand->brand_name_en }}</option>	
 			@endforeach
@@ -51,7 +51,7 @@
 			<div class="col-md-4">
 
 				 <div class="form-group">
-	<h5>Chọn danh mục 1 <span class="text-danger">*</span></h5>
+	<h5>Danh mục chính <span class="text-danger">*</span></h5>
 	<div class="controls">
 		<select name="category_id" class="form-control" required="" >
 			<option value="" selected="" disabled="">Chọn</option>
@@ -71,13 +71,13 @@
 			<div class="col-md-4">
 
 				 <div class="form-group">
-	<h5>Chọn danh mục 2<span class="text-danger">*</span></h5>
+	<h5>Danh mục phụ <span class="text-danger">*</span></h5>
 	<div class="controls">
 		<select name="subcategory_id" class="form-control" required="" >
-			<option value="" selected="" disabled="">Chọn </option>
+			<option value="" selected="" disabled="">Chọn</option>
 			
 			 @foreach($subcategory as $sub)
-			 <option value="{{ $sub->id }}" {{ $sub->id == $products->subcategory_id ? 'selected': '' }} >{{ $sub->subcategory_name_en }}</option>	
+ <option value="{{ $sub->id }}" {{ $sub->id == $products->subcategory_id ? 'selected': '' }} >{{ $sub->subcategory_name_en }}</option>	
 			@endforeach
 
 		</select>
@@ -97,10 +97,10 @@
 			<div class="col-md-4">
 
 	 <div class="form-group">
-	<h5>Chọn danh mục 3 <span class="text-danger">*</span></h5>
+	<h5>Danh mục con <span class="text-danger">*</span></h5>
 	<div class="controls">
 		<select name="subsubcategory_id" class="form-control" required="" >
-			<option value="" selected="" disabled="">Chọn </option>
+			<option value="" selected="" disabled="">Chọn</option>
 		 
 		 @foreach($subsubcategory as $subsub)
  <option value="{{ $subsub->id }}" {{ $subsub->id == $products->subsubcategory_id ? 'selected': '' }} >{{ $subsub->subsubcategory_name_en }}</option>	
@@ -166,7 +166,7 @@
 			<div class="col-md-4">
 
 				 <div class="form-group">
-			<h5>Số lượng sản phẩm <span class="text-danger">*</span></h5>
+			<h5>Số lượng <span class="text-danger">*</span></h5>
 			<div class="controls">
 	 <input type="text" name="product_qty" class="form-control" required="" value="{{ $products->product_qty }}">
      @error('product_qty') 
@@ -181,7 +181,7 @@
 			<div class="col-md-4">
 
 				 <div class="form-group">
-			<h5>Thẻ sản phẩm En <span class="text-danger">*</span></h5>
+			<h5> Tags En <span class="text-danger">*</span></h5>
 			<div class="controls">
 	 <input type="text" name="product_tags_en" class="form-control" value="{{ $products->product_tags_en }}" data-role="tagsinput" required="">
      @error('product_tags_en') 
@@ -203,7 +203,7 @@
 			<div class="col-md-4">
 
 	    <div class="form-group">
-			<h5>Thẻ sản phẩm Vn <span class="text-danger">*</span></h5>
+			<h5> Tags Vn <span class="text-danger">*</span></h5>
 			<div class="controls">
 	 <input type="text" name="product_tags_hin" class="form-control" value="{{ $products->product_tags_hin }}" data-role="tagsinput" required="">
      @error('product_tags_hin') 
@@ -217,9 +217,9 @@
 			<div class="col-md-4">
 
 				 <div class="form-group">
-			<h5>Kích thước sản phẩm En <span class="text-danger">*</span></h5>
+			<h5>Kích thước En <span class="text-danger">*</span></h5>
 			<div class="controls">
-				<input type="text" name="product_size_en" class="form-control" value="{{ $products->product_size_en }}" data-role="tagsinput" >
+	 <input type="text" name="product_size_en" class="form-control" value="{{ $products->product_size_en }}" data-role="tagsinput" >
      @error('product_size_en') 
 	 <span class="text-danger">{{ $message }}</span>
 	 @enderror
@@ -232,9 +232,9 @@
 			<div class="col-md-4">
 
 				 <div class="form-group">
-			<h5>Kích thước sản phẩm Vn <span class="text-danger">*</span></h5>
+			<h5>Kích thước Vn <span class="text-danger">*</span></h5>
 			<div class="controls">
-				<input type="text" name="product_size_hin" class="form-control" value="{{ $products->product_size_hin }}" data-role="tagsinput"  >
+	 <input type="text" name="product_size_hin" class="form-control" value="{{ $products->product_size_hin }}" data-role="tagsinput"  >
      @error('product_size_hin') 
 	 <span class="text-danger">{{ $message }}</span>
 	 @enderror
@@ -290,7 +290,7 @@
 	<div class="col-md-6">
 
 	   	<div class="form-group">
-			<h5>Giá gốc<span class="text-danger">*</span></h5>
+			<h5>Giá bán sản phẩm <span class="text-danger">*</span></h5>
 			<div class="controls">
   <input type="text" name="selling_price" class="form-control" required="" value="{{ $products->selling_price }}">
      @error('selling_price') 
@@ -306,9 +306,9 @@
 			<div class="col-md-6">
 
 	    <div class="form-group">
-			<h5>Giá chiết khấu<span class="text-danger">*</span></h5>
+			<h5>Giá chiết khấu sản phẩm <span class="text-danger">*</span></h5>
 			<div class="controls">
-				<input type="text" name="discount_price" class="form-control" value="{{ $products->discount_price }}">
+	 <input type="text" name="discount_price" class="form-control" value="{{ $products->discount_price }}">
      @error('discount_price') 
 	 <span class="text-danger">{{ $message }}</span>
 	 @enderror
@@ -327,7 +327,7 @@
 			<div class="col-md-6">
 
 	    <div class="form-group">
-			<h5>Mô tả English <span class="text-danger">*</span></h5>
+			<h5>Mô tả ngắn  English <span class="text-danger">*</span></h5>
 			<div class="controls">
 	<textarea name="short_descp_en" id="textarea" class="form-control" required placeholder="Textarea text">
 		{!! $products->short_descp_en !!}
@@ -340,7 +340,7 @@
 			<div class="col-md-6">
 
 	     <div class="form-group">
-			<h5>Mô tả Vn <span class="text-danger">*</span></h5>
+			<h5>Mô tả ngắn Vn <span class="text-danger">*</span></h5>
 			<div class="controls">
 	<textarea name="short_descp_hin" id="textarea" class="form-control" required placeholder="Textarea text">
 		{!! $products->short_descp_hin !!}
@@ -430,7 +430,7 @@
 						</div>
 						 
 						<div class="text-xs-right">
-<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Cập nhật sản phẩm ">
+<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update Product">
 						</div>
 					</form>
 
@@ -455,7 +455,7 @@
 <div class="col-md-12">
 				<div class="box bt-3 border-info">
 				  <div class="box-header">
-		 <h4 class="box-title">Các hình ảnh sản phẩm <strong>Cập nhật</strong></h4>
+		 <h4 class="box-title">Hình ảnh sản phẩm <strong>Cập nhật</strong></h4>
 				  </div>
 
 			
@@ -469,11 +469,11 @@
   <img src="{{ asset($img->photo_name) }}" class="card-img-top" style="height: 130px; width: 280px;">
   <div class="card-body">
     <h5 class="card-title">
-		<a href="{{ route('product.multiimg.delete',$img->id) }}" class="btn btn-sm btn-danger" id="delete" title="Delete Data"><i class="fa fa-trash"></i> </a>
+<a href="{{ route('product.multiimg.delete',$img->id) }}" class="btn btn-sm btn-danger" id="delete" title="Delete Data"><i class="fa fa-trash"></i> </a>
      </h5>
     <p class="card-text"> 
     	<div class="form-group">
-    		<label class="form-control-label">Chọn hình ảnh <span class="tx-danger">*</span></label>
+    		<label class="form-control-label">Chọn <span class="tx-danger">*</span></label>
     		<input class="form-control" type="file" name="multi_img[{{ $img->id }}]">
     	</div> 
     </p>
@@ -487,7 +487,7 @@
 			</div>			
 
 			<div class="text-xs-right">
-<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Cập nhật hình ảnh">
+<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Cập nhật">
 		 </div>
 <br><br>
 
@@ -511,7 +511,70 @@
 
 
 
+	<!-- ///////////////// Start Thambnail Image Update Area ///////// -->
 
+ <section class="content">
+ 	<div class="row">
+
+<div class="col-md-12">
+				<div class="box bt-3 border-info">
+				  <div class="box-header">
+		 <h4 class="box-title">Hình ảnh chính sản phẩm <strong>Cập nhật</strong></h4>
+				  </div>
+
+			
+		<form method="post" action="{{ route('update-product-thambnail') }}" enctype="multipart/form-data">
+        @csrf
+
+     <input type="hidden" name="id" value="{{ $products->id }}">
+    <input type="hidden" name="old_img" value="{{ $products->product_thambnail }}">
+
+			<div class="row row-sm">
+				 
+				<div class="col-md-3">
+
+<div class="card">
+  <img src="{{ asset($products->product_thambnail) }}" class="card-img-top" style="height: 130px; width: 280px;">
+  <div class="card-body">
+     
+    <p class="card-text"> 
+    	<div class="form-group">
+    		<label class="form-control-label">Chọn  <span class="tx-danger">*</span></label>
+    <input type="file" name="product_thambnail" class="form-control" onChange="mainThamUrl(this)"  >
+     <img src="" id="mainThmb">
+    	</div> 
+    </p>
+   
+  </div>
+</div> 		
+				
+				</div><!--  end col md 3		 -->	
+				 
+
+			</div>			
+
+			<div class="text-xs-right">
+<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Cập nhật">
+		 </div>
+<br><br>
+
+
+
+		</form>		   
+
+
+
+
+
+				</div>
+			  </div>
+ 
+
+ 		
+ 	</div> <!-- // end row  -->
+ 	
+ </section>
+<!-- ///////////////// End Start Thambnail Image Update Area ///////// -->
 
 
 
@@ -523,17 +586,7 @@
 
 	  </div>
 
-
-
-
-
-
-
-
-
-
-
-
+ 
 
 
  

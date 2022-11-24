@@ -6,7 +6,7 @@ Trang giỏ hàng của tôi
 @endsection
 
 
-<div class="breadcrumb">
+{{-- <div class="breadcrumb">
 	<div class="container">
 		<div class="breadcrumb-inner">
 			<ul class="list-inline list-unstyled">
@@ -15,7 +15,7 @@ Trang giỏ hàng của tôi
 			</ul>
 		</div><!-- /.breadcrumb-inner -->
 	</div><!-- /.container -->
-</div><!-- /.breadcrumb --> 
+</div><!-- /.breadcrumb -->  --}}
 
 <div class="body-content">
 	<div class="container">
