@@ -9,7 +9,7 @@
 
 <style type="text/css">
     * {
-        font-family: Verdana, Arial, sans-serif;
+      font-family: DejaVu Serif, sans-serif;
     }
     table{
         font-size: x-small;
@@ -22,7 +22,7 @@
         background-color: lightgray
     }
     .font{
-      font-size: 15px;
+      font-size: 10px;
     }
     .authority {
         /*text-align: center;*/
@@ -38,7 +38,7 @@
         color: green;;
         font-size: 16px;
         font-weight: normal;
-        font-family: serif;
+        /* font-family: serif; */
         margin-top: 20px;
     }
 </style>
@@ -49,7 +49,7 @@
     <tr>
         <td valign="top">
           <!-- {{-- <img src="" alt="" width="150"/> --}} -->
-          <h2 style="color: green; font-size: 26px;"><strong>Shop</strong></h2>
+          <h2 style="color: green; font-size: 26px;"><strong>Biên lai mua hàng</strong></h2>
         </td>
         <td align="right">
             <pre class="font" >
@@ -71,9 +71,9 @@
     <tr>
         <td>
           <p class="font" style="margin-left: 20px;">
-           <strong>Name:</strong> {{ $order->name }}<br>
+           <strong>Tên khách hàng:</strong> {{ $order->name }}<br>
            <strong>Email:</strong> {{ $order->email }} <br>
-           <strong>Phone:</strong> {{ $order->phone }} <br>
+           <strong>Điện thoại:</strong> {{ $order->phone }} <br>
 
            @php
             $div = $order->division->division_name;
@@ -82,35 +82,35 @@
             $dc = $order->notes;
            @endphp
             
-           <strong>Address :</strong> {{ $state }} {{ $dc }},{{ $dis }},{{$div}} <br>
-           <strong>Post Code:</strong> {{ $order->post_code }}
+           <strong>Địa chỉ :</strong> {{ $state }} {{ $dc }},{{ $dis }},{{$div}} <br>
+           <strong>Mã bưu chính:</strong> {{ $order->post_code }}
          </p>
         </td>
         <td>
           <p class="font">
-            <h3><span style="color: green;">Invoice:</span> #{{ $order->invoice_no}}</h3>
-            Order date: {{ $order->order_date }} <br>
-             Delivery Date: {{ $order->delivered_date }} <br>
-            Payment Type : {{ $order->payment_method }} </span>
+            <h3><span style="color: green;">Invoice:</span> {{ $order->invoice_no}}</h3>
+           Ngày đặt: {{ $order->order_date }} <br>
+           Ngày nhận: {{ $order->delivered_date }} <br>
+           Thanh toán: {{ $order->payment_method }} </span>
          </p>
         </td>
     </tr>
   </table>
   <br/>
-<h3>Product information</h3>
+<h3>Thông tin sản phẩm</h3>
 
 
   <table width="100%">
     <thead style="background-color: green; color:#FFFFFF;">
       <tr class="font">
-        <th>Image</th>
-        <th>Name</th>
-        <th>Size</th>
-        <th>Color</th>
-        <th>Code</th>
-        <th>Amount</th>
-        <th>Unit price</th>
-        <th>Total</th>
+        <th>Hình ảnh</th>
+        <th>Tên sản phẩm</th>
+        <th>Kích thước</th>
+        <th>Màu sắc</th>
+        <th>Mã code</th>
+        <th>Số lượng</th>
+        <th>Đơn giá</th>
+        <th>Tổng </th>
       </tr>
     </thead>
     <tbody>
@@ -133,8 +133,8 @@
         <td align="center">{{ $item->color }}</td>
         <td align="center">{{ $item->product->product_code }}</td>
         <td align="center">{{ $item->qty }}</td>
-        <td align="center">{{ $item->price }} VND</td>
-        <td align="center">{{ $item->price * $item->qty }} VND</td>
+        <td align="center">{{ number_format($item->price) }} Vnd</td>
+        <td align="center">{{ number_format($item->price * $item->qty) }} Vnd</td>
       </tr>
       @endforeach
       
@@ -144,17 +144,17 @@
   <table width="100%" style=" padding:0 10px 0 10px;">
     <tr>
         <td align="right" >
-            <h2><span style="color: green;">Total:</span>{{ $order->amount }}VND</h2>
+            <h2><span style="color: green;">Total:</span>{{ number_format($order->amount )}}Vnd</h2>
             {{-- <h2><span style="color: green;">Full Payment PAID</h2> --}}
         </td>
     </tr>
   </table>
   <div class="thanks mt-3">
-    <p>Thank you for purchasing from our store</p>
+    <p>Cám ơn bạn vì đã mua sản phẩm từ cửa hàng chúng tôi.</p>
   </div>
   <div class="authority float-right mt-5">
-      <p>-----------------------------------</p>
-      <h5>Signature</h5>
+      <p>---------------------------</p>
+      <h5>Kí tên</h5>
     </div>
 </body>
 </html>

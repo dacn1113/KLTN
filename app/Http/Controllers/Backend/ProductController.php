@@ -28,16 +28,19 @@ class ProductController extends Controller
     public function StoreProduct(Request $request)
     {
 
-        $request->validate([
-            'file' => 'required|mimes:jpeg,png,jpg,zip,pdf|max:2048',
-        ]);
+        // $request->validate([
+        //     'file' => 'required|mimes:jpeg,png,jpg,zip,pdf|max:2048',
+        // ]);
 
-        if ($files = $request->file('file')) {
-            $destinationPath = 'upload/pdf'; // upload path
-            $digitalItem = date('YmdHis') . "." . $files->getClientOriginalExtension();
-            $files->move($destinationPath, $digitalItem);
-        }
+        // if ($files = $request->file('file')) {
+        //     $destinationPath = 'upload/pdf'; // upload path
+        //     $digitalItem = date('YmdHis') . "." . $files->getClientOriginalExtension();
+        //     $files->move($destinationPath, $digitalItem);
+        // }
 
+        $price_dl = $request->selling_price;
+        $dolar = 24000;
+        $price_dl = $price_dl / $dolar;
 
 
         $image = $request->file('product_thambnail');
@@ -66,6 +69,7 @@ class ProductController extends Controller
 
             'selling_price' => $request->selling_price,
             'discount_price' => $request->discount_price,
+            'selling_price_dl' => $request->price_dl,
             'short_descp_en' => $request->short_descp_en,
             'short_descp_hin' => $request->short_descp_hin,
             'long_descp_en' => $request->long_descp_en,
@@ -78,7 +82,7 @@ class ProductController extends Controller
 
             'product_thambnail' => $save_url,
 
-            'digital_file' => $digitalItem,
+            // 'digital_file' => $digitalItem,
             'status' => 1,
             'created_at' => Carbon::now(),
 
@@ -163,6 +167,7 @@ class ProductController extends Controller
 
             'selling_price' => $request->selling_price,
             'discount_price' => $request->discount_price,
+            'selling_price_dl' => $request->selling_price / 24770,
             'short_descp_en' => $request->short_descp_en,
             'short_descp_hin' => $request->short_descp_hin,
             'long_descp_en' => $request->long_descp_en,

@@ -272,7 +272,7 @@
 			<div class="col-md-4">
 
 				<div class="form-group">
-			<h5>Giá bán sản phẩm <span class="text-danger">*</span></h5>
+			<h5>Giá bán sản phẩm (Vnd)<span class="text-danger">*</span></h5>
 			<div class="controls">
 				<input type="text" name="selling_price" class="form-control" required="">
      @error('selling_price') 
@@ -292,7 +292,7 @@
 			<div class="col-md-4">
 
 	    <div class="form-group">
-			<h5>Giá chiết khấu sản phẩm <span class="text-danger">*</span></h5>
+			<h5>Giá chiết khấu sản phẩm (Vnd)<span class="text-danger">*</span></h5>
 			<div class="controls">
 	 <input type="text" name="discount_price" class="form-control"  required="">
      @error('discount_price') 
@@ -302,6 +302,8 @@
 		</div>
 				
 			</div> <!-- end col md 4 -->
+
+	
 
 			<div class="col-md-4">
 

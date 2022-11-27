@@ -3,7 +3,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 @section('title')
-Thanh toán của tôi
+@if(session('language') == 'hindi')
+Thanh toán sản phẩm
+@else
+Product payment
+@endif
 @endsection
 
 
@@ -42,25 +46,30 @@ Thanh toán của tôi
 
 				<!-- guest-login -->			
 			 <div class="col-md-6 col-sm-6 already-registered-login">
-		 <h4 class="checkout-subtitle"><b>Thông tin giao hàng</b></h4>
-					 
+				@if(session('language') == 'hindi')
+		 <h4 class="checkout-subtitle"><b>Xác nhận thông tin khách hàng</b></h4>
+			@else
+			<h4 class="checkout-subtitle"><b>Confirm customer information</b></h4>
+			@endif
+			
 	<form class="register-form" action="{{ route('checkout.store') }}" method="POST">
 		@csrf
 
+		@if(session('language') == 'hindi')
 
 		<div class="form-group">
-	    <label class="info-title" for="exampleInputEmail1"><b>Tên người nhận</b>  <span>*</span></label>
+	    <label class="info-title" for="exampleInputEmail1"><b>Tên khách hàng</b>  <span>*</span></label>
 	    <input type="text" name="shipping_name" class="form-control unicase-form-control text-input" id="exampleInputEmail1" placeholder="Full Name" value="{{ Auth::user()->name }}" required="">
 	  </div>  <!-- // end form group  -->
 	 
 
-<div class="form-group">
+	  <div class="form-group">
 	    <label class="info-title" for="exampleInputEmail1"><b>Email </b> <span>*</span></label>
 	    <input type="email" name="shipping_email" class="form-control unicase-form-control text-input" id="exampleInputEmail1" placeholder="Email" value="{{ Auth::user()->email }}" required="">
 	  </div>  <!-- // end form group  -->
 
 
-<div class="form-group">
+	  <div class="form-group">
 	    <label class="info-title" for="exampleInputEmail1"><b>Số điện thoại</b>  <span>*</span></label>
 	    <input type="number" name="shipping_phone" class="form-control unicase-form-control text-input" id="exampleInputEmail1" placeholder="Phone" value="{{ Auth::user()->phone }}" required="">
 	  </div>  <!-- // end form group  -->
@@ -70,7 +79,31 @@ Thanh toán của tôi
 	    <label class="info-title" for="exampleInputEmail1"><b>Mã bưu chính </b> <span>*</span></label>
 	    <input type="text" name="post_code" class="form-control unicase-form-control text-input" id="exampleInputEmail1" placeholder="Post Code" required="">
 	  </div>  <!-- // end form group  -->
+@else
 
+<div class="form-group">
+	<label class="info-title" for="exampleInputEmail1"><b>Customer name</b>  <span>*</span></label>
+	<input type="text" name="shipping_name" class="form-control unicase-form-control text-input" id="exampleInputEmail1" placeholder="Full Name" value="{{ Auth::user()->name }}" required="">
+  </div>  <!-- // end form group  -->
+ 
+
+<div class="form-group">
+	<label class="info-title" for="exampleInputEmail1"><b>Email </b> <span>*</span></label>
+	<input type="email" name="shipping_email" class="form-control unicase-form-control text-input" id="exampleInputEmail1" placeholder="Email" value="{{ Auth::user()->email }}" required="">
+  </div>  <!-- // end form group  -->
+
+
+<div class="form-group">
+	<label class="info-title" for="exampleInputEmail1"><b>Phone</b>  <span>*</span></label>
+	<input type="number" name="shipping_phone" class="form-control unicase-form-control text-input" id="exampleInputEmail1" placeholder="Phone" value="{{ Auth::user()->phone }}" required="">
+  </div>  <!-- // end form group  -->
+
+
+  <div class="form-group">
+	<label class="info-title" for="exampleInputEmail1"><b>Post code</b> <span>*</span></label>
+	<input type="text" name="post_code" class="form-control unicase-form-control text-input" id="exampleInputEmail1" placeholder="Post Code" required="">
+  </div>  <!-- // end form group  -->
+@endif
 	 
 	 
 				</div>	
@@ -85,12 +118,14 @@ Thanh toán của tôi
 					 
 
 <div class="form-group">
-	<h5><b>Chọn khu vực </b> <span class="text-danger">*</span></h5>
+	@if(session('language') == 'hindi')
+	<h5><b>Chọn khu vực vận chuyển </b> <span class="text-danger">*</span></h5>
 	<div class="controls">
 		<select name="division_id" class="form-control" required="" >
-			<option value="" selected="" disabled="">Chọn khu vực</option>
+			<option value="" selected="" disabled="">Chọn một tỉnh hoặc thành phố</option>
 			@foreach($divisions as $item)
- <option value="{{ $item->id }}">{{ $item->division_name }}</option>	
+ 
+			<option value="{{ $item->id }}">{{ $item->division_name }}</option>	
 			@endforeach
 		</select>
 		@error('division_id') 
@@ -101,10 +136,10 @@ Thanh toán của tôi
 
 
 		 <div class="form-group">
-	<h5><b>Chọn quận/huyện</b>  <span class="text-danger">*</span></h5>
+	<h5><b>Quận hoặc huyện</b>  <span class="text-danger">*</span></h5>
 	<div class="controls">
 		<select name="district_id" class="form-control" required="" >
-			<option value="" selected="" disabled="">Chọn quận/huyện</option>
+			<option value="" selected="" disabled="">Chọn quận hoặc huyện</option>
 			 
 		</select>
 		@error('district_id') 
@@ -115,10 +150,10 @@ Thanh toán của tôi
 
 
 		 <div class="form-group">
-	<h5><b>Chọn địa chỉ</b> <span class="text-danger">*</span></h5>
+	<h5><b>Phường hoặc thị trấn</b> <span class="text-danger">*</span></h5>
 	<div class="controls">
 		<select name="state_id" class="form-control" required="" >
-			<option value="" selected="" disabled="">Chọn</option>
+			<option value="" selected="" disabled="">Chọn phường hoặc thị trấn</option>
 			 
 		</select>
 		@error('state_id') 
@@ -129,8 +164,8 @@ Thanh toán của tôi
 				 
 					 
     <div class="form-group">
-	 <label class="info-title" for="exampleInputEmail1">Địa chỉ chi tiết <span>*</span></label>
-	     <textarea class="form-control" cols="30" rows="5" placeholder="Notes" name="notes"></textarea>
+	 <label class="info-title" for="exampleInputEmail1">Địa chỉ nhà hoặc cơ quan <span>*</span></label>
+	     <textarea class="form-control" cols="30" rows="5" placeholder="Địa chỉ" name="notes"></textarea>
 	  </div>  <!-- // end form group  -->
 
 
@@ -148,6 +183,72 @@ Thanh toán của tôi
 		<!-- panel-body  -->
 
 	</div><!-- row -->
+	@else
+	<h5><b>Select shipping area</b> <span class="text-danger">*</span></h5>
+	<div class="controls">
+		<select name="division_id" class="form-control" required="" >
+			<option value="" selected="" disabled="">Select a province or city</option>
+			@foreach($divisions as $item)
+ 
+			<option value="{{ $item->id }}">{{ $item->division_name }}</option>	
+			@endforeach
+		</select>
+		@error('division_id') 
+	 <span class="text-danger">{{ $message }}</span>
+	 @enderror 
+	 </div>
+		 </div> <!-- // end form group -->
+
+
+		 <div class="form-group">
+	<h5><b>County or district</b>  <span class="text-danger">*</span></h5>
+	<div class="controls">
+		<select name="district_id" class="form-control" required="" >
+			<option value="" selected="" disabled="">Select a county or district</option>
+			 
+		</select>
+		@error('district_id') 
+	 <span class="text-danger">{{ $message }}</span>
+	 @enderror 
+	 </div>
+		 </div> <!-- // end form group -->
+
+
+		 <div class="form-group">
+	<h5><b>Ward or town</b> <span class="text-danger">*</span></h5>
+	<div class="controls">
+		<select name="state_id" class="form-control" required="" >
+			<option value="" selected="" disabled="">Select ward or town</option>
+			 
+		</select>
+		@error('state_id') 
+	 <span class="text-danger">{{ $message }}</span>
+	 @enderror 
+	 </div>
+		 </div> <!-- // end form group -->
+				 
+					 
+    <div class="form-group">
+	 <label class="info-title" for="exampleInputEmail1">Home or work address <span>*</span></label>
+	     <textarea class="form-control" cols="30" rows="5" placeholder="Address" name="Notes"></textarea>
+	  </div>  <!-- // end form group  -->
+
+
+
+					
+
+
+
+					
+				</div>	
+				<!-- already-registered-login -->		
+
+			</div>			
+		</div>
+		<!-- panel-body  -->
+
+	</div><!-- row -->
+	@endif
 </div>
 <!-- End checkout-step-01  -->
 
@@ -162,6 +263,7 @@ Thanh toán của tôi
 
 				<div class="col-md-4">
 					<!-- checkout-progress-sidebar -->
+@if(session('language') == 'hindi')
 <div class="checkout-progress-sidebar ">
 	<div class="panel-group">
 		<div class="panel panel-default">
@@ -188,32 +290,22 @@ Thanh toán của tôi
 						 {{ $item->options->size }}
 					</li>
                     @endforeach 
-<hr>
+     
+					<hr>
 		 <li>
 		 	@if(Session::has('coupon'))
-
-<strong>Giá gốc: </strong> {{ $cartTotal }}đ <hr>
-
-<strong>Tên mã giảm giá: </strong> {{ session()->get('coupon')['coupon_name'] }}
-( {{ session()->get('coupon')['coupon_discount'] }} % )
- <hr>
-
- <strong>Số tiền được giảm : </strong> ${{ session()->get('coupon')['discount_amount'] }} 
- <hr>
-
-  <strong>Tổng thanh toán : </strong> ${{ session()->get('coupon')['total_amount'] }} 
- <hr>
-
-
+			<strong>Giá gốc: </strong> {{ number_format($cartTotal) }}đ <hr>
+			<strong>Tên mã giảm giá: </strong> {{ session()->get('coupon')['coupon_name'] }}
+			( {{ session()->get('coupon')['coupon_discount'] }} % )
+			<hr>
+			<strong>Số tiền giảm : </strong> {{ number_format(session()->get('coupon')['discount_amount']) }} đ
+			<hr>
+			<strong>Tổng thanh toán : </strong> {{ number_format(session()->get('coupon')['total_amount']) }} đ 
+			<hr>
 		 	@else
-
-<strong>Giá gốc: </strong> {{ $cartTotal }} đ <hr>
-
-<strong>Tổng thanh toán : </strong> {{ $cartTotal }} đ<hr>
-
-
+			<strong>Giá gốc: </strong> {{ number_format($cartTotal) }} đ <hr>
+			<strong>Tổng thanh toán : </strong> {{ number_format( $cartTotal) }} đ<hr>
 		 	@endif 
-
 		 </li>
 					 
 					
@@ -222,6 +314,59 @@ Thanh toán của tôi
 			</div>
 		</div>
 	</div>
+	@else
+	<div class="checkout-progress-sidebar ">
+		<div class="panel-group">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4 class="unicase-checkout-title">Your payment information</h4>
+				</div>
+				<div class="">
+					<ul class="nav nav-checkout-progress list-unstyled">
+	
+						@foreach($carts as $item)
+						<li> 
+							<strong>Image product: </strong>
+							<img src="{{ asset($item->options->image) }}" style="height: 50px; width: 50px;">
+						</li>
+	
+						<li> 
+							<strong>Amount: </strong>
+							  {{ $item->qty }} 
+	
+							 <strong>Color: </strong>
+							 {{ $item->options->color }}
+	
+							 <strong>Size: </strong>
+							 {{ $item->options->size }}
+						</li>
+						@endforeach 
+		 
+						<hr>
+			 <li>
+				 @if(Session::has('coupon'))
+				<strong>Product price: </strong> {{ number_format($cartTotal) }}đ <hr>
+				<strong>Discount code: </strong> {{ session()->get('coupon')['coupon_name'] }}
+				( {{ session()->get('coupon')['coupon_discount'] }} % )
+				<hr>
+				<strong>Amount to be reduced : </strong> {{ number_format(session()->get('coupon')['discount_amount']) }} đ
+				<hr>
+				<strong>Payment amount : </strong> {{ number_format(session()->get('coupon')['total_amount']) }} đ 
+				<hr>
+				 @else
+				<strong>Principal payment amount: </strong> {{ number_format($cartTotal) }} đ <hr>
+				<strong>Payment amount : </strong> {{ number_format( $cartTotal) }} đ<hr>
+				 @endif 
+			 </li>
+						 
+						
+	
+					</ul>		
+				</div>
+			</div>
+		</div>
+
+	@endif
 </div> 
 <!-- checkout-progress-sidebar --> </div>
 
@@ -237,7 +382,11 @@ Thanh toán của tôi
 	<div class="panel-group">
 		<div class="panel panel-default">
 			<div class="panel-heading">
+				@if(session('language') == 'hindi')
 		    	<h4 class="unicase-checkout-title">Chọn phương thức thanh toán</h4>
+				@else
+		    	<h4 class="unicase-checkout-title">Select a payment method</h4>
+				@endif
 		    </div>
 
 
@@ -263,8 +412,11 @@ Thanh toán của tôi
 				 	
 			</div> <!-- // end row  -->
 <hr>
+@if(session('language') == 'hindi')
   <button type="submit" class="btn-upper btn btn-primary checkout-page-button">Tiếp tục thanh toán</button>
-
+@else
+<button type="submit" class="btn-upper btn btn-primary checkout-page-button">Continue to pay</button>
+@endif
 
 		</div>
 	</div>

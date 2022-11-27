@@ -3,7 +3,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 @section('title')
-Trang thanh toán Stripe 
+@if(session('language') == 'hindi')
+Thanh toán bằng Stripe 
+@else
+Pay with Stripe
+@endif
 @endsection
 
 
@@ -34,7 +38,7 @@ Trang thanh toán Stripe
 </style>
 
 
-<div class="breadcrumb">
+{{-- <div class="breadcrumb">
 	<div class="container">
 		<div class="breadcrumb-inner">
 			<ul class="list-inline list-unstyled">
@@ -44,10 +48,10 @@ Trang thanh toán Stripe
 		</div><!-- /.breadcrumb-inner -->
 	</div><!-- /.container -->
 </div><!-- /.breadcrumb --> 
+ --}}
 
 
-
-
+ @if(session('language') == 'hindi')
 <div class="body-content">
 	<div class="container">
 		<div class="checkout-box ">
@@ -73,24 +77,24 @@ Trang thanh toán Stripe
 		 <li>
 		 	@if(Session::has('coupon'))
 
-<strong>Giá gốc: </strong> ${{ $cartTotal }} <hr>
+<strong>Giá gốc: </strong> {{ $cartTotal }} đ <hr>
 
 <strong>Tên phiếu giảm giá  : </strong> {{ session()->get('coupon')['coupon_name'] }}
 ( {{ session()->get('coupon')['coupon_discount'] }} % )
  <hr>
 
- <strong>Số tiền giảm : </strong> ${{ session()->get('coupon')['discount_amount'] }} 
+ <strong>Số tiền giảm : </strong> {{ number_format(session()->get('coupon')['discount_amount']) }} đ
  <hr>
 
-  <strong>Tổng tiền thanh toán : </strong> ${{ session()->get('coupon')['total_amount'] }} 
+  <strong>Tổng tiền thanh toán : </strong> {{ number_format(session()->get('coupon')['total_amount']) }} đ
  <hr>
 
 
 		 	@else
 
-<strong>Giá gốc: </strong> ${{ $cartTotal }} <hr>
+<strong>Giá gốc: </strong> {{ $cartTotal }} đ<hr>
 
-<strong>Tổng thanh toán: </strong> ${{ $cartTotal }} <hr>
+<strong>Tổng thanh toán: </strong> {{ $cartTotal }} đ<hr>
 
 
 		 	@endif 
@@ -175,13 +179,142 @@ Trang thanh toán Stripe
 <!-- ===== == BRANDS CAROUSEL : END === === -->	
 </div><!-- /.container -->
 </div><!-- /.body-content -->
+@else
+<div class="body-content">
+	<div class="container">
+		<div class="checkout-box ">
+			<div class="row">
+				 
 
+
+
+
+				<div class="col-md-6">
+					<!-- checkout-progress-sidebar -->
+<div class="checkout-progress-sidebar ">
+	<div class="panel-group">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+		    	<h4 class="unicase-checkout-title">Your shopping information</h4>
+		    </div>
+		    <div class="">
+				<ul class="nav nav-checkout-progress list-unstyled">
+
+					 
+<hr>
+		 <li>
+		 	@if(Session::has('coupon'))
+
+<strong>Product price: </strong> {{ $cartTotal }} đ<hr>
+
+<strong>Discount code : </strong> {{ session()->get('coupon')['coupon_name'] }}
+( {{ session()->get('coupon')['coupon_discount'] }} % )
+ <hr>
+
+ <strong>Amount to be reduced : </strong> {{ number_format(session()->get('coupon')['discount_amount'] )}} đ
+ <hr>
+
+  <strong>Payment amount : </strong> {{ number_format(session()->get('coupon')['total_amount'] )}} đ
+ <hr>
+
+
+		 	@else
+
+<strong>Cost: </strong> {{ $cartTotal }} đ<hr>
+
+<strong>Total payment: </strong> {{ $cartTotal }} đ<hr>
+
+
+		 	@endif 
+
+		 </li>
+					 
+					
+
+				</ul>		
+			</div>
+		</div>
+	</div>
+</div> 
+<!-- checkout-progress-sidebar -->
+ </div> <!--  // end col md 6 -->
+
+
+
+
+
+
+
+	<div class="col-md-6">
+					<!-- checkout-progress-sidebar -->
+<div class="checkout-progress-sidebar ">
+	<div class="panel-group">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+		    	<h4 class="unicase-checkout-title">Pay with Stripe</h4>
+		    </div>
+
+<form action="{{ route('stripe.order') }}" method="post" id="payment-form">
+                            @csrf
+        <div class="form-row">
+            <label for="card-element">
+				<input type="hidden" name="name" value="{{ $data['shipping_name'] }}">
+				<input type="hidden" name="email" value="{{ $data['shipping_email'] }}">
+				<input type="hidden" name="phone" value="{{ $data['shipping_phone'] }}">
+				<input type="hidden" name="post_code" value="{{ $data['post_code'] }}">
+				<input type="hidden" name="division_id" value="{{ $data['division_id'] }}">
+				<input type="hidden" name="district_id" value="{{ $data['district_id'] }}">
+				<input type="hidden" name="state_id" value="{{ $data['state_id'] }}">
+				<input type="hidden" name="notes" value="{{ $data['notes'] }}"> 		  
+            </label>
+             
+            <div id="card-element">
+            <!-- A Stripe Element will be inserted here. -->
+            </div>
+            <!-- Used to display form errors. -->
+            <div id="card-errors" role="alert"></div>
+        </div>
+        <br>
+        <button class="btn btn-primary">Pay</button>
+        </form>
+		    
+ 
+
+		</div>
+	</div>
+</div> 
+<!-- checkout-progress-sidebar -->
+ </div><!--  // end col md 6 -->
+
+
+
+ 
+
+
+
+</form>
+			</div><!-- /.row -->
+		</div><!-- /.checkout-box -->
+		<!-- === ===== BRANDS CAROUSEL ==== ======== -->
+ 
+
+
+
+
+
+
+
+<!-- ===== == BRANDS CAROUSEL : END === === -->	
+</div><!-- /.container -->
+</div><!-- /.body-content -->
+@endif
 
 
   
 
  <script type="text/javascript">
     // Create a Stripe client.
+    
 var stripe = Stripe('pk_test_51Lmrj3BsN4LVjp5Qh4CxdBhRYaDUgrnI1iH5niRkqMj18dgTv0W7r6EbUGYD3mRGAsnhW66VAIJddye57APRLPjz00suN6Bpr7');
 // Create an instance of Elements.
 var elements = stripe.elements();

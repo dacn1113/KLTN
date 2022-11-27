@@ -6,9 +6,9 @@
       <div class="header-top-inner">
         <div class="cnt-account">
           <ul class="list-unstyled">
-            <li><a href="#"><i class="icon fa fa-user"></i>
-@if(session()->get('language') == 'hindi') Tài khoản @else My Account @endif
-            </a></li>
+            {{-- <li><a href="{{ route('checkout.test') }}"><i class="icon fa fa-user"></i>
+              Tài khoản 
+            </a></li> --}}
             <li><a href="{{ route('wishlist') }}"><i class="icon fa fa-heart"></i>
               @if(session()->get('language') == 'hindi') Yêu thích @else Wishlist @endif
             </a></li>
@@ -48,6 +48,8 @@
               </ul>
             </li> --}}
  <li class="dropdown dropdown-small"> <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown"><span class="value">
+  @if ($_SERVER['REQUEST_METHOD'] === 'POST') 
+    @else
 @if(session()->get('language') == 'hindi') Ngôn ngữ @else Language @endif
   </span><b class="caret"></b></a>
               <ul class="dropdown-menu">
@@ -55,6 +57,7 @@
         <li><a href="{{ route('english.language') }}">English</a></li>
         @else
         <li><a href="{{ route('hindi.language') }}">Tiếng Việt</a></li>
+         @endif
          @endif      
               </ul>
             </li>

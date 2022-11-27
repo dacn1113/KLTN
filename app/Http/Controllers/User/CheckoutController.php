@@ -29,6 +29,7 @@ class CheckoutController extends Controller
     {
         // dd($request->all());
         $data = array();
+
         $data['shipping_name'] = $request->shipping_name;
         $data['shipping_email'] = $request->shipping_email;
         $data['shipping_phone'] = $request->shipping_phone;

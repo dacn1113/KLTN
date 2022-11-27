@@ -2,7 +2,7 @@
 @section('content')
 
 @section('title')
-{{ $product->product_name_en }} Product Details
+@if(session()->get('language') == 'hindi') {{ $product->product_name_hin }} @else {{ $product->product_name_en }} @endif
 @endsection
 
 <style>
@@ -14,7 +14,7 @@
 
 
 <!-- ===== ======== HEADER : END ============================================== -->
-<div class="breadcrumb">
+{{-- <div class="breadcrumb">
 	<div class="container">
 		<div class="breadcrumb-inner">
 			<ul class="list-inline list-unstyled">
@@ -24,14 +24,14 @@
 			</ul>
 		</div><!-- /.breadcrumb-inner -->
 	</div><!-- /.container -->
-</div><!-- /.breadcrumb -->
+</div><!-- /.breadcrumb --> --}}
 <div class="body-content outer-top-xs">
 	<div class='container'>
 		<div class='row single-product'>
 			<div class='col-md-3 sidebar'>
 				<div class="sidebar-module-container">
 				<div class="home-banner outer-top-n">
-<img src="{{ asset('frontend/assets/images/banners/LHS-banner.jpg') }}" alt="Image">
+{{-- <img src="{{ asset('frontend/assets/images/banners/LHS-banner.jpg') }}" alt="Image"> --}}
 </div>		
   
     
@@ -41,7 +41,7 @@
 <!-- ===== ===== HOT DEALS: END ====== ====== -->					
 
 <!-- ============================================== NEWSLETTER ============================================== -->
-<div class="sidebar-widget newsletter wow fadeInUp outer-bottom-small outer-top-vs">
+{{-- <div class="sidebar-widget newsletter wow fadeInUp outer-bottom-small outer-top-vs">
 	<h3 class="section-title">Newsletters</h3>
 	<div class="sidebar-widget-body outer-top-xs">
 		<p>Sign Up for Our Newsletter!</p>
@@ -53,13 +53,13 @@
 			<button class="btn btn-primary">Subscribe</button>
 		</form>
 	</div><!-- /.sidebar-widget-body -->
-</div><!-- /.sidebar-widget -->
+</div><!-- /.sidebar-widget --> --}}
 <!-- ============================================== NEWSLETTER: END ============================================== -->
 
 <!-- ============================================== Testimonials============================================== -->
 <div class="sidebar-widget  wow fadeInUp outer-top-vs ">
 	<div id="advertisement" class="advertisement">
-        <div class="item"> 
+        {{-- <div class="item"> 
             <div class="avatar"><img src="{{ asset('frontend/assets/images/testimonials/member1.png') }} " alt="Image"></div>
 		<div class="testimonials"><em>"</em> Vtae sodales aliq uam morbi non sem lacus port mollis. Nunc condime tum metus eud molest sed consectetuer.<em>"</em></div>
 		<div class="clients_author">John Doe	<span>Abc Company</span>	</div><!-- /.container-fluid -->
@@ -75,7 +75,7 @@
             <div class="avatar"><img src="{{ asset('frontend/assets/images/testimonials/member2.png') }} " alt="Image"></div>
 		<div class="testimonials"><em>"</em> Vtae sodales aliq uam morbi non sem lacus port mollis. Nunc condime tum metus eud molest sed consectetuer.<em>"</em></div>
 		<div class="clients_author">Saraha Smith	<span>Datsun &amp; Co</span>	</div><!-- /.container-fluid -->
-        </div><!-- /.item -->
+        </div><!-- /.item --> --}}
 
     </div><!-- /.owl-carousel -->
 </div>

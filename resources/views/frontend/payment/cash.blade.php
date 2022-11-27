@@ -3,13 +3,17 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 @section('title')
+@if(session('language') == 'hindi')
+Thanh toán khi nhận 
+@else
 Cash On Delivery
+@endif
 @endsection
 
 
 
 
-<div class="breadcrumb">
+{{-- <div class="breadcrumb">
 	<div class="container">
 		<div class="breadcrumb-inner">
 			<ul class="list-inline list-unstyled">
@@ -18,7 +22,7 @@ Cash On Delivery
 			</ul>
 		</div><!-- /.breadcrumb-inner -->
 	</div><!-- /.container -->
-</div><!-- /.breadcrumb --> 
+</div><!-- /.breadcrumb -->  --}}
 
 
 
@@ -31,53 +35,71 @@ Cash On Delivery
 
 
 
-
+                
+			
 				<div class="col-md-6">
 					<!-- checkout-progress-sidebar -->
-<div class="checkout-progress-sidebar ">
-	<div class="panel-group">
-		<div class="panel panel-default">
-			<div class="panel-heading">
-		    	<h4 class="unicase-checkout-title">Số tiền mua sắm của bạn </h4>
-		    </div>
-		    <div class="">
-				<ul class="nav nav-checkout-progress list-unstyled">
+					<div class="checkout-progress-sidebar ">
+	
+					<div class="panel-group">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								@if(session('language') == 'hindi')
+								<h4 class="unicase-checkout-title">Xác nhận thanh toán </h4>
+								@else
+								<h4 class="unicase-checkout-title">Payment confirmation</h4>
+								@endif
+							</div>
+							<div class="">
+								<ul class="nav nav-checkout-progress list-unstyled">
+									<hr>
+									<li>
+										@if(session('language') == 'hindi')
+										@if(Session::has('coupon'))
 
+										<strong>Giá gốc: </strong> {{ $cartTotal }} đ<hr>
 
-<hr>
-		 <li>
-		 	@if(Session::has('coupon'))
+										<strong>Tên mã giảm giá : </strong> {{ session()->get('coupon')['coupon_name'] }}
+										( {{ session()->get('coupon')['coupon_discount'] }} % )
+										<hr>
 
-<strong>Giá gốc: </strong> ${{ $cartTotal }} <hr>
+										<strong>Số tiền giảm : </strong> {{ number_format(session()->get('coupon')['discount_amount'] )}} đ
+										<hr>
+										<strong>Tổng thanh toán : </strong> {{ number_format(session()->get('coupon')['total_amount']) }} đ
+										<hr>
+										@else
+									
+										<strong>Giá gốc: </strong> {{ $cartTotal }} đ<hr>
+										<strong>Tổng thanh toán: </strong> {{ $cartTotal }} đ<hr>
+									
+								
+						                 @endif 
+										 @else
+										 @if(Session::has('coupon'))
 
-<strong>Tên mã giảm giá : </strong> {{ session()->get('coupon')['coupon_name'] }}
-( {{ session()->get('coupon')['coupon_discount'] }} % )
- <hr>
+										<strong>Product price: </strong> {{ $cartTotal }} đ<hr>
 
- <strong>Số tiền giảm : </strong> ${{ session()->get('coupon')['discount_amount'] }} 
- <hr>
+										<strong>Discount code : </strong> {{ session()->get('coupon')['coupon_name'] }}
+										( {{ session()->get('coupon')['coupon_discount'] }} % )
+										<hr>
 
-  <strong>Tổng thanh toán : </strong> ${{ session()->get('coupon')['total_amount'] }} 
- <hr>
-
-
-		 	@else
-
-<strong>Giá gốc: </strong> ${{ $cartTotal }} <hr>
-
-<strong>Tổng thanh toán: </strong> ${{ $cartTotal }} <hr>
-
-
-		 	@endif 
-
-		 </li>
-
-
-
-				</ul>		
+										<strong>Amount to be reduced : </strong> {{ number_format(session()->get('coupon')['discount_amount']) }} đ 
+										<hr>
+										<strong>Payment amount : </strong> {{ number_format(session()->get('coupon')['total_amount']) }} đ
+										<hr>
+										@else
+										 <strong>Cost: </strong> {{ $cartTotal }} đ<hr>
+										 <strong>Total payment: </strong> {{ $cartTotal }} đ<hr>
+										 @endif
+										 @endif
+					                </li>
+								</ul>		
+			
+							</div>
+		
+					</div>
+	
 			</div>
-		</div>
-	</div>
 </div> 
 <!-- checkout-progress-sidebar -->
  </div> <!--  // end col md 6 -->
@@ -94,7 +116,11 @@ Cash On Delivery
 	<div class="panel-group">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-		    	<h4 class="unicase-checkout-title">Select Payment Method</h4>
+				@if(session('language') == 'hindi')
+				<h4 class="unicase-checkout-title">Thực hiện thanh toán</h4>
+				@else
+				<h4 class="unicase-checkout-title">Make payments</h4>
+			@endif
 		    </div>
 
 <form action="{{ route('cash.order') }}" method="post" id="payment-form">
@@ -121,7 +147,11 @@ Cash On Delivery
 
         </div>
         <br>
-        <button class="btn btn-primary">Submit Payment</button>
+		@if(session('language') == 'hindi')
+		<button class="btn btn-primary">Gửi thanh toán</button>
+		@else
+		<button class="btn btn-primary">Send payment</button>
+		@endif
         </form>
 
 
