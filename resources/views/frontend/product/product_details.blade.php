@@ -225,10 +225,10 @@
 	<div class="col-sm-6">
 		<div class="price-box">
        @if ($product->discount_price == NULL)
-       <span class="price">${{ $product->selling_price }}</span>
+       <span class="price">{{ number_format($product->selling_price) }} đ</span>
        @else
-       <span class="price">${{ $product->discount_price }}</span>
-			<span class="price-strike">${{ $product->selling_price }}</span>
+       <span class="price">{{ number_format($product->discount_price) }} đ</span>
+			<span class="price-strike">{{ number_format($product->selling_price) }} đ</span>
        @endif
 
 			
@@ -332,7 +332,11 @@
 			<input type="hidden" id="product_id" value="{{ $product->id }}" min="1">
 
 			<div class="col-sm-7">
+				@if(session()->get('language') == 'hindi')
+				<button type="submit" onclick="addToCart()" class="btn btn-primary"><i class="fa fa-shopping-cart inner-right-vs"></i> THÊM VÀO GIỎ HÀNG</button>
+				@else
 				<button type="submit" onclick="addToCart()" class="btn btn-primary"><i class="fa fa-shopping-cart inner-right-vs"></i> ADD TO CART</button>
+			    @endif 
 			</div>
 
 			
@@ -356,9 +360,13 @@
 					<div class="row">
 						<div class="col-sm-3">
 							<ul id="product-tabs" class="nav nav-tabs nav-tab-cell">
+								@if(session()->get('language') == 'hindi') 
+								<li class="active"><a data-toggle="tab" href="#description">MÔ TẢ</a></li>
+								<li><a data-toggle="tab" href="#review">NHẬN XÉT</a></li>
+								@else
 								<li class="active"><a data-toggle="tab" href="#description">DESCRIPTION</a></li>
 								<li><a data-toggle="tab" href="#review">REVIEW</a></li>
-								<li><a data-toggle="tab" href="#tags">TAGS</a></li>
+								@endif
 							</ul><!-- /.nav-tabs #product-tabs -->
 						</div>
 						<div class="col-sm-9">
@@ -376,19 +384,114 @@
 	<div class="product-tab">
 												
 		<div class="product-reviews">
+			@if(session()->get('language') == 'hindi') 
+			<h4 class="title">Nhận xét từ người dùng</h4>
+			@else
 			<h4 class="title">Customer Reviews</h4>
+			@endif
 
 @php
 $reviews = App\Models\Review::where('product_id',$product->id)->latest()->limit(5)->get();
+
+// $users = DB::table('reviews')->where('product_id',$product->id)->selectRaw('rating, count(*) * 100.0 / sum(count(*)) over() as phantram ,count(rating) as soluong')->groupBy('rating')->get();
+// $rt5=0;
+// $rt4=0;
+// $rt3=0;
+// $rt2=0;
+// $rt1=0;
+// foreach ($users as $it => $item) {
+// 	if ($item->rating==5) {
+// 		$rt5= $item->phantram;
+// 	}
+// 	if ($item->rating==4) {
+// 		$rt4= $item->phantram;
+// 	}
+// 	if ($item->rating==3) {
+// 		$rt3= $item->phantram;
+// 	}
+// 	if ($item->rating==2) {
+// 		$rt2= $item->phantram;
+// 	}
+// 	if ($item->rating==1) {
+// 		$rt1= $item->phantram;
+// 	}
+// }
 @endphp			
 
 	<div class="reviews">
 		 
+<div class="form-container">	
+	<hr style="border:1px solid #f1f1f1">
+	
+	<div class="row">
+
+	  <div class="side">
+		<div>5 star</div>
+	  </div>
+
+	  <div class="middle">
+		<div class="bar-container">
+		<div class="" style="width: {{round($rt5,2)}}%; height: 18px; background-color: #04AA6D;"></div>
+		</div>
+	</div>
+
+	<div class="side right">
+	  <div>{{$count5}}</div>
+	  </div>
+
+	  <div class="side">
+		<div>4 star</div>
+	  </div>
+	  <div class="middle">
+		<div class="bar-container">
+			<div class="" style="width: {{round($rt4,2)}}%; height: 18px; background-color: #2196F3;"></div>
+		</div>
+	</div>
+	<div class="side right">
+	  <div>{{$count4}}</div>
+	
+	  </div>
+	  <div class="side">
+		<div>3 star</div>
+	  </div>
+	  <div class="middle">
+		<div class="bar-container">
+			<div class="" style="width: {{round($rt3,2)}}%; height: 18px; background-color: #00bcd4;"></div>
+		</div>
+	</div>
+	<div class="side right">
+	  <div>{{$count3}}</div>
+	  </div>
+	  <div class="side">
+		<div>2 star</div>
+	  </div>
+	  <div class="middle">
+		<div class="bar-container">
+			<div class="" style="width: {{round($rt2,2)}}%; height: 18px; background-color: #ff9800;"></div>
+		</div>
+	</div>
+	<div class="side right">
+	  <div>{{$count2}}</div>
+	
+	  </div>
+	  <div class="side">
+		<div>1 star</div>
+	  </div>
+	  <div class="middle">
+		<div class="bar-container">
+			<div class="" style="width: {{round($rt1,2)}}%; height: 18px; background-color: #f44336;"></div>
+		</div>
+	  </div>
+	  <div class="side right">
+		<div>{{$count1}}</div>
+	  </div>
+	</div>
+	</div>
 		@foreach($reviews as $item)
 		@if($item->status == 0)
 
 		@else
-
+			<hr style="border:1px solid #f1f1f1">
 		<div class="review">
 
         <div class="row">
@@ -450,47 +553,61 @@ $reviews = App\Models\Review::where('product_id',$product->id)->latest()->limit(
 
 		 @endif
 	@endforeach
+	
 	</div><!-- /.reviews -->
-
 
 		</div><!-- /.product-reviews -->
 										
 
 										
 <div class="product-add-review">
-	<h4 class="title">Write your own review</h4>
+
 	<div class="review-table">
 		 
 	</div><!-- /.review-table -->
 											
 		<div class="review-form">
 			@guest
+			@if(session()->get('language') == 'hindi') 
+<p> <b> Bạn cần phải đăng nhập mới có thể nhận xét sản phẩm này <a href="{{ route('login') }}">Đăng nhập</a> </b> </p>
+@else
 <p> <b> For Add Product Review. You Need to Login First <a href="{{ route('login') }}">Login Here</a> </b> </p>
-
+@endif
 			@else 
-
-			<div class="form-container">
-
+			<button class="btn btn-primary btn-upper" onclick="myFunction()">@if(session()->get('language') == 'hindi') Bình luận @else Review @endif</button>
+			<div  id="myDIV" class="form-container">
+				
   <form role="form" class="cnt-form" method="post" action="{{ route('review.store') }}">
   	@csrf
-
   	<input type="hidden" name="product_id" value="{{ $product->id }}">
-
-
+	  
 <table class="table">	
 	<thead>
 		<tr>
+			@if(session()->get('language') == 'hindi') 
+			<th class="cell-label">&nbsp;</th>
+			<th>1 sao</th>
+			<th>2 sao</th>
+			<th>3 sao</th>
+			<th>4 sao</th>
+			<th>5 sao</th>
+			@else
 			<th class="cell-label">&nbsp;</th>
 			<th>1 star</th>
 			<th>2 stars</th>
 			<th>3 stars</th>
 			<th>4 stars</th>
 			<th>5 stars</th>
+			@endif
 		</tr>
 	</thead>	
 	<tbody>
-		<tr>
+		<tr>	
+			@if(session()->get('language') == 'hindi') 
+			<td class="cell-label">Chất lượng</td>
+			@else
 			<td class="cell-label">Quality</td>
+			@endif
 			<td><input type="radio" name="quality" class="radio" value="1"></td>
 			<td><input type="radio" name="quality" class="radio" value="2"></td>
 			<td><input type="radio" name="quality" class="radio" value="3"></td>
@@ -502,27 +619,37 @@ $reviews = App\Models\Review::where('product_id',$product->id)->latest()->limit(
 </table>
  
 
-
-	
 	<div class="row">
 		<div class="col-sm-6">
 			 
 			<div class="form-group">
-				<label for="exampleInputSummary">Summary <span class="astk">*</span></label>
+				@if(session()->get('language') == 'hindi')
+				<label for="exampleInputSummary">Tiêu đề <span class="astk">*</span></label>
+				@else 
+				<label for="exampleInputSummary">Title <span class="astk">*</span></label>
+				@endif
 	 <input type="text" name="summary" class="form-control txt" id="exampleInputSummary" placeholder="">
 			</div><!-- /.form-group -->
 		</div>
 
 		<div class="col-md-6">
 			<div class="form-group">
+				@if(session()->get('language') == 'hindi') 
+				<label for="exampleInputReview">Nhận xét <span class="astk">*</span></label>
+				@else
 				<label for="exampleInputReview">Review <span class="astk">*</span></label>
- <textarea class="form-control txt txt-review" name="comment" id="exampleInputReview" rows="4" placeholder=""></textarea>
+				@endif
+     <textarea class="form-control txt txt-review" name="comment" id="exampleInputReview" rows="4" placeholder=""></textarea>
 			</div><!-- /.form-group -->
 		</div>
-	</div><!-- /.row -->
+	 </div><!-- /.row -->
 	
-	<div class="action text-right">
+	 <div class="action text-right">
+		@if(session()->get('language') == 'hindi') 
+		<button type="submit" class="btn btn-primary btn-upper">GỬI NHẬN XÉT</button>
+		@else
 		<button type="submit" class="btn btn-primary btn-upper">SUBMIT REVIEW</button>
+		@endif
 	</div><!-- /.action -->
 
 </form><!-- /.cnt-form -->
@@ -573,13 +700,16 @@ $reviews = App\Models\Review::where('product_id',$product->id)->latest()->limit(
 
 				<!-- ===== ======= UPSELL PRODUCTS ==== ========== -->
 <section class="section featured-product wow fadeInUp">
+	@if(session()->get('language') == 'hindi') 
+	<h3 class="section-title">Sản phẩm tương tự</h3>
+	@else
 	<h3 class="section-title">Releted products</h3>
+	@endif
 	<div class="owl-carousel home-owl-carousel upsell-product custom-carousel owl-theme outer-top-xs">
 
 
-
+{{-- <a>{{$relatedProduct->id}}</a> --}}
 		@foreach($relatedProduct as $product)
-	    	
 		<div class="item item-carousel">
 			<div class="products">
 				
@@ -591,26 +721,63 @@ $reviews = App\Models\Review::where('product_id',$product->id)->latest()->limit(
 
 			            <div class="tag sale"><span>sale</span></div>            		   
 		</div><!-- /.product-image -->
-			
+			@php
+			$avg = App\Models\Review::where('product_id',$product->id)->where('status',1)->avg('rating');
+			@endphp
 		
 		<div class="product-info text-left">
 			<h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en ) }}">
 				@if(session()->get('language') == 'hindi') {{ $product->product_name_hin }} @else {{ $product->product_name_en }} @endif</a></h3>
-			<div class="rating rateit-small"></div>
+			{{-- <div class="rating rateit-small"></div> --}}
+			@if($avg == 0)
+   No Rating Yet 
+   @elseif($avg == 1 || $avg < 2)
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+   @elseif($avg == 2 || $avg < 3)
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+  @elseif($avg == 3 || $avg < 4)
+  <span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+
+  @elseif($avg == 4 || $avg < 5)
+  <span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+  @elseif($avg == 5 || $avg < 5)
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+   @endif
 			<div class="description"></div>
+			
 
 
  @if ($product->discount_price == NULL)
 <div class="product-price">	
 				<span class="price">
-					${{ $product->selling_price }}	 </span> 
+					{{ number_format($product->selling_price) }}	 đ</span> 
 			</div><!-- /.product-price -->
  @else
 
 <div class="product-price">	
 				<span class="price">
-					${{ $product->discount_price }}	 </span>
-			  <span class="price-before-discount">$ {{ $product->selling_price }}</span>								
+					{{ number_format($product->discount_price) }}	 đ</span>
+			  <span class="price-before-discount"> {{ number_format($product->selling_price) }} đ</span>								
 			</div><!-- /.product-price -->
  @endif
 
@@ -672,7 +839,79 @@ $reviews = App\Models\Review::where('product_id',$product->id)->latest()->limit(
 <!-- Go to www.addthis.com/dashboard to customize your tools -->
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5e4b85f98de5201f"></script>
 
- 
+ <script>function myFunction() {
+	var x = document.getElementById("myDIV");
+	if (x.style.display === "none") {
+	  x.style.display = "block";
+	} else {
+	  x.style.display = "none";
+	}
+  }
+  </script>
 
 
+<style>
+	* {
+  box-sizing: border-box;
+}
+
+
+
+.heading {
+  font-size: 25px;
+  margin-right: 25px;
+}
+
+.fa {
+  font-size: 15px;
+}
+
+.checked {
+  color: orange;
+}
+
+/* Three column layout */
+.side {
+  float: left;
+  width: 15%;
+  margin-top: 10px;
+}
+
+.middle {
+  float: left;
+  width: 70%;
+  margin-top: 10px;
+}
+
+/* Place text to the right */
+.right {
+  text-align: right;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* The bar container */
+.bar-container {
+  width: 100%;
+  background-color: #f1f1f1;
+  text-align: center;
+  color: white;
+}
+
+/* Responsive layout - make the columns stack on top of each other instead of next to each other */
+@media (max-width: 400px) {
+  .side, .middle {
+    width: 100%;
+  }
+  /* Hide the right column on small screens */
+  .right {
+    display: none;
+  }
+}
+</style>
 @endsection

@@ -69,7 +69,7 @@ class CartController extends Controller
         return response()->json(array(
             'carts' => $carts,
             'cartQty' => $cartQty,
-            'cartTotal' => round($cartTotal),
+            'cartTotal' => number_format(round($cartTotal)),
 
         ));
     } // end method 
@@ -148,8 +148,8 @@ class CartController extends Controller
                 'subtotal' => Cart::total(),
                 'coupon_name' => session()->get('coupon')['coupon_name'],
                 'coupon_discount' => session()->get('coupon')['coupon_discount'],
-                'discount_amount' => session()->get('coupon')['discount_amount'],
-                'total_amount' => session()->get('coupon')['total_amount'],
+                'discount_amount' => number_format(session()->get('coupon')['discount_amount']),
+                'total_amount' => number_format(session()->get('coupon')['total_amount']),
             ));
         } else {
             return response()->json(array(

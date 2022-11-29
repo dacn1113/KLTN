@@ -125,7 +125,7 @@
             <div class="items-cart-inner">
               <div class="basket"> <i class="glyphicon glyphicon-shopping-cart"></i> </div>
     <div class="basket-item-count"><span class="count" id="cartQty"> </span></div>
-              <div class="total-price-basket"> <span class="lbl">Giỏ -</span> 
+              <div class="total-price-basket"> <span class="lbl"></span> 
                 <span class="total-price"> <span class="sign"></span>
                 <span class="value" id="cartSubTotal"> </span> đ</span> </div>
             </div>
@@ -242,7 +242,7 @@
 
      <li> <a href="{{ route('shop.page') }}">Shop</a> </li>
                
-                <li class="dropdown  navbar-right special-menu"> <a href="#">Todays offer</a> </li>
+                {{-- <li class="dropdown  navbar-right special-menu"> <a href="#">Todays offer</a> </li> --}}
 
  <li class="dropdown  navbar-right special-menu"> <a href="{{ route('home.blog') }}">Blog</a> </li>
 
@@ -267,11 +267,16 @@
   <!-- ============================================== NAVBAR : END ============================================== --> 
   
 <!-- Order Traking Modal -->
+
 <div class="modal fade" id="ordertraking" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
+        @if(session()->get('language') == 'hindi') 
         <h5 class="modal-title" id="exampleModalLabel">Theo dõi đơn hàng của bạn </h5>
+        @else
+        <h5 class="modal-title" id="exampleModalLabel">Track your order </h5>
+        @endif
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -281,12 +286,18 @@
         <form method="post" action="{{ route('order.tracking') }}">
           @csrf
          <div class="modal-body">
+          @if(session()->get('language') == 'hindi') 
           <label>Mã hóa đơn</label>
-          <input type="text" name="code" required="" class="form-control" placeholder="Số hóa đơn đặt hàng của bạn">           
+          @else
+          <label>Code Bill</label>
+          @endif
+          <input type="text" name="code" required="" class="form-control" placeholder="Enter code">           
          </div>
-
+         @if(session()->get('language') == 'hindi') 
          <button class="btn btn-danger" type="submit" style="margin-left: 17px;"> Theo dõi ngay </button>
-          
+          @else
+          <button class="btn btn-danger" type="submit" style="margin-left: 17px;"> Track your order now </button>
+          @endif
         </form> 
 
 

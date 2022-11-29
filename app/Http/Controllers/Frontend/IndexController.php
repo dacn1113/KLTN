@@ -16,6 +16,7 @@ use App\Models\BlogPost;
 
 use App\Models\SubCategory;
 use App\Models\SubSubCategory;
+use DB;
 
 class IndexController extends Controller
 {
@@ -126,6 +127,41 @@ class IndexController extends Controller
     {
         $product = Product::findOrFail($id);
 
+        $users = DB::table('reviews')->where('product_id', $product->id)->selectRaw('rating, count(*) * 100.0 / sum(count(*)) over() as phantram ,count(rating) as soluong')->groupBy('rating')->get();
+
+        $rt5 = 0;
+        $count5 = 0;
+        $rt4 = 0;
+        $count4 = 0;
+        $rt3 = 0;
+        $count3 = 0;
+        $rt2 = 0;
+        $count2 = 0;
+        $rt1 = 0;
+        $count1 = 0;
+        foreach ($users as $it => $item) {
+            if ($item->rating == 5) {
+                $rt5 = $item->phantram;
+                $count5 = $item->soluong;
+            }
+            if ($item->rating == 4) {
+                $rt4 = $item->phantram;
+                $count4 = $item->soluong;
+            }
+            if ($item->rating == 3) {
+                $rt3 = $item->phantram;
+                $count3 = $item->soluong;
+            }
+            if ($item->rating == 2) {
+                $rt2 = $item->phantram;
+                $count2 = $item->soluong;
+            }
+            if ($item->rating == 1) {
+                $rt1 = $item->phantram;
+                $count1 = $item->soluong;
+            }
+        }
+
         $color_en = $product->product_color_en;
         $product_color_en = explode(',', $color_en);
 
@@ -142,7 +178,28 @@ class IndexController extends Controller
 
         $cat_id = $product->category_id;
         $relatedProduct = Product::where('category_id', $cat_id)->where('id', '!=', $id)->orderBy('id', 'DESC')->get();
-        return view('frontend.product.product_details', compact('product', 'multiImag', 'product_color_en', 'product_color_hin', 'product_size_en', 'product_size_hin', 'relatedProduct'));
+        return view(
+            'frontend.product.product_details',
+            compact(
+                'product',
+                'multiImag',
+                'product_color_en',
+                'product_color_hin',
+                'product_size_en',
+                'product_size_hin',
+                'relatedProduct',
+                'rt5',
+                'rt4',
+                'rt3',
+                'rt2',
+                'rt1',
+                'count5',
+                'count4',
+                'count3',
+                'count2',
+                'count1'
+            )
+        );
     }
 
 
@@ -200,6 +257,11 @@ class IndexController extends Controller
     {
         $product = Product::with('category', 'brand')->findOrFail($id);
 
+        $ccl = $product->selling_price;
+        $ccl1 = $product->discount_price;
+        $price = number_format($ccl);
+        $price1 = number_format($ccl1);
+
         $color = $product->product_color_en;
         $product_color = explode(',', $color);
 
@@ -214,6 +276,8 @@ class IndexController extends Controller
 
         return response()->json(array(
             'product' => $product,
+            'slpr' => $price,
+            'dcpr' => $price1,
             'color' => $product_color,
             'size' => $product_size,
             'color1' => $product_color1,

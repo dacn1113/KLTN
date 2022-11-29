@@ -4,7 +4,11 @@ $categories = App\Models\Category::orderBy('category_name_en','ASC')->get();
 
 
  <div class="side-menu animate-dropdown outer-bottom-xs">
+  @if(session()->get('language') == 'hindi')
           <div class="head"><i class="icon fa fa-align-justify fa-fw"></i> Danh mục</div>
+          @else 
+          <div class="head"><i class="icon fa fa-align-justify fa-fw"></i> Category</div>
+          @endif
           <nav class="yamm megamenu-horizontal">
             <ul class="nav">
 

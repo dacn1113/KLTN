@@ -38,9 +38,17 @@ class ProductController extends Controller
         //     $files->move($destinationPath, $digitalItem);
         // }
 
-        $price_dl = $request->selling_price;
-        $dolar = 24000;
-        $price_dl = $price_dl / $dolar;
+        if ($request->discount_price == '') {
+            $price_dl = $request->selling_price;
+            $dolar = 24770;
+            $price = $price_dl / $dolar;
+            $price_dl = round($price, 2);
+        } else {
+            $price_dl = $request->discount_price;
+            $dolar = 24770;
+            $price = $price_dl / $dolar;
+            $price_dl = round($price, 2);
+        }
 
 
         $image = $request->file('product_thambnail');
@@ -69,7 +77,7 @@ class ProductController extends Controller
 
             'selling_price' => $request->selling_price,
             'discount_price' => $request->discount_price,
-            'selling_price_dl' => $request->price_dl,
+            'selling_price_dl' => $price_dl,
             'short_descp_en' => $request->short_descp_en,
             'short_descp_hin' => $request->short_descp_hin,
             'long_descp_en' => $request->long_descp_en,
@@ -146,6 +154,18 @@ class ProductController extends Controller
 
         $product_id = $request->id;
 
+        if ($request->discount_price == '') {
+            $price_dl = $request->selling_price;
+            $dolar = 24770;
+            $price = $price_dl / $dolar;
+            $price_dl = round($price, 2);
+        } else {
+            $price_dl = $request->discount_price;
+            $dolar = 24770;
+            $price = $price_dl / $dolar;
+            $price_dl = round($price, 2);
+        }
+
         Product::findOrFail($product_id)->update([
             'brand_id' => $request->brand_id,
             'category_id' => $request->category_id,
@@ -167,7 +187,7 @@ class ProductController extends Controller
 
             'selling_price' => $request->selling_price,
             'discount_price' => $request->discount_price,
-            'selling_price_dl' => $request->selling_price / 24770,
+            'selling_price_dl' => $price_dl,
             'short_descp_en' => $request->short_descp_en,
             'short_descp_hin' => $request->short_descp_hin,
             'long_descp_en' => $request->long_descp_en,

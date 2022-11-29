@@ -28,7 +28,11 @@ Online Shop
         <!-- ============================================== SPECIAL OFFER ============================================== -->
         
         <div class="sidebar-widget outer-bottom-small wow fadeInUp">
+          @if(session()->get('language') == 'hindi')
           <h3 class="section-title">Đề nghị đặc biệt</h3>
+          @else
+          <h3 class="section-title">Special offer</h3>
+          @endif
           <div class="sidebar-widget-body outer-top-xs">
             <div class="owl-carousel sidebar-carousel special-offer custom-carousel owl-theme outer-top-xs">
 
@@ -54,7 +58,7 @@ Online Shop
           <div class="product-info">
             <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en ) }}">@if(session()->get('language') == 'hindi') {{ $product->product_name_hin }} @else {{ $product->product_name_en }} @endif</a></h3>
             <div class="rating rateit-small"></div>
- <div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span> </div>
+ <div class="product-price"> <span class="price"> {{ number_format($product->selling_price) }} đ</span> </div>
             <!-- /.product-price --> 
             
           </div>
@@ -103,7 +107,11 @@ Online Shop
         <!-- ============================================== SPECIAL DEALS ============================================== -->
         
         <div class="sidebar-widget outer-bottom-small wow fadeInUp">
+          @if(session()->get('language') == 'hindi')
           <h3 class="section-title">Ưu đãi đặc biệt</h3>
+          @else
+          <h3 class="section-title">Special deals</h3>
+          @endif
           <div class="sidebar-widget-body outer-top-xs">
             <div class="owl-carousel sidebar-carousel special-offer custom-carousel owl-theme outer-top-xs">
 
@@ -128,7 +136,7 @@ Online Shop
               <div class="product-info">
                 <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en ) }}">@if(session()->get('language') == 'hindi') {{ $product->product_name_hin }} @else {{ $product->product_name_en }} @endif</a></h3>
                 <div class="rating rateit-small"></div>
-                <div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span> </div>
+                <div class="product-price"> <span class="price"> {{ number_format($product->selling_price) }} đ</span> </div>
                 <!-- /.product-price --> 
                 
               </div>
@@ -179,7 +187,7 @@ Online Shop
         
         <!-- === ======== Testimonials: END ==== =========== -->
         
-        <div class="home-banner"> <img src="{{ asset('frontend/assets/images/banners/LHS-banner.jpg') }}" alt="Image"> </div>
+        {{-- <div class="home-banner"> <img src="{{ asset('frontend/assets/images/banners/LHS-banner.jpg') }}" alt="Image"> </div> --}}
       </div>
       <!-- /.sidemenu-holder --> 
       <!-- ============================================== SIDEBAR : END ============================================== --> 
@@ -228,6 +236,7 @@ Online Shop
 
         
         <!-- ============================================== INFO BOXES ============================================== -->
+        @if(session()->get('language') == 'hindi')
         <div class="info-boxes wow fadeInUp">
           <div class="info-boxes-inner">
             <div class="row">
@@ -274,7 +283,54 @@ Online Shop
         </div>
         <!-- /.info-boxes --> 
         <!-- ============================================== INFO BOXES : END ============================================== --> 
-
+        @else
+        <div class="info-boxes wow fadeInUp">
+          <div class="info-boxes-inner">
+            <div class="row">
+              <div class="col-md-6 col-sm-4 col-lg-4">
+                <div class="info-box">
+                  <div class="row">
+                    <div class="col-xs-12">
+                      <h4 class="info-box-heading green">Refunds</h4>
+                    </div>
+                  </div>
+                  <h6 class="text">30-day money-back guarantee</h6>
+                </div>
+              </div>
+              <!-- .col -->
+              
+              <div class="hidden-md col-sm-4 col-lg-4">
+                <div class="info-box">
+                  <div class="row">
+                    <div class="col-xs-12">
+                      <h4 class="info-box-heading green">Free delivery</h4>
+                    </div>
+                  </div>
+                  <h6 class="text">Delivery for orders over 5,000,000 VND</h6>
+                </div>
+              </div>
+              <!-- .col -->
+              
+              <div class="col-md-6 col-sm-4 col-lg-4">
+                <div class="info-box">
+                  <div class="row">
+                    <div class="col-xs-12">
+                      <h4 class="info-box-heading green">Special offer</h4>
+                    </div>
+                  </div>
+                  <h6 class="text">Extra 5,000 VND off for all items </h6>
+                </div>
+              </div>
+              <!-- .col --> 
+            </div>
+            <!-- /.row --> 
+          </div>
+          <!-- /.info-boxes-inner --> 
+          
+        </div>
+        <!-- /.info-boxes --> 
+        <!-- ============================================== INFO BOXES : END ============================================== --> 
+        @endif
 
 
 
@@ -286,10 +342,17 @@ Online Shop
 
         <div id="product-tabs-slider" class="scroll-tabs outer-top-vs wow fadeInUp">
           <div class="more-info-tab clearfix ">
+            @if(session()->get('language') == 'hindi')
             <h3 class="new-product-title pull-left">Sản phẩm mới</h3>
+            @else
+            <h3 class="new-product-title pull-left">New product</h3>
+            @endif
             <ul class="nav nav-tabs nav-tab-line pull-right" id="new-products-1">
+              @if(session()->get('language') == 'hindi')
               <li class="active"><a data-transition-type="backSlide" href="#all" data-toggle="tab">Tất cả</a></li>
-
+              @else
+              <li class="active"><a data-transition-type="backSlide" href="#all" data-toggle="tab">All</a></li>
+              @endif
               @foreach($categories as $category)
   <li><a data-transition-type="backSlide" href="#category{{ $category->id }}" data-toggle="tab">@if(session()->get('language') == 'hindi') {{ $category->category_name_hin }} @else {{ $category->category_name_en }} @endif</a></li>
               @endforeach
@@ -317,14 +380,8 @@ Online Shop
 
                           
         @php
-        $ss =session()->get('currency');
-        if ($ss == 'dolar') {
-        $amount = $product->selling_price_dl - $product->discount_price_dl;
-        $discount = ($amount/$product->selling_price_dl) * 100;
-        }else{
         $amount = $product->selling_price - $product->discount_price;
         $discount = ($amount/$product->selling_price) * 100;
-        }
         @endphp                  
                           
           <div>
@@ -348,10 +405,11 @@ Online Shop
 
          @if ($product->discount_price == NULL)
     <div class="product-price"> <span class="price"> {{ number_format($product->selling_price) }} đ</span>  </div>
-    <div class="product-price"> <span class="price"> {{ str_replace(".",",",number_format($product->selling_price_dl,2)) }} Usd</span></div>
+    <div class="product-price"> <span class="price"> {{ str_replace(".",",",number_format($product->selling_price_dl,2)) }} $</span></div>
          @else
- <div class="product-price"> <span class="price"> {{ $product->discount_price }} đ</span> <span class="price-before-discount"> {{ $product->selling_price }} đ</span> </div>
-         @endif
+ <div class="product-price"> <span class="price"> {{ number_format($product->discount_price) }} đ</span> <span class="price-before-discount"> {{ number_format($product->selling_price) }} đ</span> </div>
+ <div class="product-price"> <span class="price"> {{ str_replace(".",",",number_format($product->selling_price_dl,2)) }} $</span></div>       
+ @endif
 
          
           <!-- /.product-price --> 
@@ -446,9 +504,9 @@ Online Shop
           <div class="description"></div>
 
          @if ($product->discount_price == NULL)
-    <div class="product-price"> <span class="price"> {{ $product->selling_price }} đ</span>  </div>
+    <div class="product-price"> <span class="price"> {{ number_format($product->selling_price) }} đ</span>  </div>
          @else
- <div class="product-price"> <span class="price"> {{ $product->discount_price }} đ</span> <span class="price-before-discount"> {{ $product->selling_price }} đ</span> </div>
+ <div class="product-price"> <span class="price"> {{ number_format($product->discount_price) }} đ</span> <span class="price-before-discount"> {{ number_format($product->selling_price) }} đ</span> </div>
          @endif
 
          
@@ -580,9 +638,9 @@ Online Shop
           <div class="description"></div>
 
          @if ($product->discount_price == NULL)
-    <div class="product-price"> <span class="price"> {{ $product->selling_price }} đ</span>  </div>
+    <div class="product-price"> <span class="price"> {{ number_format($product->selling_price) }} đ</span>  </div>
          @else
- <div class="product-price"> <span class="price"> {{ $product->discount_price }} đ</span> <span class="price-before-discount"> {{ $product->selling_price }} đ</span> </div>
+ <div class="product-price"> <span class="price"> {{ number_format($product->discount_price) }} đ</span> <span class="price-before-discount"> {{ number_format($product->selling_price) }} đ</span> </div>
          @endif
 
          
@@ -677,9 +735,9 @@ Online Shop
           <div class="description"></div>
 
          @if ($product->discount_price == NULL)
-    <div class="product-price"> <span class="price"> {{ $product->selling_price }} đ</span>  </div>
+    <div class="product-price"> <span class="price"> {{ number_format($product->selling_price) }} đ</span>  </div>
          @else
- <div class="product-price"> <span class="price"> {{ $product->discount_price }} đ</span> <span class="price-before-discount"> {{ $product->selling_price }} đ</span> </div>
+ <div class="product-price"> <span class="price"> {{ number_format($product->discount_price) }} đ</span> <span class="price-before-discount"> {{ number_format($product->selling_price) }} đ</span> </div>
          @endif
 
          
@@ -777,9 +835,9 @@ Online Shop
           <div class="description"></div>
 
          @if ($product->discount_price == NULL)
-    <div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span>  </div>
+    <div class="product-price"> <span class="price"> ${{ number_format($product->selling_price) }} </span>  </div>
          @else
- <div class="product-price"> <span class="price"> ${{ $product->discount_price }} </span> <span class="price-before-discount">$ {{ $product->selling_price }}</span> </div>
+ <div class="product-price"> <span class="price"> ${{ number_format($product->discount_price) }} </span> <span class="price-before-discount">$ {{ number_format($product->selling_price) }}</span> </div>
          @endif
 
          
@@ -915,9 +973,9 @@ Online Shop
           <div class="description"></div>
 
          @if ($product->discount_price == NULL)
-    <div class="product-price"> <span class="price"> {{ $product->selling_price }} đ</span>  </div>
+    <div class="product-price"> <span class="price"> {{ number_format($product->selling_price) }} đ</span>  </div>
          @else
- <div class="product-price"> <span class="price"> {{ $product->discount_price }} đ</span> <span class="price-before-discount"> {{ $product->selling_price }} đ</span> </div>
+ <div class="product-price"> <span class="price"> {{ number_format($product->discount_price) }} đ</span> <span class="price-before-discount"> {{ number_format($product->selling_price )}} đ</span> </div>
          @endif
 
          
