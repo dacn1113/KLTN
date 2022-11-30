@@ -182,7 +182,7 @@ Shop Page
 
 
             <!-- == ====== PRODUCT TAGS ==== ======= -->
-              @include('frontend.common.product_tags')
+              {{-- @include('frontend.common.product_tags') --}}
             <!-- /.sidebar-widget -->
              <!-- == ====== END PRODUCT TAGS ==== ======= -->
 
@@ -193,7 +193,7 @@ Shop Page
 
           <!----------- Testimonials------------->
           
-            @include('frontend.common.testimonials')
+            {{-- @include('frontend.common.testimonials') --}}
             <!-- == ========== Testimonials: END ======== ========= -->
 
 
@@ -339,11 +339,11 @@ Shop Page
 
 
 @if ($product->discount_price == NULL)
-<div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span>   </div>
+<div class="product-price"> <span class="price"> {{ number_format($product->selling_price) }} đ</span>   </div>
 
 @else
 
-<div class="product-price"> <span class="price"> ${{ $product->discount_price }} </span> <span class="price-before-discount">$ {{ $product->selling_price }}</span> </div>
+<div class="product-price"> <span class="price"> {{ number_format($product->discount_price) }} đ</span> <span class="price-before-discount"> {{ number_format($product->selling_price) }} đ</span> </div>
 @endif
 
 
@@ -428,9 +428,9 @@ Shop Page
 
 
             @if ($product->discount_price == NULL)
-            <div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span>  </div>
+            <div class="product-price"> <span class="price"> {{ number_format($product->selling_price) }} đ</span>  </div>
             @else
-<div class="product-price"> <span class="price"> ${{ $product->discount_price }} </span> <span class="price-before-discount">$ {{ $product->selling_price }}</span> </div>
+<div class="product-price"> <span class="price"> {{ number_format($product->discount_price) }} đ</span> <span class="price-before-discount"> {{ number_format($product->selling_price) }} đ</span> </div>
             @endif
             
             <!-- /.product-price -->

@@ -93,7 +93,7 @@ Sub - Subcategory Product
             <!-- ============================================== SIDEBAR CATEGORY : END ============================================== --> 
             
             <!-- ============================================== PRICE SILDER============================================== -->
-            <div class="sidebar-widget wow fadeInUp">
+            {{-- <div class="sidebar-widget wow fadeInUp">
               <div class="widget-header">
                 <h4 class="widget-title">Price Slider</h4>
               </div>
@@ -105,11 +105,11 @@ Sub - Subcategory Product
                 <!-- /.price-range-holder --> 
                 <a href="#" class="lnk btn btn-primary">Show Now</a> </div>
               <!-- /.sidebar-widget-body --> 
-            </div>
+            </div> --}}
             <!-- /.sidebar-widget --> 
             <!-- ============================================== PRICE SILDER : END ============================================== --> 
             <!-- ============================================== MANUFACTURES============================================== -->
-            <div class="sidebar-widget wow fadeInUp">
+            {{-- <div class="sidebar-widget wow fadeInUp">
               <div class="widget-header">
                 <h4 class="widget-title">Manufactures</h4>
               </div>
@@ -125,11 +125,11 @@ Sub - Subcategory Product
                 <!--<a href="#" class="lnk btn btn-primary">Show Now</a>--> 
               </div>
               <!-- /.sidebar-widget-body --> 
-            </div>
+            </div> --}}
             <!-- /.sidebar-widget --> 
             <!-- ============================================== MANUFACTURES: END ============================================== --> 
             <!-- ============================================== COLOR============================================== -->
-            <div class="sidebar-widget wow fadeInUp">
+            {{-- <div class="sidebar-widget wow fadeInUp">
               <div class="widget-header">
                 <h4 class="widget-title">Colors</h4>
               </div>
@@ -144,11 +144,11 @@ Sub - Subcategory Product
                 </ul>
               </div>
               <!-- /.sidebar-widget-body --> 
-            </div>
+            </div> --}}
             <!-- /.sidebar-widget --> 
             <!-- ============================================== COLOR: END ============================================== --> 
             <!-- == ======= COMPARE==== ==== -->
-            <div class="sidebar-widget wow fadeInUp outer-top-vs">
+            {{-- <div class="sidebar-widget wow fadeInUp outer-top-vs">
               <h3 class="section-title">Compare products</h3>
               <div class="sidebar-widget-body">
                 <div class="compare-report">
@@ -157,7 +157,7 @@ Sub - Subcategory Product
                 <!-- /.compare-report --> 
               </div>
               <!-- /.sidebar-widget-body --> 
-            </div>
+            </div> --}}
             <!-- /.sidebar-widget --> 
             <!-- ============================================== COMPARE: END ============================================== --> 
 
@@ -174,12 +174,12 @@ Sub - Subcategory Product
 
           <!----------- Testimonials------------->
           
-            @include('frontend.common.testimonials')
+            {{-- @include('frontend.common.testimonials') --}}
             <!-- == ========== Testimonials: END ======== ========= -->
 
 
             
-            <div class="home-banner"> <img src="{{ asset('frontend/assets/images/banners/LHS-banner.jpg') }}" alt="Image"> </div>
+            {{-- <div class="home-banner"> <img src="{{ asset('frontend/assets/images/banners/LHS-banner.jpg') }}" alt="Image"> </div> --}}
           </div>
           <!-- /.sidebar-filter --> 
         </div>
@@ -222,7 +222,7 @@ Sub - Subcategory Product
             <!-- /.col -->
             <div class="col col-sm-12 col-md-6">
               <div class="col col-sm-3 col-md-6 no-padding">
-                <div class="lbl-cnt"> <span class="lbl">Sort by</span>
+                {{-- <div class="lbl-cnt"> <span class="lbl">Sort by</span>
                   <div class="fld inline">
                     <div class="dropdown dropdown-small dropdown-med dropdown-white inline">
                       <button data-toggle="dropdown" type="button" class="btn dropdown-toggle"> Position <span class="caret"></span> </button>
@@ -235,12 +235,12 @@ Sub - Subcategory Product
                     </div>
                   </div>
                   <!-- /.fld --> 
-                </div>
+                </div> --}}
                 <!-- /.lbl-cnt --> 
               </div>
               <!-- /.col -->
               <div class="col col-sm-3 col-md-6 no-padding">
-                <div class="lbl-cnt"> <span class="lbl">Show</span>
+                {{-- <div class="lbl-cnt"> <span class="lbl">Show</span>
                   <div class="fld inline">
                     <div class="dropdown dropdown-small dropdown-med dropdown-white inline">
                       <button data-toggle="dropdown" type="button" class="btn dropdown-toggle"> 1 <span class="caret"></span> </button>
@@ -259,7 +259,7 @@ Sub - Subcategory Product
                     </div>
                   </div>
                   <!-- /.fld --> 
-                </div>
+                </div> --}}
                 <!-- /.lbl-cnt --> 
               </div>
               <!-- /.col --> 

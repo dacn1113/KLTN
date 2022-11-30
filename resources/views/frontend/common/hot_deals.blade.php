@@ -3,7 +3,11 @@ $hot_deals = App\Models\Product::where('hot_deals',1)->where('discount_price','!
      @endphp
 
      <div class="sidebar-widget hot-deals wow fadeInUp outer-bottom-xs">
+      @if(session()->get('language') == 'hindi')
           <h3 class="section-title">Ửu đãi lớn</h3>
+          @else
+          <h3 class="section-title">Hot deals</h3>
+          @endif
           <div class="owl-carousel sidebar-carousel custom-carousel owl-theme outer-top-ss">
 
 
@@ -42,15 +46,60 @@ $hot_deals = App\Models\Product::where('hot_deals',1)->where('discount_price','!
                   </div>
                 </div>
                 <!-- /.hot-deal-wrapper -->
+                @php
+                $avg = App\Models\Review::where('product_id',$product->id)->where('status',1)->avg('rating');
+                @endphp
 
   <div class="product-info text-left m-t-20">
     <h3 class="name"><a href="detail.html">
       @if(session()->get('language') == 'hindi') {{ $product->product_name_hin }} @else {{ $product->product_name_en }} @endif</a></h3>
-      <div class="rating rateit-small"></div>
+      <div>
+        @if($avg == 0)
+   No Rating Yet 
+   @elseif($avg == 1 || $avg < 2)
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+   @elseif($avg == 2 || $avg < 3)
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+  @elseif($avg == 3 || $avg < 4)
+  <span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+
+  @elseif($avg == 4 || $avg < 5)
+  <span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+  @elseif($avg == 5 || $avg < 5)
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+   @endif
+      </div>
+<style>
+  .checked {
+  color: orange;
+}
+
+</style>
+
       @if ($product->discount_price == NULL)
-      <div class="product-price"> <span class="price"> {{ $product->selling_price }} Vnd</span></div>
+      <div class="product-price"> <span class="price"> {{ number_format($product->selling_price) }} đ</span></div>
       @else
-      <div class="product-price"> <span class="price"> {{ $product->discount_price }} VND</span> <span class="price-before-discount">{{ $product->selling_price }} VND</span> </div>
+      <div class="product-price"> <span class="price"> {{ number_format($product->discount_price) }} đ</span> <span class="price-before-discount">{{ number_format($product->selling_price )}} đ</span> </div>
       @endif
 
     <!-- /.product-price --> 

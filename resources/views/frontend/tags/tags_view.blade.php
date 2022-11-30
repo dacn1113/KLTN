@@ -1,18 +1,22 @@
 @extends('frontend.main_master')
 @section('content')
 @section('title')
-Tag Wise Product 
+@if(session()->get('language') == 'hindi')
+Thẻ sản phẩm
+@else
+Tag Product 
+@endif
 @endsection
 
 
 
 
 
-<div class="breadcrumb">
+{{-- <div class="breadcrumb">
   <div class="container">
     <div class="breadcrumb-inner">
       <ul class="list-inline list-unstyled">
-        <li><a href="#">Home</a></li>
+        <li><a >Home</a></li>
         <li class='active'>Handbags</li>
       </ul>
     </div>
@@ -20,14 +24,14 @@ Tag Wise Product
   </div>
   <!-- /.container --> 
 </div>
-<!-- /.breadcrumb -->
+<!-- /.breadcrumb --> --}}
 <div class="body-content outer-top-xs">
   <div class='container'>
     <div class='row'>
       <div class='col-md-3 sidebar'> 
 
         <!-- ===== == TOP NAVIGATION ======= ==== -->
-        @include('frontend.common.vertical_menu')
+        {{-- @include('frontend.common.vertical_menu') --}}
         <!-- = ==== TOP NAVIGATION : END === ===== -->
 
 
@@ -59,11 +63,12 @@ Tag Wise Product
 
    @foreach($subcategories as $subcategory)
 	    <ul>
-	      <li><a href="#">
+	    <li><a href="{{ url('subcategory/product/'.$subcategory->id.'/'.$subcategory->subcategory_slug_en ) }}">
 	      	@if(session()->get('language') == 'hindi') {{ $subcategory->subcategory_name_hin }} @else {{ $subcategory->subcategory_name_en }} @endif</a></li>
 	      
 	    </ul>
 	@endforeach 
+  
 
 
 	  </div>
@@ -93,7 +98,7 @@ Tag Wise Product
             <!-- ============================================== SIDEBAR CATEGORY : END ============================================== --> 
             
             <!-- ============================================== PRICE SILDER============================================== -->
-            <div class="sidebar-widget wow fadeInUp">
+            {{-- <div class="sidebar-widget wow fadeInUp">
               <div class="widget-header">
                 <h4 class="widget-title">Price Slider</h4>
               </div>
@@ -105,11 +110,11 @@ Tag Wise Product
                 <!-- /.price-range-holder --> 
                 <a href="#" class="lnk btn btn-primary">Show Now</a> </div>
               <!-- /.sidebar-widget-body --> 
-            </div>
+            </div> --}}
             <!-- /.sidebar-widget --> 
             <!-- ============================================== PRICE SILDER : END ============================================== --> 
             <!-- ============================================== MANUFACTURES============================================== -->
-            <div class="sidebar-widget wow fadeInUp">
+            {{-- <div class="sidebar-widget wow fadeInUp">
               <div class="widget-header">
                 <h4 class="widget-title">Manufactures</h4>
               </div>
@@ -125,11 +130,11 @@ Tag Wise Product
                 <!--<a href="#" class="lnk btn btn-primary">Show Now</a>--> 
               </div>
               <!-- /.sidebar-widget-body --> 
-            </div>
+            </div> --}}
             <!-- /.sidebar-widget --> 
             <!-- ============================================== MANUFACTURES: END ============================================== --> 
             <!-- ============================================== COLOR============================================== -->
-            <div class="sidebar-widget wow fadeInUp">
+            {{-- <div class="sidebar-widget wow fadeInUp">
               <div class="widget-header">
                 <h4 class="widget-title">Colors</h4>
               </div>
@@ -144,11 +149,11 @@ Tag Wise Product
                 </ul>
               </div>
               <!-- /.sidebar-widget-body --> 
-            </div>
+            </div> --}}
             <!-- /.sidebar-widget --> 
             <!-- ============================================== COLOR: END ============================================== --> 
             <!-- == ======= COMPARE==== ==== -->
-            <div class="sidebar-widget wow fadeInUp outer-top-vs">
+            {{-- <div class="sidebar-widget wow fadeInUp outer-top-vs">
               <h3 class="section-title">Compare products</h3>
               <div class="sidebar-widget-body">
                 <div class="compare-report">
@@ -157,7 +162,7 @@ Tag Wise Product
                 <!-- /.compare-report --> 
               </div>
               <!-- /.sidebar-widget-body --> 
-            </div>
+            </div> --}}
             <!-- /.sidebar-widget --> 
             <!-- ============================================== COMPARE: END ============================================== --> 
 
@@ -179,7 +184,7 @@ Tag Wise Product
 
 
             
-            <div class="home-banner"> <img src="{{ asset('frontend/assets/images/banners/LHS-banner.jpg') }}" alt="Image"> </div>
+            {{-- <div class="home-banner"> <img src="{{ asset('frontend/assets/images/banners/LHS-banner.jpg') }}" alt="Image"> </div> --}}
           </div>
           <!-- /.sidebar-filter --> 
         </div>
@@ -192,7 +197,7 @@ Tag Wise Product
 
         <!-- == ==== SECTION – HERO === ====== -->
         
-        <div id="category" class="category-carousel hidden-xs">
+        {{-- <div id="category" class="category-carousel hidden-xs">
           <div class="item">
             <div class="image"> <img src="{{ asset('frontend/assets/images/banners/cat-banner-1.jpg') }}" alt="" class="img-responsive"> </div>
             <div class="container-fluid">
@@ -205,7 +210,7 @@ Tag Wise Product
             </div>
             <!-- /.container-fluid --> 
           </div>
-        </div>
+        </div> --}}
         
      
         <div class="clearfix filters-container m-t-10">
@@ -222,7 +227,7 @@ Tag Wise Product
             <!-- /.col -->
             <div class="col col-sm-12 col-md-6">
               <div class="col col-sm-3 col-md-6 no-padding">
-                <div class="lbl-cnt"> <span class="lbl">Sort by</span>
+                {{-- <div class="lbl-cnt"> <span class="lbl">Sort by</span>
                   <div class="fld inline">
                     <div class="dropdown dropdown-small dropdown-med dropdown-white inline">
                       <button data-toggle="dropdown" type="button" class="btn dropdown-toggle"> Position <span class="caret"></span> </button>
@@ -235,12 +240,12 @@ Tag Wise Product
                     </div>
                   </div>
                   <!-- /.fld --> 
-                </div>
+                </div> --}}
                 <!-- /.lbl-cnt --> 
               </div>
               <!-- /.col -->
               <div class="col col-sm-3 col-md-6 no-padding">
-                <div class="lbl-cnt"> <span class="lbl">Show</span>
+                {{-- <div class="lbl-cnt"> <span class="lbl">Show</span>
                   <div class="fld inline">
                     <div class="dropdown dropdown-small dropdown-med dropdown-white inline">
                       <button data-toggle="dropdown" type="button" class="btn dropdown-toggle"> 1 <span class="caret"></span> </button>
@@ -259,7 +264,7 @@ Tag Wise Product
                     </div>
                   </div>
                   <!-- /.fld --> 
-                </div>
+                </div> --}}
                 <!-- /.lbl-cnt --> 
               </div>
               <!-- /.col --> 
