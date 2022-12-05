@@ -4,7 +4,7 @@
 @section('title')
 @if(session()->get('language') == 'hindi') {{ $product->product_name_hin }} @else {{ $product->product_name_en }} @endif
 @endsection
-
+	
 <style>
 	.checked {
   color: orange;
@@ -225,14 +225,23 @@
 	<div class="col-sm-6">
 		<div class="price-box">
        @if ($product->discount_price == NULL)
-       <span class="price">{{ number_format($product->selling_price) }} đ</span>
+       <span id="none" class="price">{{ number_format($product->selling_price) }}đ</span>
+	   <span id="dcprice" class="price"></span>
+	   <span id="slprice" class="price-strike"></span>
        @else
-       <span class="price">{{ number_format($product->discount_price) }} đ</span>
-			<span class="price-strike">{{ number_format($product->selling_price) }} đ</span>
+       <span id="dcprice" class="price">{{ number_format($product->discount_price) }} đ
+	   {{-- <input type="hidden" id="pprice" name="price" value="{{ $product->discount_price}}"?> --}}
+	   </span>
+	   <span  id="slprice" class="price-strike">{{ number_format($product->selling_price) }} đ</span>
+	   </span>
        @endif
 
+	   {{-- <span  id="dcprice" class="price">đ</span>
+	   <span  id="slprice" class="price">đ</span> --}}
+
 			
-		</div>
+	
+</div>
 	</div>
 
 		<div class="col-sm-6">
@@ -276,7 +285,7 @@
 
 		<div class="col-sm-6">
 
-<div class="form-group">
+{{-- <div class="form-group">
 	@if($product->product_size_en == null)
 
 	@else	
@@ -291,8 +300,24 @@
 
 	@endif
 	
-</div> <!-- // end form group -->
+</div> <!-- // end form group --> --}}
 
+
+
+
+@php
+$sizes = DB::table('price_products')->where('pro_id',$product->id)->get();
+@endphp
+
+{{-- <span id="price">$: {{$product->selling_price}}</span> --}}
+<label class="info-title control-label">Choose Size <span> </span></label>
+<select class="form-control unicase-form-control selectpicker" style="display: none;" name="size" id="size">
+
+@foreach($sizes as $size)
+<option>{{$size->size}}</option>
+@endforeach
+</select>	
+<input type="hidden" value="{{$product->id}}"  id="proDum"/>
 			 
 		</div> <!-- // end col 6 -->
 
@@ -838,6 +863,7 @@ $reviews = App\Models\Review::where('product_id',$product->id)->latest()->limit(
 
 <!-- Go to www.addthis.com/dashboard to customize your tools -->
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5e4b85f98de5201f"></script>
+
 
  <script>function myFunction() {
 	var x = document.getElementById("myDIV");

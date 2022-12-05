@@ -11,6 +11,7 @@ use App\Models\Brand;
 
 use App\Models\Product;
 use App\Models\MultiImg;
+use App\Models\PriceProduct;
 use Carbon\Carbon;
 use Image;
 
@@ -96,6 +97,36 @@ class ProductController extends Controller
 
         ]);
 
+        ////
+
+
+        // $pro_id = $request->id;
+        $size = $request->size;
+        $sl_pr = $request->sl_pr;
+        $dc_price = $request->dc_price;
+
+        foreach ($size as $index => $sizes) {
+
+
+            $size1 = $sizes;
+            $sl_pr1 = $sl_pr[$index];
+            $dc_price1 = $dc_price[$index];
+
+            PriceProduct::insert(
+                [
+                    'pro_id' => $product_id,
+                    'size' => $size1,
+                    'sl_pr' => $sl_pr1,
+                    'dc_price' => $dc_price1,
+                ]
+            );
+        }
+
+
+
+
+        ///
+
 
         ////////// Multiple Image Upload Start ///////////
 
@@ -145,7 +176,8 @@ class ProductController extends Controller
         $subcategory = SubCategory::latest()->get();
         $subsubcategory = SubSubCategory::latest()->get();
         $products = Product::findOrFail($id);
-        return view('backend.product.product_edit', compact('categories', 'brands', 'subcategory', 'subsubcategory', 'products', 'multiImgs'));
+        $products_size = PriceProduct::where('pro_id', $id)->get();
+        return view('backend.product.product_edit', compact('categories', 'brands', 'subcategory', 'subsubcategory', 'products', 'products_size', 'multiImgs'));
     }
 
 
@@ -202,6 +234,28 @@ class ProductController extends Controller
 
         ]);
 
+
+        $id = $request->id_pro;
+        $size = $request->size;
+        $sl_pr = $request->sl_pr;
+        $dc_price = $request->dc_price;
+
+        foreach ($size as $index => $sizes) {
+
+            $size1 = $sizes;
+            $id1 = $id[$index];
+            $sl_pr1 = $sl_pr[$index];
+            $dc_price1 = $dc_price[$index];
+
+            PriceProduct::findOrFail($id1)->update(
+                [
+                    'size' => $size1,
+                    'sl_pr' => $sl_pr1,
+                    'dc_price' => $dc_price1,
+                ]
+            );
+        }
+
         $notification = array(
             'message' => 'Product Updated Without Image Successfully',
             'alert-type' => 'success'
@@ -209,7 +263,38 @@ class ProductController extends Controller
 
         return redirect()->route('manage-product')->with($notification);
     } // end method 
+    // public function Addsizeproduct(Request $request)
+    // {
+    //     $pro_id = $request->id;
+    //     $size = $request->size;
+    //     $sl_pr = $request->sl_pr;
+    //     $dc_price = $request->dc_price;
 
+    //     foreach ($size as $index => $sizes) {
+
+
+    //         $size1 = $sizes;
+    //         $sl_pr1 = $sl_pr[$index];
+    //         $dc_price1 = $dc_price[$index];
+
+    //         PriceProduct::insert(
+    //             [
+    //                 'pro_id' => $pro_id,
+    //                 'size' => $size1,
+    //                 'sl_pr' => $sl_pr1,
+    //                 'dc_price' => $dc_price1,
+    //             ]
+    //         );
+    //     }
+
+
+    // $notification = array(
+    //     'message' => 'Product Image Updated Successfully',
+    //     'alert-type' => 'info'
+    // );
+
+    // return redirect()->back()->with($notification);
+    // }
 
     /// Multiple Image Update
     public function MultiImageUpdate(Request $request)
@@ -313,6 +398,7 @@ class ProductController extends Controller
     {
         $product = Product::findOrFail($id);
         unlink($product->product_thambnail);
+        PriceProduct::where('pro_id', $product->id)->delete();
         Product::findOrFail($id)->delete();
 
         $images = MultiImg::where('product_id', $id)->get();

@@ -10,11 +10,55 @@
           <!-- /.product-image --> 
         </div>
         <!-- /.col -->
+        @php
+           $avg = App\Models\Review::where('product_id',$product->id)->where('status',1)->avg('rating');
+           @endphp
         <div class="col col-sm-8 col-lg-8">
           <div class="product-info">
             <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en ) }}">
             	@if(session()->get('language') == 'hindi') {{ $product->product_name_hin }} @else {{ $product->product_name_en }} @endif</a></h3>
-            <div class="rating rateit-small"></div>
+              <div>
+                @if($avg == 0)
+           No Rating Yet 
+           @elseif($avg == 1 || $avg < 2)
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+           @elseif($avg == 2 || $avg < 3)
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+          @elseif($avg == 3 || $avg < 4)
+          <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        
+          @elseif($avg == 4 || $avg < 5)
+          <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+          @elseif($avg == 5 || $avg < 5)
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+           @endif
+              </div>
+        <style>
+          .checked {
+          color: orange;
+        }
+        
+        </style>
 
 
             @if ($product->discount_price == NULL)

@@ -169,6 +169,7 @@ Route::prefix('product')->group(function () {
     Route::post('/data/update', [ProductController::class, 'ProductDataUpdate'])->name('product-update');
 
     Route::post('/image/update', [ProductController::class, 'MultiImageUpdate'])->name('update-product-image');
+    // Route::post('/sizeproduct', [ProductController::class, 'Addsizeproduct'])->name('create-product-size');
 
     Route::post('/thambnail/update', [ProductController::class, 'ThambnailImageUpdate'])->name('update-product-thambnail');
 
@@ -213,7 +214,7 @@ Route::get('/language/english', [LanguageController::class, 'English'])->name('e
 
 // Frontend Product Details Page url 
 Route::get('/product/details/{id}/{slug}', [IndexController::class, 'ProductDetails']);
-
+Route::get('selectSize', [IndexController::class, 'selectSize']);
 
 
 // Frontend Product Tags Page 

@@ -160,6 +160,7 @@ $seo = App\Models\Seo::find(1);
                     <option>1</option>
        
                 </select>
+                <input type="hidden"  id="proDum"/>
             </div>  <!-- // end form group -->
 
             <div class="form-group">
@@ -173,7 +174,7 @@ $seo = App\Models\Seo::find(1);
         @else
         <div class="col-md-4">
             <ul class="list-group">
-                <li class="list-group-item">Product Price: <strong class="text-danger"><span id="pprice"></span> </strong>
+                <li class="list-group-item">Product Price: <strong class="text-danger"><span id="pprice1"></span> </strong>
                     <del id="oldprice"></del> 
                 </li>
                 <li class="list-group-item">Product Code: <strong id="pcode"></strong></li>
@@ -203,6 +204,7 @@ $seo = App\Models\Seo::find(1);
                     <option>1</option>
        
                 </select>
+                <input type="hidden" id="proDum"/>
             </div>  <!-- // end form group -->
 
             <div class="form-group">
@@ -240,6 +242,7 @@ function productView(id){
         dataType:'json',
         success:function(data){
             // console.log(data)
+            // alert(id);
             $('#pname').text(data.product.product_name_en);
             $('#price').text(data.slpr);
             $('#pcode').text(data.product.product_code);
@@ -248,17 +251,19 @@ function productView(id){
             $('#pimage').attr('src','/'+data.product.product_thambnail);
 
             $('#product_id').val(id);
+            $('#proDum').val(id);
             $('#qty').val(1);
 
             // Product Price 
             if (data.product.discount_price == null) {
-                $('#pprice').text('');
+                $('#pprice1').text('');
                 $('#oldprice').text('');
-                $('#pprice').text(data.slpr);
+                $('#pprice1').text(data.slpr);
 
 
             }else{
-                $('#pprice').text(data.dcpr);
+                $('#pprice1').text(data.dcpr)
+                // .append('<input type="hidden" id="pprice" value="'+data.dcpr+'"?>');
                 $('#oldprice').text(data.slpr);
 
             } // end prodcut price 
@@ -291,14 +296,45 @@ function productView(id){
         }else{
             $('#sizeArea').show();
         }
+        
 
     }) // end size
  
 
         }
+        
 
     })
- 
+    $(document).ready(function(){
+		$('#size').change(function(){
+			var size = $('#size').val();
+			var proDum =$('#proDum').val();
+			// alert(proDum);
+            
+
+            $.ajax({
+                type: 'get',
+                dataType: 'json',
+                url: '<?php echo url('/selectSize');?>',
+                data: "size="+size+"& proDum="+ proDum,
+                success: function(data){
+                    console.log(data);
+
+            if (data.dcpr == '0') {
+                $('#none').text('');
+                $('#oldprice').text('');
+                $('#pprice1').text(data.slpr);
+            }else
+            {
+                $('#none').text('');
+                $('#oldprice').text(data.slpr);
+                $('#pprice1').text(data.dcpr);
+            }
+                }
+
+            })
+		});
+	});
 
 }
 // Eend Product View with Modal 
@@ -319,6 +355,7 @@ function productViewvn(id){
             $('#pimage').attr('src','/'+data.product.product_thambnail);
 
             $('#product_id').val(id);
+            $('#proDum').val(id);
             $('#qty').val(1);
 
             // Product Price 
@@ -369,7 +406,36 @@ function productViewvn(id){
         }
 
     })
- 
+    $(document).ready(function(){
+		$('#size').change(function(){
+			var size = $('#size').val();
+			var proDum =$('#proDum').val();
+			// alert(proDum);
+            
+
+            $.ajax({
+                type: 'get',
+                dataType: 'json',
+                url: '<?php echo url('/selectSize');?>',
+                data: "size="+size+"& proDum="+ proDum,
+                success: function(data){
+                    console.log(data);
+
+            if (data.dcpr == '0') {
+                $('#none').text('');
+                $('#oldprice').text('');
+                $('#pprice').text(data.slpr);
+            }else
+            {
+                $('#none').text('');
+                $('#oldprice').text(data.slpr);
+                $('#pprice').text(data.dcpr);
+            }
+                }
+
+            })
+		});
+	});
 
 }
 // Eend Product View Vn with Modal 
@@ -381,6 +447,7 @@ function productViewvn(id){
     function addToCart(){
         var product_name = $('#pname').text();
         var id = $('#product_id').val();
+        var price = $('#pprice').val();
         var color = $('#color option:selected').text();
         var size = $('#size option:selected').text();
         var quantity = $('#qty').val();
@@ -388,7 +455,7 @@ function productViewvn(id){
             type: "POST",
             dataType: 'json',
             data:{
-                color:color, size:size, quantity:quantity, product_name:product_name
+                color:color, size:size, quantity:quantity, product_name:product_name, price:price
             },
             url: "/cart/data/store/"+id,
             success:function(data){
@@ -656,7 +723,40 @@ function addToWishList(product_id){
 <!-- /// Load My Cart /// -->
 
 <script type="text/javascript">
-     function cart(){
+$(document).ready(function(){
+		$('#size').change(function(){
+			var size = $('#size').val();
+			var proDum =$('#proDum').val();
+			// alert(proDum);
+            
+
+            $.ajax({
+                type: 'get',
+                dataType: 'json',
+                url: '<?php echo url('/selectSize');?>',
+                data: "size="+size+"& proDum="+ proDum,
+                success: function(data){
+                    console.log(data);
+
+            if (data.dcpr == '0') {
+                $('#none').text('');
+                $('#slprice').text('');
+                $('#dcprice').text(data.slpr).append('<span class="price"> đ</span>');
+            }else
+            {
+                $('#none').text('');
+                $('#slprice').text(data.slpr).append('<span class="price"> đ</span>');
+                $('#dcprice').text(data.dcpr).append('<span class="price"> đ</span>');
+            }
+                }
+
+            })
+		});
+	});
+
+
+
+    function cart(){
         $.ajax({
             type: 'GET',
             url: '/user/get-cart-product',

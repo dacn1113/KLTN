@@ -772,7 +772,11 @@ Online Shop
         <!-- == === FEATURED PRODUCTS == ==== -->
 
         <section class="section featured-product wow fadeInUp">
+          @if(session()->get('language') == 'hindi') 
           <h3 class="section-title">Sản phẩm nổi bật</h3>
+          @else
+          <h3 class="section-title">Featured products</h3>
+          @endif
           <div class="owl-carousel home-owl-carousel custom-carousel owl-theme outer-top-xs">
 
 
@@ -1381,12 +1385,20 @@ Online Shop
         <div class="owl-carousel best-seller custom-carousel owl-theme outer-top-xs">
           <div class="item">
             <div class="products best-product">
-              <div class="product">
+              @foreach($products as $product)
+              @php
+              $avg = App\Models\Review::where('product_id',$product->id)->where('status',1)->avg('rating');
+              @endphp
+              {{-- <div class="product">
                 <div class="product-micro">
+                  @foreach($products as $product)
+                  @php
+                  $avg = App\Models\Review::where('product_id',$product->id)->where('status',1)->avg('rating');
+                  @endphp 
                   <div class="row product-micro-row">
                     <div class="col col-xs-5">
                       <div class="product-image">
-                        <div class="image"> <a href="#"> <img src="{{ asset('frontend/assets/images/products/p20.jpg') }}" alt=""> </a> </div>
+                        <div class="image"> <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en ) }}"><img  src="{{ asset($product->product_thambnail) }}" alt=""></a> </div>
                         <!-- /.image --> 
                         
                       </div>
@@ -1395,9 +1407,57 @@ Online Shop
                     <!-- /.col -->
                     <div class="col2 col-xs-7">
                       <div class="product-info">
-                        <h3 class="name"><a href="#">Floral Print Buttoned</a></h3>
-                        <div class="rating rateit-small"></div>
-                        <div class="product-price"> <span class="price"> $450.99 </span> </div>
+                        <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en ) }}">
+                          @if(session()->get('language') == 'hindi') {{ $product->product_name_hin }} @else {{ $product->product_name_en }} @endif</a></h3>
+                          <div>
+                            @if($avg == 0)
+                       No Rating Yet 
+                       @elseif($avg == 1 || $avg < 2)
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                       @elseif($avg == 2 || $avg < 3)
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                      @elseif($avg == 3 || $avg < 4)
+                      <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    
+                      @elseif($avg == 4 || $avg < 5)
+                      <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                      @elseif($avg == 5 || $avg < 5)
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                       @endif
+                          </div>
+                    <style>
+                      .checked {
+                      color: orange;
+                    }
+                    
+                    </style>
+                   @if ($product->discount_price == NULL)
+                   <div class="product-price"> <span class="price"> {{ number_format($product->selling_price) }} đ</span>   </div>
+                   
+                   @else
+                   
+                   <div class="product-price"> <span class="price"> {{ number_format($product->discount_price) }} đ</span> <span class="price-before-discount"> {{ number_format($product->selling_price) }} đ</span> </div>
+                   @endif
                         <!-- /.product-price --> 
                         
                       </div>
@@ -1405,16 +1465,18 @@ Online Shop
                     <!-- /.col --> 
                   </div>
                   <!-- /.product-micro-row --> 
+                  @endforeach
                 </div>
                 <!-- /.product-micro --> 
-                
-              </div>
+              </div> --}}
+
               <div class="product">
                 <div class="product-micro">
+    
                   <div class="row product-micro-row">
                     <div class="col col-xs-5">
                       <div class="product-image">
-                        <div class="image"> <a href="#"> <img src="{{ asset('frontend/assets/images/products/p21.jpg') }}" alt=""> </a> </div>
+                        <div class="image"> <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en ) }}"> <img src="{{ asset($product->product_thambnail) }}" alt=""> </a> </div>
                         <!-- /.image --> 
                         
                       </div>
@@ -1423,9 +1485,9 @@ Online Shop
                     <!-- /.col -->
                     <div class="col2 col-xs-7">
                       <div class="product-info">
-                        <h3 class="name"><a href="#">Floral Print Buttoned</a></h3>
+                        <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en ) }}">@if(session()->get('language') == 'hindi') {{ $product->product_name_hin }} @else {{ $product->product_name_en }} @endif</a></h3>
                         <div class="rating rateit-small"></div>
-                        <div class="product-price"> <span class="price"> $450.99 </span> </div>
+                        <div class="product-price"> <span class="price"> {{ number_format($product->selling_price) }} đ</span> </div>
                         <!-- /.product-price --> 
                         
                       </div>
@@ -1433,20 +1495,32 @@ Online Shop
                     <!-- /.col --> 
                   </div>
                   <!-- /.product-micro-row --> 
+         
                 </div>
                 <!-- /.product-micro --> 
                 
               </div>
+              @endforeach
             </div>
+
           </div>
+      
+
+       
           <div class="item">
             <div class="products best-product">
+              @foreach($skip_product_1 as $product)
+              @php
+              $avg = App\Models\Review::where('product_id',$product->id)->where('status',1)->avg('rating');
+              @endphp
+
               <div class="product">
                 <div class="product-micro">
+    
                   <div class="row product-micro-row">
                     <div class="col col-xs-5">
                       <div class="product-image">
-                        <div class="image"> <a href="#"> <img src="{{ asset('frontend/assets/images/products/p22.jpg') }}" alt=""> </a> </div>
+                        <div class="image"> <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en ) }}"> <img src="{{ asset($product->product_thambnail) }}" alt=""> </a> </div>
                         <!-- /.image --> 
                         
                       </div>
@@ -1455,9 +1529,9 @@ Online Shop
                     <!-- /.col -->
                     <div class="col2 col-xs-7">
                       <div class="product-info">
-                        <h3 class="name"><a href="#">Floral Print Buttoned</a></h3>
+                        <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en ) }}">@if(session()->get('language') == 'hindi') {{ $product->product_name_hin }} @else {{ $product->product_name_en }} @endif</a></h3>
                         <div class="rating rateit-small"></div>
-                        <div class="product-price"> <span class="price"> $450.99 </span> </div>
+                        <div class="product-price"> <span class="price"> {{ number_format($product->selling_price) }} đ</span> </div>
                         <!-- /.product-price --> 
                         
                       </div>
@@ -1465,41 +1539,18 @@ Online Shop
                     <!-- /.col --> 
                   </div>
                   <!-- /.product-micro-row --> 
+         
                 </div>
                 <!-- /.product-micro --> 
                 
               </div>
-              <div class="product">
-                <div class="product-micro">
-                  <div class="row product-micro-row">
-                    <div class="col col-xs-5">
-                      <div class="product-image">
-                        <div class="image"> <a href="#"> <img src="{{ asset('frontend/assets/images/products/p23.jpg') }}" alt=""> </a> </div>
-                        <!-- /.image --> 
-                        
-                      </div>
-                      <!-- /.product-image --> 
-                    </div>
-                    <!-- /.col -->
-                    <div class="col2 col-xs-7">
-                      <div class="product-info">
-                        <h3 class="name"><a href="#">Floral Print Buttoned</a></h3>
-                        <div class="rating rateit-small"></div>
-                        <div class="product-price"> <span class="price"> $450.99 </span> </div>
-                        <!-- /.product-price --> 
-                        
-                      </div>
-                    </div>
-                    <!-- /.col --> 
-                  </div>
-                  <!-- /.product-micro-row --> 
-                </div>
-                <!-- /.product-micro --> 
-                
-              </div>
+              @endforeach
             </div>
+
           </div>
-          <div class="item">
+     
+
+          {{-- <div class="item">
             <div class="products best-product">
               <div class="product">
                 <div class="product-micro">
@@ -1558,7 +1609,8 @@ Online Shop
                 
               </div>
             </div>
-          </div>
+          </div> --}}
+
           <div class="item">
             <div class="products best-product">
               <div class="product">

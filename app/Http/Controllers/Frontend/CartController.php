@@ -11,6 +11,8 @@ use App\Models\Wishlist;
 use Carbon\Carbon;
 
 use App\Models\Coupon;
+use App\Models\Order;
+use App\Models\PriceProduct;
 use App\Models\ShipDivision;
 use Illuminate\Support\Facades\Session;
 
@@ -24,37 +26,54 @@ class CartController extends Controller
 
         $product = Product::findOrFail($id);
 
-        if ($product->discount_price == NULL) {
-            Cart::add([
-                'id' => $id,
-                'name' => $request->product_name,
-                'qty' => $request->quantity,
-                'price' => $product->selling_price,
-                'weight' => 1,
-                'options' => [
-                    'image' => $product->product_thambnail,
-                    'color' => $request->color,
-                    'size' => $request->size,
-                ],
-            ]);
+        $s_price = PriceProduct::where('pro_id', $id)->get();
 
-            return response()->json(['success' => 'Successfully Added on Your Cart']);
-        } else {
-
-            Cart::add([
-                'id' => $id,
-                'name' => $request->product_name,
-                'qty' => $request->quantity,
-                'price' => $product->discount_price,
-                'weight' => 1,
-                'options' => [
-                    'image' => $product->product_thambnail,
-                    'color' => $request->color,
-                    'size' => $request->size,
-                ],
-            ]);
-            return response()->json(['success' => 'Successfully Added on Your Cart']);
+        foreach ($s_price as $item) {
+            if ($request->size == $item->size) {
+                if ($item->dc_price == NULL) {
+                    $price = (int)str_replace(',', '', $item->sl_pr);
+                } else {
+                    $price = (int)str_replace(',', '', $item->dc_price);
+                }
+            }
         }
+
+
+        // if ($product->discount_price == NULL) {
+        //     Cart::add([
+        //         'id' => $id,
+        //         'name' => $request->product_name,
+        //         // 'qty' => $request->quantity,
+        //         // 'price' => $product->selling_price,
+        //         'price' => $price,
+        //         'weight' => 1,
+        //         'options' => [
+        //             'image' => $product->product_thambnail,
+        //             'color' => $request->color,
+        //             'size' => $request->size,
+        //         ],
+        //     ]);
+
+        //     return response()->json(['success' => 'Successfully Added on Your Cart']);
+        // } else {
+
+        Cart::add([
+            'id' => $id,
+            'name' => $request->product_name,
+            'qty' => $request->quantity,
+
+            // 'price' => $product->discount_price,
+            // 'price' => (int)str_replace(',', '', $request->price),
+            'price' => $price,
+            'weight' => 1,
+            'options' => [
+                'image' => $product->product_thambnail,
+                'color' => $request->color,
+                'size' => $request->size,
+            ],
+        ]);
+        return response()->json(['success' => 'Successfully Added on Your Cart']);
+        // }
     } // end mehtod 
 
 

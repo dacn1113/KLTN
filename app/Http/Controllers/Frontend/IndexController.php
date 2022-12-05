@@ -13,7 +13,7 @@ use App\Models\Product;
 use App\Models\MultiImg;
 use Illuminate\Support\Facades\Hash;
 use App\Models\BlogPost;
-
+use App\Models\PriceProduct;
 use App\Models\SubCategory;
 use App\Models\SubSubCategory;
 use DB;
@@ -256,9 +256,9 @@ class IndexController extends Controller
     public function ProductViewAjax($id)
     {
         $product = Product::with('category', 'brand')->findOrFail($id);
-
-        $ccl = $product->selling_price;
-        $ccl1 = $product->discount_price;
+        $size_product = PriceProduct::where('pro_id', $id)->first();
+        $ccl = $size_product->sl_pr;
+        $ccl1 = $size_product->dc_price;
         $price = number_format($ccl);
         $price1 = number_format($ccl1);
 
@@ -313,6 +313,21 @@ class IndexController extends Controller
         return view('frontend.product.search_product', compact('products'));
     } // end method 
 
+    public function selectSize(Request $request)
+    {
+        $proDum = $request->proDum;
+        $size = $request->size;
+        $s_price = PriceProduct::where('pro_id', $proDum)->where('size', $size)->get();
 
+        foreach ($s_price as $sPrice) {
+            $dcpr = number_format($sPrice->dc_price);
+            $slpr = number_format($sPrice->sl_pr);
+        }
 
+        return response()->json(array(
+            // 's_price' => $s_price,
+            'slpr' => $slpr,
+            'dcpr' => $dcpr
+        ));
+    }
 }

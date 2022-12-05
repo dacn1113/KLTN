@@ -396,7 +396,28 @@
 
 	 
 	 <hr>
- 
+	 <div class="row"> <!-- start 8th row  -->
+		<div class="col-md-6">
+			<h5>Thiết lập giá theo kích thước</h5>
+			<table id="example1" class="table table-bordered table-striped">
+		 <tr>
+		   <th>Size</th>
+		   <th>Sl price</th>
+		   <th>Dicount price</th>
+		 </tr>
+		 
+		 @foreach ($products_size as $item)
+		 <tr>
+		 <input type="hidden" name="id_pro[]" class="form-control" value="{{$item->id}}">
+		 <td><input type="text" name="size[]" class="form-control" required="" value="{{$item->size}}"></td>
+		 <td><input type="text" name="sl_pr[]" class="form-control" required="" value="{{$item->sl_pr}}"></td>
+		 <td><input type="text"name="dc_price[]" class="form-control" value="{{$item->dc_price}}"></td>
+		 <tr>
+		 @endforeach	
+	   </table>
+	 </div>
+	 </div>
+	 
 
 
 	<div class="row">
@@ -416,8 +437,6 @@
 		</div>
 	</div>
 </div>
-
-
 
 <div class="col-md-6">
 	<div class="form-group">

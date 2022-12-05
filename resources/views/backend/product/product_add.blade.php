@@ -407,9 +407,82 @@
 
 	 
 	 <hr>
- 
 
 
+
+	 <section class="content">
+		<div class="row">
+	
+	<div class="col-md-12">
+				   <div class="box bt-3 border-info">
+					 <div class="box-header">
+			<h4 class="box-title">Thêm giá tiền theo khối lượng sản phẩm </h4>
+					 </div>
+	
+	
+					 <div class="container">
+						<div class="row">
+							<div class="col-md-12">
+				
+								<div class="card mt-4">
+									<div class="card-header">
+										<h4>Vui lòng điền vào bên dưới 
+											<a href="javascript:void(0)" class="add-more-form float-end btn btn-primary">Thêm</a>
+										</h4>
+									</div>
+									<div class="card-body">
+											<div class="main-form mt-3 border-bottom">
+												<div class="row">
+													<div class="col-md-4">
+														<div class="form-group mb-2">
+															<label for="">Kích thước sản phẩm</label>
+															<input type="text" name="size[]" class="form-control" required >
+														</div>
+													</div>
+													<div class="col-md-4">
+														<div class="form-group mb-2">
+															<label for="">Giá gốc sản phẩm</label>
+															<input type="text" name="sl_pr[]" class="form-control" required >
+														</div>
+													</div>
+	
+	
+													<div class="col-md-4">
+														<div class="form-group mb-2">
+															<label for="">Giá chiết khấu</label>
+															<input type="text" name="dc_price[]" class="form-control" required >
+														</div>
+													</div>
+													
+												</div>
+											</div>
+				
+											<div class="paste-new-forms"></div>
+				
+											
+										
+				
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				
+					
+				
+					</div>
+				</div>
+	
+	
+		   
+	   </div> <!-- // end row  -->
+	   
+	</section>
+
+
+
+
+<hr>
 	<div class="row">
 
 <div class="col-md-6">
