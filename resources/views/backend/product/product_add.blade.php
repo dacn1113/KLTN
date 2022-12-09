@@ -294,7 +294,7 @@
 	    <div class="form-group">
 			<h5>Giá chiết khấu sản phẩm (Vnd)<span class="text-danger">*</span></h5>
 			<div class="controls">
-	 <input type="text" name="discount_price" class="form-control"  required="">
+	 <input type="text" name="discount_price" class="form-control"  >
      @error('discount_price') 
 	 <span class="text-danger">{{ $message }}</span>
 	 @enderror
@@ -416,7 +416,7 @@
 	<div class="col-md-12">
 				   <div class="box bt-3 border-info">
 					 <div class="box-header">
-			<h4 class="box-title">Thêm giá tiền theo khối lượng sản phẩm </h4>
+			<h4 class="box-title">Thể loại sản phẩm </h4>
 					 </div>
 	
 	
@@ -435,14 +435,14 @@
 												<div class="row">
 													<div class="col-md-4">
 														<div class="form-group mb-2">
-															<label for="">Kích thước sản phẩm</label>
-															<input type="text" name="size[]" class="form-control" required >
+															<label for="">Thể loại</label>
+															<input type="text" name="size[]" class="form-control"  >
 														</div>
 													</div>
 													<div class="col-md-4">
 														<div class="form-group mb-2">
 															<label for="">Giá gốc sản phẩm</label>
-															<input type="text" name="sl_pr[]" class="form-control" required >
+															<input type="text" name="sl_pr[]" class="form-control"  >
 														</div>
 													</div>
 	
@@ -450,7 +450,7 @@
 													<div class="col-md-4">
 														<div class="form-group mb-2">
 															<label for="">Giá chiết khấu</label>
-															<input type="text" name="dc_price[]" class="form-control" required >
+															<input type="text" name="dc_price[]" class="form-control"  >
 														</div>
 													</div>
 													

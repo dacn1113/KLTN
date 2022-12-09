@@ -138,7 +138,7 @@
 
 
 
-@include('frontend.body.brands')
+{{-- @include('frontend.body.brands') --}}
 
 
 <!-- ============================================== BRANDS CAROUSEL : END ============================================== -->    </div><!-- /.container -->

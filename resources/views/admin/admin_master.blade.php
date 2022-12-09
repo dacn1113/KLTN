@@ -103,8 +103,8 @@
  @endif 
 </script>
 
-<script src="https://code.jquery.com/jquery-3.6.0.js" ></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+{{-- <script src="https://code.jquery.com/jquery-3.6.0.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script> --}}
 
 <script>
   $(document).ready(function () {
@@ -119,19 +119,19 @@
                 <div class="col-md-4">\
                   <div class="form-group mb-2">\
                     <label for="">Kích thước sản phẩm</label>\
-                    <input type="text" name="size[]" class="form-control" required placeholder="Enter Name">\
+                    <input type="text" name="size[]" class="form-control"  >\
                   </div>\
                 </div>\
                 <div class="col-md-4">\
                   <div class="form-group mb-2">\
                     <label for="">Giá gốc sản phẩm</label>\
-                    <input type="text" name="sl_pr[]" class="form-control" required placeholder="Enter Phone Number">\
+                    <input type="text" name="sl_pr[]" class="form-control" >\
                   </div>\
                 </div>\
                 <div class="col-md-4">\
                   <div class="form-group mb-2">\
                     <label for="">Giá chiết khấu</label>\
-                    <input type="text" name="dc_price[]" class="form-control" required placeholder="Enter Phone Number">\
+                    <input type="text" name="dc_price[]" class="form-control" >\
                   </div>\
                 </div>\
                 <div class="col-md-4">\

@@ -24,7 +24,7 @@ class IndexController extends Controller
     {
         $blogpost = BlogPost::latest()->get();
         $products = Product::where('status', 1)->orderBy('id', 'DESC')->limit(6)->get();
-        $sliders = Slider::where('status', 1)->orderBy('id', 'DESC')->limit(3)->get();
+        $sliders = Slider::where('status', 1)->orderBy('id', 'DESC')->limit(6)->get();
         $categories = Category::orderBy('category_name_en', 'ASC')->get();
 
         $featured = Product::where('featured', 1)->orderBy('id', 'DESC')->limit(6)->get();
@@ -32,22 +32,64 @@ class IndexController extends Controller
 
         $special_offer = Product::where('special_offer', 1)->orderBy('id', 'DESC')->limit(6)->get();
 
-        $special_deals = Product::where('special_deals', 1)->orderBy('id', 'DESC')->limit(3)->get();
+        $special_deals = Product::where('special_deals', 1)->orderBy('id', 'DESC')->limit(6)->get();
 
         $skip_category_0 = Category::skip(0)->first();
         $skip_product_0 = Product::where('status', 1)->where('category_id', $skip_category_0->id)->orderBy('id', 'DESC')->get();
 
-        $skip_category_1 = Category::skip(1)->first();
-        $skip_product_1 = Product::where('status', 1)->where('category_id', $skip_category_1->id)->orderBy('id', 'DESC')->get();
+
+        $skip_category_1 = Category::skip(2)->first();
+        $skip_product_1 = Product::where('status', 1)->where('category_id', $skip_category_0->id)->orderBy('id', 'DESC')->get();
+
+        $category_1 = Category::where('id', 5)->first();
+        $product_1 = Product::where('status', 1)->where('category_id', $category_1->id)->orderBy('id', 'DESC')->limit(2)->get();
+
+
+        $category_2 = Category::where('id', 6)->first();
+        $product_2 = Product::where('status', 1)->where('category_id', $category_2->id)->orderBy('id', 'DESC')->limit(2)->get();
+
+
+        $category_3 = Category::where('id', 7)->first();
+        $product_3 = Product::where('status', 1)->where('category_id', $category_3->id)->orderBy('id', 'DESC')->limit(2)->get();
+
+
+        $category_4 = Category::where('id', 8)->first();
+        $product_4 = Product::where('status', 1)->where('category_id', $category_4->id)->orderBy('id', 'DESC')->limit(2)->get();
+
+        $category_5 = Category::where('id', 9)->first();
+        $product_5 = Product::where('status', 1)->where('category_id', $category_5->id)->orderBy('id', 'DESC')->limit(2)->get();
+
+
 
         $skip_brand_1 = Brand::skip(1)->first();
         $skip_brand_product_1 = Product::where('status', 1)->where('brand_id', $skip_brand_1->id)->orderBy('id', 'DESC')->get();
 
-
+        $brand = Brand::orderBy('id', 'DESC')->get();
         // return $skip_category->id;
         // die();
 
-        return view('frontend.index', compact('categories', 'sliders', 'products', 'featured', 'hot_deals', 'special_offer', 'special_deals', 'skip_category_0', 'skip_product_0', 'skip_category_1', 'skip_product_1', 'skip_brand_1', 'skip_brand_product_1', 'blogpost'));
+        return view('frontend.index', compact(
+            'brand',
+            'product_1',
+            'product_2',
+            'product_3',
+            'product_4',
+            'product_5',
+            'categories',
+            'sliders',
+            'products',
+            'featured',
+            'hot_deals',
+            'special_offer',
+            'special_deals',
+            'skip_category_0',
+            'skip_product_0',
+            'skip_category_1',
+            'skip_product_1',
+            'skip_brand_1',
+            'skip_brand_product_1',
+            'blogpost'
+        ));
     }
 
 

@@ -1233,7 +1233,7 @@ Online Shop
 
 
 <!-- == === skip_brand_product_1 PRODUCTS == ==== -->
-
+{{-- 
         <section class="section featured-product wow fadeInUp">
           <h3 class="section-title">
 @if(session()->get('language') == 'hindi') {{ $skip_brand_1->brand_name_hin }} @else {{ $skip_brand_1->brand_name_en }} @endif
@@ -1337,7 +1337,7 @@ Online Shop
                 <button class="btn btn-primary icon" type="button" title="Add" data-toggle="modal" data-target="#exampleModal" id="{{ $product->id }}" onclick="productView(this.id)"> <i class="fa fa-shopping-cart"></i> </button>
              @endif
         {{-- <button class="btn btn-primary cart-btn" type="button">Add to cart</button> --}}
-      </li>
+      {{-- </li>
 
       
 
@@ -1347,8 +1347,8 @@ Online Shop
             </ul>
           </div>
           <!-- /.action --> 
-        </div>
-        <!-- /.cart --> 
+        </div> --}}
+        {{-- <!-- /.cart --> 
                       </div>
                       <!-- /.product --> 
                       
@@ -1363,7 +1363,7 @@ Online Shop
           <!-- /.home-owl-carousel --> 
         </section>
         <!-- /.section --> 
-        <!-- == ==== skip_brand_product_1 PRODUCTS : END ==== === -->
+        <!-- == ==== skip_brand_product_1 PRODUCTS : END ==== === --> --}} 
 
 
 
@@ -1380,96 +1380,19 @@ Online Shop
      <!-- ============================================== BEST SELLER ============================================== -->
         
      <div class="best-deal wow fadeInUp outer-bottom-xs">
+      @if(session()->get('language') == 'hindi')
+      <h3 class="section-title">Sản phẩm tốt nhất</h3>
+      @else
       <h3 class="section-title">Best seller</h3>
+      @endif
       <div class="sidebar-widget-body outer-top-xs">
         <div class="owl-carousel best-seller custom-carousel owl-theme outer-top-xs">
           <div class="item">
             <div class="products best-product">
-              @foreach($products as $product)
+              @foreach($product_1 as $product)
               @php
               $avg = App\Models\Review::where('product_id',$product->id)->where('status',1)->avg('rating');
               @endphp
-              {{-- <div class="product">
-                <div class="product-micro">
-                  @foreach($products as $product)
-                  @php
-                  $avg = App\Models\Review::where('product_id',$product->id)->where('status',1)->avg('rating');
-                  @endphp 
-                  <div class="row product-micro-row">
-                    <div class="col col-xs-5">
-                      <div class="product-image">
-                        <div class="image"> <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en ) }}"><img  src="{{ asset($product->product_thambnail) }}" alt=""></a> </div>
-                        <!-- /.image --> 
-                        
-                      </div>
-                      <!-- /.product-image --> 
-                    </div>
-                    <!-- /.col -->
-                    <div class="col2 col-xs-7">
-                      <div class="product-info">
-                        <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en ) }}">
-                          @if(session()->get('language') == 'hindi') {{ $product->product_name_hin }} @else {{ $product->product_name_en }} @endif</a></h3>
-                          <div>
-                            @if($avg == 0)
-                       No Rating Yet 
-                       @elseif($avg == 1 || $avg < 2)
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                       @elseif($avg == 2 || $avg < 3)
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                      @elseif($avg == 3 || $avg < 4)
-                      <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    
-                      @elseif($avg == 4 || $avg < 5)
-                      <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                      @elseif($avg == 5 || $avg < 5)
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                       @endif
-                          </div>
-                    <style>
-                      .checked {
-                      color: orange;
-                    }
-                    
-                    </style>
-                   @if ($product->discount_price == NULL)
-                   <div class="product-price"> <span class="price"> {{ number_format($product->selling_price) }} đ</span>   </div>
-                   
-                   @else
-                   
-                   <div class="product-price"> <span class="price"> {{ number_format($product->discount_price) }} đ</span> <span class="price-before-discount"> {{ number_format($product->selling_price) }} đ</span> </div>
-                   @endif
-                        <!-- /.product-price --> 
-                        
-                      </div>
-                    </div>
-                    <!-- /.col --> 
-                  </div>
-                  <!-- /.product-micro-row --> 
-                  @endforeach
-                </div>
-                <!-- /.product-micro --> 
-              </div> --}}
-
               <div class="product">
                 <div class="product-micro">
     
@@ -1509,7 +1432,7 @@ Online Shop
        
           <div class="item">
             <div class="products best-product">
-              @foreach($skip_product_1 as $product)
+              @foreach($product_2 as $product)
               @php
               $avg = App\Models\Review::where('product_id',$product->id)->where('status',1)->avg('rating');
               @endphp
@@ -1548,77 +1471,20 @@ Online Shop
             </div>
 
           </div>
-     
-
-          {{-- <div class="item">
-            <div class="products best-product">
-              <div class="product">
-                <div class="product-micro">
-                  <div class="row product-micro-row">
-                    <div class="col col-xs-5">
-                      <div class="product-image">
-                        <div class="image"> <a href="#"> <img src="{{ asset('frontend/assets/images/products/p24.jpg') }}" alt=""> </a> </div>
-                        <!-- /.image --> 
-                        
-                      </div>
-                      <!-- /.product-image --> 
-                    </div>
-                    <!-- /.col -->
-                    <div class="col2 col-xs-7">
-                      <div class="product-info">
-                        <h3 class="name"><a href="#">Floral Print Buttoned</a></h3>
-                        <div class="rating rateit-small"></div>
-                        <div class="product-price"> <span class="price"> $450.99 </span> </div>
-                        <!-- /.product-price --> 
-                        
-                      </div>
-                    </div>
-                    <!-- /.col --> 
-                  </div>
-                  <!-- /.product-micro-row --> 
-                </div>
-                <!-- /.product-micro --> 
-                
-              </div>
-              <div class="product">
-                <div class="product-micro">
-                  <div class="row product-micro-row">
-                    <div class="col col-xs-5">
-                      <div class="product-image">
-                        <div class="image"> <a href="#"> <img src="{{ asset('frontend/assets/images/products/p25.jpg') }}" alt=""> </a> </div>
-                        <!-- /.image --> 
-                        
-                      </div>
-                      <!-- /.product-image --> 
-                    </div>
-                    <!-- /.col -->
-                    <div class="col2 col-xs-7">
-                      <div class="product-info">
-                        <h3 class="name"><a href="#">Floral Print Buttoned</a></h3>
-                        <div class="rating rateit-small"></div>
-                        <div class="product-price"> <span class="price"> $450.99 </span> </div>
-                        <!-- /.product-price --> 
-                        
-                      </div>
-                    </div>
-                    <!-- /.col --> 
-                  </div>
-                  <!-- /.product-micro-row --> 
-                </div>
-                <!-- /.product-micro --> 
-                
-              </div>
-            </div>
-          </div> --}}
-
           <div class="item">
             <div class="products best-product">
+              @foreach($product_3 as $product)
+              @php
+              $avg = App\Models\Review::where('product_id',$product->id)->where('status',1)->avg('rating');
+              @endphp
+
               <div class="product">
                 <div class="product-micro">
+    
                   <div class="row product-micro-row">
                     <div class="col col-xs-5">
                       <div class="product-image">
-                        <div class="image"> <a href="#"> <img src="{{ asset('frontend/assets/images/products/p26.jpg') }}" alt=""> </a> </div>
+                        <div class="image"> <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en ) }}"> <img src="{{ asset($product->product_thambnail) }}" alt=""> </a> </div>
                         <!-- /.image --> 
                         
                       </div>
@@ -1627,9 +1493,9 @@ Online Shop
                     <!-- /.col -->
                     <div class="col2 col-xs-7">
                       <div class="product-info">
-                        <h3 class="name"><a href="#">Floral Print Buttoned</a></h3>
+                        <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en ) }}">@if(session()->get('language') == 'hindi') {{ $product->product_name_hin }} @else {{ $product->product_name_en }} @endif</a></h3>
                         <div class="rating rateit-small"></div>
-                        <div class="product-price"> <span class="price"> $450.99 </span> </div>
+                        <div class="product-price"> <span class="price"> {{ number_format($product->selling_price) }} đ</span> </div>
                         <!-- /.product-price --> 
                         
                       </div>
@@ -1637,40 +1503,98 @@ Online Shop
                     <!-- /.col --> 
                   </div>
                   <!-- /.product-micro-row --> 
+         
                 </div>
                 <!-- /.product-micro --> 
                 
               </div>
-              <div class="product">
-                <div class="product-micro">
-                  <div class="row product-micro-row">
-                    <div class="col col-xs-5">
-                      <div class="product-image">
-                        <div class="image"> <a href="#"> <img src="{{ asset('frontend/assets/images/products/p27.jpg') }}" alt=""> </a> </div>
-                        <!-- /.image --> 
-                        
-                      </div>
-                      <!-- /.product-image --> 
-                    </div>
-                    <!-- /.col -->
-                    <div class="col2 col-xs-7">
-                      <div class="product-info">
-                        <h3 class="name"><a href="#">Floral Print Buttoned</a></h3>
-                        <div class="rating rateit-small"></div>
-                        <div class="product-price"> <span class="price"> $450.99 </span> </div>
-                        <!-- /.product-price --> 
-                        
-                      </div>
-                    </div>
-                    <!-- /.col --> 
-                  </div>
-                  <!-- /.product-micro-row --> 
-                </div>
-                <!-- /.product-micro --> 
-                
-              </div>
+              @endforeach
             </div>
+
           </div>
+          <div class="item">
+            <div class="products best-product">
+              @foreach($product_4 as $product)
+              @php
+              $avg = App\Models\Review::where('product_id',$product->id)->where('status',1)->avg('rating');
+              @endphp
+
+              <div class="product">
+                <div class="product-micro">
+    
+                  <div class="row product-micro-row">
+                    <div class="col col-xs-5">
+                      <div class="product-image">
+                        <div class="image"> <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en ) }}"> <img src="{{ asset($product->product_thambnail) }}" alt=""> </a> </div>
+                        <!-- /.image --> 
+                        
+                      </div>
+                      <!-- /.product-image --> 
+                    </div>
+                    <!-- /.col -->
+                    <div class="col2 col-xs-7">
+                      <div class="product-info">
+                        <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en ) }}">@if(session()->get('language') == 'hindi') {{ $product->product_name_hin }} @else {{ $product->product_name_en }} @endif</a></h3>
+                        <div class="rating rateit-small"></div>
+                        <div class="product-price"> <span class="price"> {{ number_format($product->selling_price) }} đ</span> </div>
+                        <!-- /.product-price --> 
+                        
+                      </div>
+                    </div>
+                    <!-- /.col --> 
+                  </div>
+                  <!-- /.product-micro-row --> 
+         
+                </div>
+                <!-- /.product-micro --> 
+                
+              </div>
+              @endforeach
+            </div>
+
+          </div>
+          <div class="item">
+            <div class="products best-product">
+              @foreach($product_5 as $product)
+              @php
+              $avg = App\Models\Review::where('product_id',$product->id)->where('status',1)->avg('rating');
+              @endphp
+
+              <div class="product">
+                <div class="product-micro">
+    
+                  <div class="row product-micro-row">
+                    <div class="col col-xs-5">
+                      <div class="product-image">
+                        <div class="image"> <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en ) }}"> <img src="{{ asset($product->product_thambnail) }}" alt=""> </a> </div>
+                        <!-- /.image --> 
+                        
+                      </div>
+                      <!-- /.product-image --> 
+                    </div>
+                    <!-- /.col -->
+                    <div class="col2 col-xs-7">
+                      <div class="product-info">
+                        <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en ) }}">@if(session()->get('language') == 'hindi') {{ $product->product_name_hin }} @else {{ $product->product_name_en }} @endif</a></h3>
+                        <div class="rating rateit-small"></div>
+                        <div class="product-price"> <span class="price"> {{ number_format($product->selling_price) }} đ</span> </div>
+                        <!-- /.product-price --> 
+                        
+                      </div>
+                    </div>
+                    <!-- /.col --> 
+                  </div>
+                  <!-- /.product-micro-row --> 
+         
+                </div>
+                <!-- /.product-micro --> 
+                
+              </div>
+              @endforeach
+            </div>
+
+          </div>
+
         </div>
       </div>
       <!-- /.sidebar-widget-body --> 
@@ -1680,7 +1604,7 @@ Online Shop
     
     <!-- ============================================== BLOG SLIDER ============================================== -->
     <section class="section latest-blog outer-bottom-vs wow fadeInUp">
-      <h3 class="section-title">latest form blog</h3>
+      <h3 class="section-title">Blog</h3>
       <div class="blog-slider-container outer-top-xs">
         <div class="owl-carousel blog-slider custom-carousel">
           
@@ -1721,7 +1645,7 @@ Online Shop
     <!-- ============================================== BLOG SLIDER : END ============================================== --> 
     
     <!-- ============================================== FEATURED PRODUCTS ============================================== -->
-    <section class="section wow fadeInUp new-arriavls">
+    {{-- <section class="section wow fadeInUp new-arriavls">
       <h3 class="section-title">New Arrivals</h3>
       <div class="owl-carousel home-owl-carousel custom-carousel owl-theme outer-top-xs">
         <div class="item item-carousel">
@@ -1977,7 +1901,7 @@ Online Shop
         <!-- /.item --> 
       </div>
       <!-- /.home-owl-carousel --> 
-    </section>
+    </section> --}}
     <!-- /.section --> 
     <!-- ============================================== FEATURED PRODUCTS : END ============================================== --> 
     

@@ -110,8 +110,12 @@ $hot_deals = App\Models\Product::where('hot_deals',1)->where('discount_price','!
                 <div class="cart clearfix animate-effect">
                   <div class="action">
                     <div class="add-cart-button btn-group">
-                      <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
-                      <button class="btn btn-primary cart-btn" type="button">Thêm giỏ hàng</button>
+
+               @if(session()->get('language') == 'hindi')
+               <button class="btn btn-primary icon" type="button" data-toggle="modal" data-target="#exampleModal" id="{{ $product->id }}" onclick="productViewvn(this.id)"> <i class="fa fa-shopping-cart"></i> Thêm giỏ hàng</button>
+                      @else
+                      <button class="btn btn-primary icon" type="button" data-toggle="modal" data-target="#exampleModal" id="{{ $product->id }}" onclick="productViewvn(this.id)"> <i class="fa fa-shopping-cart"></i> Add to card</button>
+                      @endif
                     </div>
                   </div>
                   <!-- /.action --> 

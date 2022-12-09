@@ -312,7 +312,7 @@ $sizes = DB::table('price_products')->where('pro_id',$product->id)->get();
 {{-- <span id="price">$: {{$product->selling_price}}</span> --}}
 <label class="info-title control-label">Choose Size <span> </span></label>
 <select class="form-control unicase-form-control selectpicker" style="display: none;" name="size" id="size">
-
+<option selected="" disabled="">--Choose Color--</option>
 @foreach($sizes as $size)
 <option>{{$size->size}}</option>
 @endforeach

@@ -745,8 +745,8 @@ $(document).ready(function(){
             }else
             {
                 $('#none').text('');
-                $('#slprice').text(data.slpr).append('<span class="price"> đ</span>');
-                $('#dcprice').text(data.dcpr).append('<span class="price"> đ</span>');
+                $('#slprice').text(data.slpr).append('<a> đ</a>');
+                $('#dcprice').text(data.dcpr).append('<a> đ</a>');
             }
                 }
 
