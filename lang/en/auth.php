@@ -13,8 +13,8 @@ return [
     |
     */
 
-    'failed' => 'These credentials do not match our records.',
-    'password' => 'The provided password is incorrect.',
+    'failed' => 'Tài khoản hoặc mật khẩu không đúng, vui lòng nhập lại',
+    'password' => 'Mật khẩu sai vui lòng nhập lại',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
 
 ];

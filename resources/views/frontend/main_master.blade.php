@@ -646,16 +646,16 @@ function addToWishList(product_id){
                          
                         <div class="price">
                         ${value.product.discount_price == null
-                            ? `${value.product.selling_price}`
+                            ? `${value.product.selling_price} đ`
                             :
-                            `${value.product.discount_price} <span>${value.product.selling_price}</span>`
+                            `${value.product.discount_price} đ <span>${value.product.selling_price} đ</span>`
                         }
 
                             
                         </div>
                     </td>
         <td class="col-md-2">
-            <button class="btn btn-primary icon" type="button" title="Add Cart" data-toggle="modal" data-target="#exampleModal" id="${value.product_id}" onclick="productView(this.id)"> Add to Cart </button>
+            <button class="btn btn-primary icon" type="button" title="Add Cart" data-toggle="modal" data-target="#exampleModal" id="${value.product_id}" onclick="productView(this.id)"> Thêm vào thanh toán </button>
         </td>
         <td class="col-md-1 close-btn">
             <button type="submit" class="" id="${value.id}" onclick="wishlistRemove(this.id)"><i class="fa fa-times"></i></button>

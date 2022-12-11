@@ -14,7 +14,7 @@
 
 			<div class="col-md-6">
   <div class="card">
-  	<h3 class="text-center"><span class="text-danger">Hi....</span><strong>{{ Auth::user()->name }}</strong> Update Your Profile  </h3>
+  	<h3 class="text-center"><span class="text-danger">Tài khoản: </span><strong>{{ Auth::user()->name }}</strong><h3> Cập nhật thông tin </h3>
 
   	<div class="card-body">
   		
@@ -25,7 +25,7 @@
 
 
          <div class="form-group">
-            <label class="info-title" for="exampleInputEmail1">Name <span> </span></label>
+            <label class="info-title" for="exampleInputEmail1">Tên <span> </span></label>
             <input type="text" name="name" class="form-control" value="{{ $user->name }}">
         </div>
 
@@ -41,12 +41,12 @@
         </div>
 
          <div class="form-group">
-            <label class="info-title" for="exampleInputEmail1">User Image <span> </span></label>
+            <label class="info-title" for="exampleInputEmail1">Image <span> </span></label>
             <input type="file" name="profile_photo_path" class="form-control">
         </div>
 
          <div class="form-group">            
-           <button type="submit" class="btn btn-danger">Update</button>
+           <button type="submit" class="btn btn-danger">Cập nhật</button>
         </div>         
  
 

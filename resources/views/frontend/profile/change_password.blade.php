@@ -17,7 +17,7 @@ $user = DB::table('users')->where('id',Auth::user()->id)->first();
 
 			<div class="col-md-6">
   <div class="card">
-  	<h3 class="text-center"><span class="text-danger">Change Password</span><strong> </strong>   </h3>
+  	<h3 class="text-center"><span class="text-danger">Thay đổi mật khẩu</span><strong> </strong>   </h3>
 
   	<div class="card-body">
   		
@@ -28,25 +28,25 @@ $user = DB::table('users')->where('id',Auth::user()->id)->first();
 
 
          <div class="form-group">
-            <label class="info-title" for="exampleInputEmail1">Current Password <span> </span></label>
+            <label class="info-title" for="exampleInputEmail1">Mật khẩu cũ <span> </span></label>
             <input type="password" id="current_password" name="oldpassword" class="form-control" >
         </div>
 
         <div class="form-group">
-            <label class="info-title" for="exampleInputEmail1">New Password <span> </span></label>
+            <label class="info-title" for="exampleInputEmail1">mật khẩu mới <span> </span></label>
             <input type="password" id="password" name="password" class="form-control">
         </div>
 
 
         <div class="form-group">
-            <label class="info-title" for="exampleInputEmail1">Confirm Password <span> </span></label>
+            <label class="info-title" for="exampleInputEmail1">Nhập lại mật khẩu <span> </span></label>
             <input type="password" id="password_confirmation" name="password_confirmation" class="form-control">
         </div>
 
          
 
          <div class="form-group">            
-           <button type="submit" class="btn btn-danger">Update</button>
+           <button type="submit" class="btn btn-danger">Thay đổi</button>
         </div>         
  
 

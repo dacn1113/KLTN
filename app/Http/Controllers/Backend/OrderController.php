@@ -171,7 +171,7 @@ class OrderController extends Controller
     public function AdminInvoiceDownload($order_id)
     {
 
-        $order = Order::with('division', 'district', 'state', 'user')->where('id', $order_id)->first();
+        $order = Order::with('division', 'district', 'state', 'user', 'notes')->where('id', $order_id)->first();
         $orderItem = OrderItem::with('product')->where('order_id', $order_id)->orderBy('id', 'DESC')->get();
 
         $pdf = PDF::loadView('backend.orders.order_invoice', compact('order', 'orderItem'))->setPaper('a4')->setOptions([

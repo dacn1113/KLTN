@@ -29,7 +29,7 @@
 		</div>
 		<div>
 			<p class="text-mute mt-20 mb-0 font-size-16">Doanh thu trong ngày</p>
-			<h3 class="text-white mb-0 font-weight-500">{{ $today  }} <small class="text-success"><i class="fa fa-caret-up"></i> Vnd</small></h3>
+			<h3 class="text-white mb-0 font-weight-500">{{ number_format($today)  }} <small class="text-success"><i class="fa fa-caret-up"></i> Vnd</small></h3>
 		</div>
 	</div>
 </div>
@@ -42,7 +42,7 @@
 		</div>
 		<div>
 			<p class="text-mute mt-20 mb-0 font-size-16">Doanh thu tháng </p>
-			<h3 class="text-white mb-0 font-weight-500">{{ $month }} <small class="text-success"><i class="fa fa-caret-up"></i> Vnd</small></h3>
+			<h3 class="text-white mb-0 font-weight-500">{{ number_format($month) }} <small class="text-success"><i class="fa fa-caret-up"></i> Vnd</small></h3>
 		</div>
 	</div>
 </div>
@@ -55,7 +55,7 @@
 		</div>
 		<div>
 			<p class="text-mute mt-20 mb-0 font-size-16">Doanh thu năm</p>
-			<h3 class="text-white mb-0 font-weight-500">{{ $year }} <small class="text-danger"><i class="fa fa-caret-up"></i> Vnd</small></h3>
+			<h3 class="text-white mb-0 font-weight-500">{{ number_format($year) }} <small class="text-danger"><i class="fa fa-caret-up"></i> Vnd</small></h3>
 		</div>
 	</div>
 </div>

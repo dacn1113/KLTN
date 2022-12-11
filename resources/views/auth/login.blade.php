@@ -34,20 +34,16 @@
         <div class="form-group">
             <label class="info-title" for="exampleInputEmail1">Email người dùng <span>*</span></label>
             <input type="text" id="email" name="email" class="form-control unicase-form-control text-input">
-             @error('email')
+            @error('email')
             <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
+                <strong>Tài khoản hoặc mật khâu không đúng </strong>
             </span>
             @enderror
+          
         </div>
         <div class="form-group">
             <label class="info-title" for="exampleInputPassword1">Mật khẩu <span>*</span></label>
             <input type="password" id="password" name="password" class="form-control unicase-form-control text-input" id="exampleInputPassword1" >
-             @error('password')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-            @enderror
         </div>
         <div class="checkbox outer-xs">
             <label>
@@ -80,32 +76,22 @@
 
          <div class="form-group">
             <label class="info-title" for="exampleInputEmail1">Tên người dùng <span>* </span></label>
-            <input type="text" id="name" name="name" class="form-control unicase-form-control text-input">
-            @error('name')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-            @enderror 
+            <input type="text" id="name" name="name" class="form-control unicase-form-control text-input" required>
         </div>
 
         <div class="form-group">
             <label class="info-title" for="exampleInputEmail2">Email <span>* </span></label>
             <input type="email" id="email" name="email" class="form-control unicase-form-control text-input" >
-            @error('email')
+            {{-- @error('email')
             <span class="invalid-feedback" role="alert">
                 <strong>Email đã tồn tại</strong>
             </span>
-            @enderror
+            @enderror --}}
         </div>
         
         <div class="form-group">
             <label class="info-title" for="exampleInputEmail1">Số điện thoại <span>* </span></label>
             <input type="text" id="phone" name="phone" class="form-control unicase-form-control text-input" maxlength="10">
-            @error('phone')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-            @enderror
         </div>
 
         <div class="form-group">
@@ -113,7 +99,7 @@
             <input type="password" id="password" name="password" class="form-control unicase-form-control text-input" >
             @error('password')
             <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
+                <strong>Mật khẩu nhập không khớp</strong>
             </span>
             @enderror
         </div>
@@ -122,7 +108,7 @@
             <input type="password" id="password_confirmation" name="password_confirmation" class="form-control unicase-form-control text-input" >
             @error('password_confirmation')
             <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
+                <strong>Mật khẩu nhập không khớp</strong>
             </span>
             @enderror
         </div>

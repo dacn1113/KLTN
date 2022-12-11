@@ -82,7 +82,7 @@
             $dc = $order->notes;
            @endphp
             
-           <strong>Địa chỉ :</strong> {{ $state }} {{ $dc }},{{ $dis }},{{$div}} <br>
+           <strong>Địa chỉ :</strong> {{ $div }}, {{$dis}}, {{ $state }}, {{ $dc }}<br>
            <strong>Mã bưu chính:</strong> {{ $order->post_code }}
          </p>
         </td>
@@ -90,7 +90,7 @@
           <p class="font">
             <h3><span style="color: green;">Invoice:</span> {{ $order->invoice_no}}</h3>
            Ngày đặt: {{ $order->order_date }} <br>
-           Ngày nhận: {{ $order->delivered_date }} <br>
+           Ngày nhận: {{ $order->updated_at }} <br>
            Thanh toán: {{ $order->payment_method }} </span>
          </p>
         </td>

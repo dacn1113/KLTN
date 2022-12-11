@@ -7,11 +7,11 @@
             @include('frontend.common.user_sidebar')
         <div class="col-dm-2">
             <div class="card">
-                <h3 class="text-center" ><span class="text-danger">Hi...</span>
+                <h3 class="text-center" ><span class="text-danger">Xin chào </span>
                     <strong>
                         {{Auth::user()->name}}
                     </strong>
-                    Welcome to Shop
+                    Chào mừng bạn đến với của hàng.
                 </h3>
             </div>
         </div>

@@ -103,9 +103,9 @@
 	<div class="controls">
 		<select name="district_id" class="form-control"  >
 			<option value="" selected="" disabled="">Chọn</option>
-			@foreach($district as $dis)
+			{{-- @foreach($district as $dis)
 			<option value="{{ $dis->id }}">{{ $dis->district_name }}</option>	
-			@endforeach
+			@endforeach --}}
 		</select>
 		@error('district_id') 
 	 <span class="text-danger">{{ $message }}</span>

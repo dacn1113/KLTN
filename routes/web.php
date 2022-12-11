@@ -323,6 +323,8 @@ Route::prefix('shipping')->group(function () {
     // Ship District 
     Route::get('/district/view', [ShippingAreaController::class, 'DistrictView'])->name('manage-district');
 
+    Route::get('/division/ajax/{division_id}', [ShippingAreaController::class, 'GetdistrictView']);
+
     Route::post('/district/store', [ShippingAreaController::class, 'DistrictStore'])->name('district.store');
 
     Route::get('/district/edit/{id}', [ShippingAreaController::class, 'DistrictEdit'])->name('district.edit');

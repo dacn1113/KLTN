@@ -147,6 +147,31 @@
   });
 </script>
 
+
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('select[name="division_id"]').on('change', function(){
+        var division_id = $(this).val();
+        if(division_id) {
+            $.ajax({
+                url: "{{  url('/shipping/division/ajax') }}/"+division_id,
+                type:"GET",
+                dataType:"json",
+                success:function(data) {
+                   var d =$('select[name="district_id"]').empty();
+                      $.each(data, function(key, value){
+                          $('select[name="district_id"]').append('<option value="'+ value.id +'">' + value.district_name + '</option>');
+                      });
+                },
+            });
+        } else {
+            alert('danger');
+        }
+    });
+});
+</script>
+
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
  <script src="{{ asset('backend/js/code.js') }}"></script>

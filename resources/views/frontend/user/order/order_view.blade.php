@@ -17,28 +17,28 @@
   
               <tr style="background: #e2e2e2;">
                 <td class="col-md-1">
-                  <label for=""> Date</label>
+                  <label for=""> Ngày</label>
                 </td>
 
                 <td class="col-md-3">
-                  <label for=""> Total</label>
+                  <label for=""> Tổng cộng</label>
                 </td>
 
                 <td class="col-md-3">
-                  <label for=""> Payment</label>
+                  <label for=""> Thanh toán</label>
                 </td>
 
 
                 <td class="col-md-2">
-                  <label for=""> Invoice</label>
+                  <label for=""> Hóa đơn</label>
                 </td>
 
                  <td class="col-md-2">
-                  <label for=""> Order</label>
+                  <label for=""> Trạng thái</label>
                 </td>
 
                  <td class="col-md-1">
-                  <label for=""> Action </label>
+                  <label for=""> Chức năng </label>
                 </td>
                 
               </tr>
@@ -51,7 +51,7 @@
                 </td>
 
                 <td class="col-md-3">
-                  <label for=""> ${{ $order->amount }}</label>
+                  <label for=""> {{ number_format($order->amount) }} đ</label>
                 </td>
 
 
@@ -67,38 +67,38 @@
           <label for=""> 
 
     @if($order->status == 'Pending')        
-        <span class="badge badge-pill badge-warning" style="background: #800080;"> Pending </span>
+        <span class="badge badge-pill badge-warning" style="background: #800080;"> Chưa giải quyết </span>
         @elseif($order->status == 'confirm')
-         <span class="badge badge-pill badge-warning" style="background: #0000FF;"> Confirm </span>
+         <span class="badge badge-pill badge-warning" style="background: #0000FF;"> Xác nhận </span>
 
           @elseif($order->status == 'processing')
-         <span class="badge badge-pill badge-warning" style="background: #FFA500;"> Processing </span>
+         <span class="badge badge-pill badge-warning" style="background: #FFA500;"> Xử lý </span>
 
           @elseif($order->status == 'picked')
-         <span class="badge badge-pill badge-warning" style="background: #808000;"> Picked </span>
+         <span class="badge badge-pill badge-warning" style="background: #808000;">Chờ vận chuyển</span>
 
           @elseif($order->status == 'shipped')
-         <span class="badge badge-pill badge-warning" style="background: #808080;"> Shipped </span>
+         <span class="badge badge-pill badge-warning" style="background: #808080;">Đang vận chuyển </span>
 
           @elseif($order->status == 'delivered')
-         <span class="badge badge-pill badge-warning" style="background: #008000;"> Delivered </span>
+         <span class="badge badge-pill badge-warning" style="background: #008000;"> Đã giao hàng </span>
 
           @if($order->return_order == 1) 
-           <span class="badge badge-pill badge-warning" style="background:red;">Return Requested </span>
+           <span class="badge badge-pill badge-warning" style="background:red;">Yêu cầu trả lại </span>
 
           @endif
 
          @else
-  <span class="badge badge-pill badge-warning" style="background: #FF0000;"> Cancel </span>
+  <span class="badge badge-pill badge-warning" style="background: #FF0000;"> Hủy đơn </span>
 
       @endif
             </label>
         </td>
 
          <td class="col-md-1">
-          <a href="{{ url('user/order_details/'.$order->id ) }}" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i> View</a>
+          <a href="{{ url('user/order_details/'.$order->id ) }}" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i> Xem </a>
 
-           <a target="_blank" href="{{ url('user/invoice_download/'.$order->id ) }}" class="btn btn-sm btn-danger" style="margin-top: 5px;"><i class="fa fa-download" style="color: white;"></i> Invoice </a>
+           <a target="_blank" href="{{ url('user/invoice_download/'.$order->id ) }}" class="btn btn-sm btn-danger" style="margin-top: 5px;"><i class="fa fa-download" style="color: white;"></i> Hóa đơn </a>
           
         </td>
                 

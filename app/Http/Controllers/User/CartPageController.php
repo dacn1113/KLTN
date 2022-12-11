@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Brand;
 use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Models\Coupon;
@@ -12,7 +13,8 @@ class CartPageController extends Controller
 {
     public function MyCart()
     {
-        return view('frontend.wishlist.view_mycart');
+        $brand = Brand::orderBy('id', 'DESC')->get();
+        return view('frontend.wishlist.view_mycart', compact('brand'));
     }
 
 

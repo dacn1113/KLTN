@@ -27,8 +27,8 @@
 				<div class="row justify-content-center no-gutters">
 					<div class="col-lg-4 col-md-5 col-12">
 						<div class="content-top-agile p-10">
-							<h2 class="text-white">Bắt đầu với chúng tôi</h2>
-							<p class="text-white-50">Đăng nhập để bắt đầu phiên của bạn</p>							
+							<h2 class="text-white">Chào mừng đến với trang quản trị cửa hàng</h2>
+							<p class="text-white-50">Đăng nhập để bắt đầu phiên làm việc của bạn</p>							
 						</div>
 						<div class="p-30 rounded30 box-shadowed b-2 b-dashed">
 							<form method="POST" action="{{ isset($guard) ? url($guard.'/login') : route('login') }}">
@@ -48,7 +48,20 @@
 										</div>
 										<input id="password" name= "password" type="password" class="form-control pl-15 bg-transparent text-white plc-white" placeholder="Password">
 									</div>
+									
 								</div>
+
+								@if ($errors->any())
+								<div class="alert alert-danger">
+									<ul>
+										@foreach ($errors->all() as $error)
+											<li>{{ $error }}</li>
+										@endforeach
+									</ul>
+								</div>
+							@endif
+
+
 								  <div class="row">
 									<div class="col-6">
 									  <div class="checkbox text-white">
