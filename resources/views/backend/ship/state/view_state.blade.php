@@ -27,9 +27,9 @@
 						<thead>
 							<tr>
 								<th>Tên khu vực </th> 
-								<th>Tên quận </th>
-								<th>Tên địa chỉ </th>
-								<th>Hoạt động</th>
+								<th>Tên quận, huyện </th>
+								<th>Tên khu phố, phường </th>
+								<th>Lựa chọn</th>
 
 							</tr>
 						</thead>
@@ -99,7 +99,7 @@
 
 
 <div class="form-group">
-	<h5>Chọn quận <span class="text-danger">*</span></h5>
+	<h5>Chọn quận, huyện <span class="text-danger">*</span></h5>
 	<div class="controls">
 		<select name="district_id" class="form-control"  >
 			<option value="" selected="" disabled="">Chọn</option>
@@ -116,7 +116,7 @@
 
 
 	 <div class="form-group">
-		<h5>Địa chỉ <span class="text-danger">*</span></h5>
+		<h5>Khu phố, phường<span class="text-danger">*</span></h5>
 		<div class="controls">
 	 <input type="text"  name="state_name" class="form-control" > 
 	 @error('state_name	') 

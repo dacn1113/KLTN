@@ -36,7 +36,7 @@ class CategoryController extends Controller
         ]);
 
         $notification = array(
-            'message' => 'Category Profile Updated Successfully',
+            'message' => 'Hồ sơ danh mục được cập nhật thành công',
             'alert-type' => 'success'
         );
 
@@ -62,7 +62,7 @@ class CategoryController extends Controller
         ]);
 
         $notification = array(
-            'message' => 'Category Inserted Successfully',
+            'message' => 'Danh mục được chèn thành công',
             'alert-type' => 'info'
         );
         return redirect()->route('all.category')->with($notification);
@@ -74,7 +74,7 @@ class CategoryController extends Controller
         Category::findOrFail($id)->delete();
 
         $notification = array(
-            'message' => 'Category Deleted Successfully',
+            'message' => 'Đã xóa danh mục thành công',
             'alert-type' => 'info'
         );
         return redirect()->back()->with($notification);

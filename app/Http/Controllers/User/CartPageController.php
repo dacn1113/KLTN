@@ -34,7 +34,7 @@ class CartPageController extends Controller
     public function RemoveCartProduct($rowId)
     {
         Cart::remove($rowId);
-        return response()->json(['success' => 'Successfully Remove From Cart']);
+        return response()->json(['success' => 'Xóa thành công khỏi giỏ hàng']);
     }
     // Cart Increment 
     public function CartIncrement($rowId)

@@ -56,7 +56,7 @@
 		<select name="category_id" class="form-control" required="" >
 			<option value="" selected="" disabled="">Chọn</option>
 			@foreach($categories as $category)
- <option value="{{ $category->id }}" {{ $category->id == $products->category_id ? 'selected': '' }} >{{ $category->category_name_en }}</option>	
+ <option value="{{ $category->id }}" {{ $category->id == $products->category_id ? 'selected': '' }} >{{ $category->category_name_hin }}</option>	
 			@endforeach
 		</select>
 		@error('category_id') 
@@ -77,7 +77,7 @@
 			<option value="" selected="" disabled="">Chọn</option>
 			
 			 @foreach($subcategory as $sub)
- <option value="{{ $sub->id }}" {{ $sub->id == $products->subcategory_id ? 'selected': '' }} >{{ $sub->subcategory_name_en }}</option>	
+ <option value="{{ $sub->id }}" {{ $sub->id == $products->subcategory_id ? 'selected': '' }} >{{ $sub->subcategory_name_hin }}</option>	
 			@endforeach
 
 		</select>
@@ -103,7 +103,7 @@
 			<option value="" selected="" disabled="">Chọn</option>
 		 
 		 @foreach($subsubcategory as $subsub)
- <option value="{{ $subsub->id }}" {{ $subsub->id == $products->subsubcategory_id ? 'selected': '' }} >{{ $subsub->subsubcategory_name_en }}</option>	
+ <option value="{{ $subsub->id }}" {{ $subsub->id == $products->subsubcategory_id ? 'selected': '' }} >{{ $subsub->subsubcategory_name_hin }}</option>	
 			@endforeach
 
 		</select>

@@ -56,7 +56,7 @@
 		<select name="category_id" class="form-control" required="" >
 			<option value="" selected="" disabled="">Chọn</option>
 			@foreach($categories as $category)
- <option value="{{ $category->id }}">{{ $category->category_name_en }}</option>	
+ <option value="{{ $category->id }}">{{ $category->category_name_hin }}</option>	
 			@endforeach
 		</select>
 		@error('category_id') 
@@ -570,7 +570,7 @@
                     	$('select[name="subsubcategory_id"]').html('');
                        var d =$('select[name="subcategory_id"]').empty();
                           $.each(data, function(key, value){
-                              $('select[name="subcategory_id"]').append('<option value="'+ value.id +'">' + value.subcategory_name_en + '</option>');
+                              $('select[name="subcategory_id"]').append('<option value="'+ value.id +'">' + value.subcategory_name_hin + '</option>');
                           });
                     },
                 });
@@ -591,7 +591,7 @@
                     success:function(data) {
                        var d =$('select[name="subsubcategory_id"]').empty();
                           $.each(data, function(key, value){
-                              $('select[name="subsubcategory_id"]').append('<option value="'+ value.id +'">' + value.subsubcategory_name_en + '</option>');
+                              $('select[name="subsubcategory_id"]').append('<option value="'+ value.id +'">' + value.subsubcategory_name_hin + '</option>');
                           });
                     },
                 });

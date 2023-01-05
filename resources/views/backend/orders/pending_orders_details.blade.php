@@ -128,7 +128,12 @@
 
              <tr>
               <th>Giá thanh toán: </th>
-               <th>{{ $order->amount }} VND </th>
+
+              @if ($order->payment_method=='Stripe')
+              <td> {{ number_format($order->amount) }} Dolar</td>
+              @else
+              <td> {{ number_format($order->amount) }} Vnd</td>
+              @endif
             </tr>
 
             <tr>
@@ -141,19 +146,20 @@
             <tr>
               <th>  </th>
                <th> 
-               	@if($order->status == 'Pending')
+               	@if($order->status == 'Chưa giải quyết')
                	<a href="{{ route('pending-confirm',$order->id) }}" class="btn btn-block btn-success" id="confirm">Nhận đơn</a>
+                 <a href="{{ route('cancel-confirm',$order->id) }}" class="btn btn-block btn-success" id="confirm">Hủy đơn</a>
 
-               	@elseif($order->status == 'confirm')
+               	@elseif($order->status == 'Xác nhận')
                	<a href="{{ route('confirm.processing',$order->id) }}" class="btn btn-block btn-success" id="processing">Xử lý đơn hàng</a>
 
-               	@elseif($order->status == 'processing')
+               	@elseif($order->status == 'Nhận đơn')
                	<a href="{{ route('processing.picked',$order->id) }}" class="btn btn-block btn-success" id="picked">Xác nhận đơn hàng được vận chuyển</a>
 
-               	@elseif($order->status == 'picked')
+               	@elseif($order->status == 'Chờ vận chuyển')
                	<a href="{{ route('picked.shipped',$order->id) }}" class="btn btn-block btn-success" id="shipped">Chuyển đơn hàng </a>
 
-               	@elseif($order->status == 'shipped')
+               	@elseif($order->status == 'Đang vận chuyển')
                 <a href="{{ route('shipped.delivered',$order->id) }}" class="btn btn-block btn-success" id="delivered">Đã giao hàng</a>
 
                	@endif
@@ -228,7 +234,7 @@
                 </td>
 
                <td width="20%">
-                  <label for=""> {{ $item->product->product_name_en }}</label>
+                  <label for=""> {{ $item->product->product_name_hin }}</label>
                 </td>
 
 
@@ -249,10 +255,22 @@
                 </td>
 
          <td width="10%">
-                  <label for=""> {{ $item->price }}đ</label>
-                </td>
-                <td width="10%">
-                  <label for=""> {{ $item->price * $item->qty}}đ </label>
+
+          @if ($item->payment_method=='Stripe')
+          <label for=""> {{ number_format($item->price) }}$</label>
+        </td>
+        <td width="10%">
+          <label for=""> {{ number_format($item->price * $item->qty)}}$ </label>
+
+        
+          @else
+          <label for=""> {{ number_format($item->price) }}đ</label>
+        </td>
+        <td width="10%">
+          <label for=""> {{ number_format($item->price * $item->qty)}}đ </label>
+
+        
+          @endif
                 </td>
                 
               </tr>

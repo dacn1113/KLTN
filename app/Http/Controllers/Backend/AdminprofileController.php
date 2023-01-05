@@ -50,7 +50,7 @@ class AdminProfileController extends Controller
         $data->save();
 
         $notification = array(
-            'message' => 'Admin Profile Updated Successfully',
+            'message' => 'Hồ sơ quản trị viên được cập nhật thành công',
             'alert-type' => 'success'
         );
 

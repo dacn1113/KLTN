@@ -39,7 +39,7 @@ class StripeController extends Controller
         $charge = \Stripe\Charge::create([
             'amount' => $total_amount * 100,
             'currency' => 'usd',
-            'description' => 'Easy Online Store',
+            'description' => 'Shop Khóa luận tốt nghiệp ',
             'source' => $token,
             'metadata' => ['order_id' => uniqid()],
         ]);
@@ -68,7 +68,7 @@ class StripeController extends Controller
             'order_date' => Carbon::now()->format('d F Y'),
             'order_month' => Carbon::now()->format('F'),
             'order_year' => Carbon::now()->format('Y'),
-            'status' => 'Pending',
+            'status' => 'Chưa giải quyết',
             'created_at' => Carbon::now(),
 
         ]);
@@ -107,7 +107,7 @@ class StripeController extends Controller
         Cart::destroy();
 
         $notification = array(
-            'message' => 'Your Order Place Successfully',
+            'message' => 'Đặt hàng của bạn thành công',
             'alert-type' => 'success'
         );
 

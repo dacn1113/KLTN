@@ -27,7 +27,7 @@ class ReturnController extends Controller
                 ->update(['product_qty' => DB::raw('product_qty+' . $item->qty)]);
         }
         $notification = array(
-            'message' => 'Return Order Successfully',
+            'message' => 'Trả hàng thành công',
             'alert-type' => 'success'
         );
 

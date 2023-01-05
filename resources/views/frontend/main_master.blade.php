@@ -337,7 +337,7 @@ function productView(id){
 	});
 
 }
-// Eend Product View with Modal 
+// End Product View with Modal 
 
 function productViewvn(id){
     // alert(id)
@@ -376,12 +376,12 @@ function productViewvn(id){
             if (data.product.product_qty > 0) {
                 $('#aviable').text('');
                 $('#stockout').text('');
-                $('#aviable').text('aviable');
+                $('#aviable').text('Có sẵn');
 
             }else{
                 $('#aviable').text('');
                 $('#stockout').text('');
-                $('#stockout').text('stockout');
+                $('#stockout').text('Hết hàng');
             } // end Stock Option 
 
             // Color
@@ -642,23 +642,13 @@ function addToWishList(product_id){
                     rows += `<tr>
                     <td class="col-md-2"><img src="/${value.product.product_thambnail} " alt="imga"></td>
                     <td class="col-md-7">
-                        <div class="product-name"><a href="#">${value.product.product_name_en}</a></div>
-                         
-                        <div class="price">
-                        ${value.product.discount_price == null
-                            ? `${value.product.selling_price} đ`
-                            :
-                            `${value.product.discount_price} đ <span>${value.product.selling_price} đ</span>`
-                        }
-
-                            
-                        </div>
+                        <div class="product-name"><a href="#">${value.product.product_name_hin}</a></div>
                     </td>
         <td class="col-md-2">
-            <button class="btn btn-primary icon" type="button" title="Add Cart" data-toggle="modal" data-target="#exampleModal" id="${value.product_id}" onclick="productView(this.id)"> Thêm vào thanh toán </button>
+            <button class="btn btn-primary icon" type="button" title="Add Cart" data-toggle="modal" data-target="#exampleModal" id="${value.product_id}" onclick="productView(this.id)"> Thêm vào giỏ hàng </button>
         </td>
         <td class="col-md-1 close-btn">
-            <button type="submit" class="" id="${value.id}" onclick="wishlistRemove(this.id)"><i class="fa fa-times"></i></button>
+            <button class="btn btn-primary icon" type="submit" class="" id="${value.id}" onclick="wishlistRemove(this.id)"><i class="fa fa-times"></i></button>
         </td>
                 </tr>`
         });
@@ -771,8 +761,9 @@ $(document).ready(function(){
         <td class="col-md-2">
             <div class="product-name"><a href="#">${value.name}</a></div>
              
-            <div class="price"> 
-                            ${value.price}
+            <div class="price">
+                Giá gốc:  
+                            ${value.price}đ
                         </div>
                     </td>
 

@@ -95,9 +95,9 @@ $orders = App\Models\Order::where('status','pending')->orderBy('id','DESC')->get
 				<thead>
 
 <tr class="text-uppercase bg-lightest">
-	<th style="min-width: 250px"><span class="text-white">Ngày</span></th>
+	<th style="min-width: 250px"><span class="text-white">Ngày gửi</span></th>
 	<th style="min-width: 100px"><span class="text-fade">Mã hóa đơn</span></th>
-	<th style="min-width: 100px"><span class="text-fade">Số lượng</span></th>
+	<th style="min-width: 100px"><span class="text-fade">Tổng tiền</span></th>
 	<th style="min-width: 150px"><span class="text-fade">Thanh toán</span></th>
 	<th style="min-width: 130px"><span class="text-fade">Trạng thái</span></th>
 	<th style="min-width: 120px"><span class="text-fade">Quá trình</span> </th>
@@ -121,9 +121,15 @@ $orders = App\Models\Order::where('status','pending')->orderBy('id','DESC')->get
 			</td>
 
 			<td>
+				@if($item->payment_method == 'Stripe')
 				<span class="text-fade font-weight-600 d-block font-size-16">
-					$ {{ $item->amount }}
+					{{ number_format($item->amount) }} $
 				</span>
+				@else
+				<span class="text-fade font-weight-600 d-block font-size-16">
+					{{ number_format($item->amount) }} đ
+				</span>
+				@endif
 				 
 			</td>
 

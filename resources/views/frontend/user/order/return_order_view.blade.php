@@ -17,28 +17,28 @@
   
               <tr style="background: #e2e2e2;">
                 <td class="col-md-1">
-                  <label for=""> Date</label>
+                  <label for=""> Ngày</label>
                 </td>
 
                 <td class="col-md-3">
-                  <label for=""> Total</label>
+                  <label for=""> Tổng</label>
                 </td>
 
                 <td class="col-md-3">
-                  <label for=""> Payment</label>
+                  <label for=""> Phương thức</label>
                 </td>
 
 
                 <td class="col-md-2">
-                  <label for=""> Invoice</label>
+                  <label for=""> Mã hóa đơn</label>
                 </td>
 
                  <td class="col-md-1">
-                  <label for=""> Order Reason </label>
+                  <label for=""> Lý do trả hàng </label>
                 </td>
 
                  <td class="col-md-2">
-                  <label for=""> Order Status</label>
+                  <label for=""> Trạng thái</label>
                 </td>
 
                 
@@ -53,7 +53,7 @@
                 </td>
 
                 <td class="col-md-3">
-                  <label for=""> ${{ $order->amount }}</label>
+                  <label for=""> {{ Number_format($order->amount) }} đ</label>
                 </td>
 
 
@@ -73,13 +73,13 @@
                   <label for=""> 
 
    @if($order->return_order == 0) 
- <span class="badge badge-pill badge-warning" style="background: #418DB9;"> No Return Request </span>
+ <span class="badge badge-pill badge-warning" style="background: #418DB9;"> Không có yêu cầu trả lại </span>
  @elseif($order->return_order == 1)
- <span class="badge badge-pill badge-warning" style="background: #800000;"> Pedding </span>
- <span class="badge badge-pill badge-warning" style="background:red;">Return Requested </span>
+ <span class="badge badge-pill badge-warning" style="background: #800000;"> Chưa giải quyết </span>
+ <span class="badge badge-pill badge-warning" style="background:red;">Yêu cầu trả lại </span>
 
  @elseif($order->return_order == 2)
-  <span class="badge badge-pill badge-warning" style="background: #008000;">Success </span>
+  <span class="badge badge-pill badge-warning" style="background: #008000;">Thành công </span>
   @endif
                     
 

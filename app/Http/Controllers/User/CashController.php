@@ -43,8 +43,8 @@ class CashController extends Controller
             'post_code' => $request->post_code,
             'notes' => $request->notes,
 
-            'payment_type' => 'Cash On Delivery',
-            'payment_method' => 'Cash On Delivery',
+            'payment_type' => 'Thanh toán khi giao hàng',
+            'payment_method' => 'Thanh toán khi giao hàng',
 
             'currency' =>  'Usd',
             'amount' => $total_amount,
@@ -54,7 +54,7 @@ class CashController extends Controller
             'order_date' => Carbon::now()->format('d F Y'),
             'order_month' => Carbon::now()->format('F'),
             'order_year' => Carbon::now()->format('Y'),
-            'status' => 'Pending',
+            'status' => 'Chưa giải quyết',
             'created_at' => Carbon::now(),
 
         ]);
@@ -95,7 +95,7 @@ class CashController extends Controller
         Cart::destroy();
 
         $notification = array(
-            'message' => 'Your Order Place Successfully',
+            'message' => 'Đặt hàng của bạn thành công',
             'alert-type' => 'success'
         );
 

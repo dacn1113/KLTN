@@ -8,47 +8,50 @@
 
       <div class="col-md-5">
         <div class="card">
-          <div class="card-header"><h4>Shipping Details</h4></div>
+          <div class="card-header"><h4>Chi tiết vận chuyển</h4></div>
          <hr>
          <div class="card-body" style="background: #E9EBEC;">
            <table class="table">
             <tr>
-              <th> Shipping Name : </th>
+              <th> Khách hàng : </th>
                <th> {{ $order->name }} </th>
             </tr>
 
              <tr>
-              <th> Shipping Phone : </th>
+              <th> Phone : </th>
                <th> {{ $order->phone }} </th>
             </tr>
 
              <tr>
-              <th> Shipping Email : </th>
+              <th>  Email : </th>
                <th> {{ $order->email }} </th>
             </tr>
 
              <tr>
-              <th> Division : </th>
+              <th> Tỉnh/thành phố : </th>
                <th> {{ $order->division->division_name }} </th>
             </tr>
 
              <tr>
-              <th> District : </th>
+              <th> Quận/huyện : </th>
                <th> {{ $order->district->district_name }} </th>
             </tr>
 
              <tr>
-              <th> State : </th>
-               <th>{{ $order->state->state_name }} </th>
+              <th> Địa chỉ : </th>
+               <th>{{ $order->state->state_name }}</th>
             </tr>
 
+            <tr>  <th> Địa chỉ chi tiết : </th>
+              <th> {{ $order->notes }}</th></tr>
+
             <tr>
-              <th> Post Code : </th>
+              <th> Mã bưu chính : </th>
                <th> {{ $order->post_code }} </th>
             </tr>
 
             <tr>
-              <th> Order Date : </th>
+              <th> Ngày đặt: </th>
                <th> {{ $order->order_date }} </th>
             </tr>
              
@@ -65,24 +68,24 @@
 
 <div class="col-md-5">
         <div class="card">
-          <div class="card-header"><h4>Order Details
-<span class="text-danger"> Invoice : {{ $order->invoice_no }}</span></h4>
+          <div class="card-header"><h4>Chi tiết đặt hàng - 
+<span class="text-danger"> Mã hóa đơn : {{ $order->invoice_no }}</span></h4>
           </div>
          <hr>
          <div class="card-body" style="background: #E9EBEC;">
            <table class="table">
             <tr>
-              <th>  Name : </th>
+              <th>  Tên khác hàng : </th>
                <th> {{ $order->user->name }} </th>
             </tr>
 
              <tr>
-              <th>  Phone : </th>
+              <th>  Số điện thoại : </th>
                <th> {{ $order->user->phone }} </th>
             </tr>
 
              <tr>
-              <th> Payment Type : </th>
+              <th> Phương thức : </th>
                <th> {{ $order->payment_method }} </th>
             </tr>
 
@@ -92,17 +95,17 @@
             </tr>
 
              <tr>
-              <th> Invoice  : </th>
+              <th> Mã hóa đơn  : </th>
                <th class="text-danger"> {{ $order->invoice_no }} </th>
             </tr>
 
              <tr>
-              <th> Order Total : </th>
+              <th> Tổng thanh toán : </th>
                <th>{{ $order->amount }} </th>
             </tr>
 
             <tr>
-              <th> Order : </th>
+              <th> Trạng thái : </th>
                <th>   
                 <span class="badge badge-pill badge-warning" style="background: #418DB9;">{{ $order->status }} </span> </th>
             </tr>
@@ -131,36 +134,36 @@
   
               <tr style="background: #e2e2e2;">
                 <td class="col-md-1">
-                  <label for=""> Image</label>
+                  <label for=""> Hình ảnh</label>
                 </td>
 
                 <td class="col-md-3">
-                  <label for=""> Product Name </label>
+                  <label for=""> Tên sản phẩm </label>
                 </td>
 
                 <td class="col-md-3">
-                  <label for=""> Product Code</label>
+                  <label for=""> Mã sản phẩm</label>
                 </td>
 
 
                 <td class="col-md-2">
-                  <label for=""> Color </label>
+                  <label for=""> Màu sắc </label>
                 </td>
 
                  <td class="col-md-2">
-                  <label for=""> Size </label>
+                  <label for=""> Kích thước/thể loại </label>
                 </td>
 
                  <td class="col-md-1">
-                  <label for=""> Quantity </label>
+                  <label for=""> Số lượng </label>
                 </td>
 
                 <td class="col-md-1">
-                  <label for=""> Price </label>
+                  <label for=""> Giá tiền </label>
                 </td>
 
                  <td class="col-md-1">
-                  <label for=""> Download </label>
+                  <label for=""> Download file</label>
                 </td>
                 
               </tr>
@@ -173,7 +176,7 @@
                 </td>
 
                 <td class="col-md-3">
-                  <label for=""> {{ $item->product->product_name_en }}</label>
+                  <label for=""> {{ $item->product->product_name_hin }}</label>
                 </td>
 
 
@@ -194,7 +197,8 @@
                 </td>
 
           <td class="col-md-2">
-                  <label for=""> ${{ $item->price }}  ( $ {{ $item->price * $item->qty}} ) </label>
+                  <label for=""> Gốc: {{ $item->price }}</label>
+                  <label>Tổng: {{ $item->price * $item->qty}}</label>
                 </td>
 
 
@@ -212,7 +216,7 @@ $file = App\Models\Product::where('id',$item->product_id)->first();
 
 <a target="_blank" href="{{ asset('upload/pdf/'.$file->digital_file) }}">  
   <strong>
- <span class="badge badge-pill badge-success" style="background: #FF0000;"> Download Ready</span>  </strong> </a> 
+ <span class="badge badge-pill badge-success" style="background: #FF0000;"> Download </span>  </strong> </a> 
               @endif
 
 
@@ -240,7 +244,7 @@ $file = App\Models\Product::where('id',$item->product_id)->first();
         
       </div> <!-- // END ORDER ITEM ROW -->
 
-      @if($order->status !== "delivered")
+      @if($order->status !== "Đã giao")
       
       @else
 
@@ -254,8 +258,8 @@ $file = App\Models\Product::where('id',$item->product_id)->first();
         @csrf
 
   <div class="form-group">
-    <label for="label"> Order Return Reason:</label>
-    <textarea name="return_reason" id="" class="form-control" cols="30" rows="05">Return Reason</textarea>    
+    <label for="label"> Lý do trả lại đơn hàng:</label>
+    <textarea name="return_reason" id="" class="form-control" cols="30" rows="05">Lý do trả lại</textarea>    
   </div>
 
   <button type="submit" class="btn btn-danger">Order Return</button>

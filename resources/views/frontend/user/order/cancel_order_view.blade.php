@@ -17,28 +17,28 @@
   
               <tr style="background: #e2e2e2;">
                 <td class="col-md-1">
-                  <label for=""> Date</label>
+                  <label for=""> Ngày</label>
                 </td>
 
                 <td class="col-md-3">
-                  <label for=""> Total</label>
+                  <label for=""> Tổng</label>
                 </td>
 
                 <td class="col-md-3">
-                  <label for=""> Payment</label>
+                  <label for=""> Thanh toán</label>
                 </td>
 
 
                 <td class="col-md-2">
-                  <label for=""> Invoice</label>
+                  <label for=""> Mã hóa đơn</label>
                 </td>
 
                  <td class="col-md-2">
-                  <label for=""> Order</label>
+                  <label for=""> Tình trạng</label>
                 </td>
 
                  <td class="col-md-1">
-                  <label for=""> Action </label>
+                  <label for=""> Hành động </label>
                 </td>
                 
               </tr>
@@ -51,7 +51,7 @@
                 </td>
 
                 <td class="col-md-3">
-                  <label for=""> ${{ $order->amount }}</label>
+                  <label for=""> {{ Number_format($order->amount) }} $</label>
                 </td>
 
 
@@ -65,7 +65,8 @@
 
                  <td class="col-md-2">
                   <label for=""> 
-                    <span class="badge badge-pill badge-warning" style="background: #418DB9;">{{ $order->status }} </span>
+                    
+                    <span class="badge badge-pill badge-warning" style="background: #418DB9;">Hủy đơn </span>
 
                     </label>
                 </td>

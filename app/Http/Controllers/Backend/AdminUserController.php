@@ -66,7 +66,7 @@ class AdminUserController extends Controller
         ]);
 
         $notification = array(
-            'message' => 'Admin User Created Successfully',
+            'message' => 'Người dùng quản trị được tạo thành công',
             'alert-type' => 'success'
         );
 
@@ -127,7 +127,7 @@ class AdminUserController extends Controller
             ]);
 
             $notification = array(
-                'message' => 'Admin User Updated Successfully',
+                'message' => 'Người dùng quản trị đã cập nhật thành công',
                 'alert-type' => 'info'
             );
 
@@ -163,7 +163,7 @@ class AdminUserController extends Controller
             ]);
 
             $notification = array(
-                'message' => 'Admin User Updated Successfully',
+                'message' => 'Người dùng quản trị đã cập nhật thành công',
                 'alert-type' => 'info'
             );
 
@@ -181,7 +181,7 @@ class AdminUserController extends Controller
         Admin::findOrFail($id)->delete();
 
         $notification = array(
-            'message' => 'Admin User Deleted Successfully',
+            'message' => 'Đã xóa thành công người dùng quản trị',
             'alert-type' => 'info'
         );
 

@@ -36,7 +36,7 @@ class ShippingAreaController extends Controller
         ]);
 
         $notification = array(
-            'message' => 'Division Inserted Successfully',
+            'message' => 'Đã thêm',
             'alert-type' => 'success'
         );
 
@@ -65,7 +65,7 @@ class ShippingAreaController extends Controller
         ]);
 
         $notification = array(
-            'message' => 'Division Updated Successfully',
+            'message' => 'Đã cập nhật',
             'alert-type' => 'info'
         );
 
@@ -79,7 +79,7 @@ class ShippingAreaController extends Controller
         ShipDivision::findOrFail($id)->delete();
 
         $notification = array(
-            'message' => 'Division Deleted Successfully',
+            'message' => 'Đã xóa',
             'alert-type' => 'info'
         );
 
@@ -117,7 +117,7 @@ class ShippingAreaController extends Controller
         ]);
 
         $notification = array(
-            'message' => 'District Inserted Successfully',
+            'message' => 'Đã thêm',
             'alert-type' => 'success'
         );
 
@@ -149,7 +149,7 @@ class ShippingAreaController extends Controller
         ]);
 
         $notification = array(
-            'message' => 'District Updated Successfully',
+            'message' => 'Đã cập nhật',
             'alert-type' => 'info'
         );
 
@@ -166,7 +166,7 @@ class ShippingAreaController extends Controller
         ShipDistrict::findOrFail($id)->delete();
 
         $notification = array(
-            'message' => 'District Deleted Successfully',
+            'message' => 'Đã xóa',
             'alert-type' => 'info'
         );
 
@@ -219,7 +219,7 @@ class ShippingAreaController extends Controller
         ]);
 
         $notification = array(
-            'message' => 'State Inserted Successfully',
+            'message' => 'Đã thêm',
             'alert-type' => 'success'
         );
 
@@ -248,7 +248,7 @@ class ShippingAreaController extends Controller
         ]);
 
         $notification = array(
-            'message' => 'State Updated Successfully',
+            'message' => 'Đã cập nhật',
             'alert-type' => 'info'
         );
 
@@ -262,7 +262,7 @@ class ShippingAreaController extends Controller
         ShipState::findOrFail($id)->delete();
 
         $notification = array(
-            'message' => 'State Deleted Successfully',
+            'message' => 'Đã xóa',
             'alert-type' => 'info'
         );
 

@@ -29,9 +29,9 @@ Trang giỏ hàng của tôi
 					<th class="cart-romove item">Hình ảnh</th>
 					<th class="cart-description item">Tên</th>
 					<th class="cart-product-name item">Màu sắc</th>
-					<th class="cart-edit item">Kích thước</th>
+					<th class="cart-edit item">Kích thước/thể loại</th>
 					<th class="cart-qty item">Số lượng</th>
-					<th class="cart-sub-total item">Giá gốc</th>
+					<th class="cart-sub-total item">Giá sản phẩm</th>
 					<th class="cart-total last-item">Xóa</th>
 				</tr>
 			</thead><!-- /thead -->
@@ -59,7 +59,7 @@ Trang giỏ hàng của tôi
 			<tr>
 				<th>
 					<span class="estimate-title">Mã giảm giá</span>
-					<p>Nhập mã phiếu giảm giá của bạn nếu bạn có ..</p>
+					<p>Sử dụng phiếu giảm giá, ưu đãi..</p>
 				</th>
 			</tr>
 		</thead>
@@ -67,7 +67,7 @@ Trang giỏ hàng của tôi
 <tr>
 	<td>
 		<div class="form-group">
-			<input type="text" class="form-control unicase-form-control text-input" placeholder="You Coupon.." id="coupon_name">
+			<input type="text" class="form-control unicase-form-control text-input" placeholder="Điền ở đây....." id="coupon_name">
 		</div>
 		<div class="clearfix pull-right">
 			<button type="submit" class="btn-upper btn btn-primary" onclick="applyCoupon()">Thêm phiếu</button>

@@ -18,7 +18,7 @@
 
 			 <div class="box">
 				<div class="box-header with-border">
-				  <h3 class="box-title">Danh sách đơn hàng đang chờ xử lý</h3>
+				  <h3 class="box-title">Danh sách đơn hàng đang chờ </h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
@@ -27,9 +27,9 @@
 						<thead>
 							<tr>
 								<th>Ngày  </th>
-								<th>Hóa đơn </th>
+								<th>Mã hóa đơn</th>
 								<th>Số tiền </th>
-								<th>Thanh toán </th>
+								<th>Phương thức </th>
 								<th>Trạng thái </th>
 								<th>Hành động</th>
  
@@ -40,8 +40,11 @@
 	 <tr>
 		<td> {{ $item->order_date }}  </td>
 		<td> {{ $item->invoice_no }}  </td>
-		<td> {{ $item->amount }}đ</td>
-
+@if ($item->payment_method=='Stripe')
+<td> {{ number_format($item->amount) }} $</td>
+@else
+<td> {{ number_format($item->amount) }} đ</td>
+@endif
 		<td> {{ $item->payment_method }}  </td>
 		<td> <span class="badge badge-pill badge-primary">{{ $item->status }} </span>  </td>
 

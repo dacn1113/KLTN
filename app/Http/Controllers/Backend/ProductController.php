@@ -149,7 +149,7 @@ class ProductController extends Controller
 
 
         $notification = array(
-            'message' => 'Product Inserted Successfully',
+            'message' => 'Sản phẩm được tạo thành công',
             'alert-type' => 'success'
         );
 
@@ -257,7 +257,7 @@ class ProductController extends Controller
         }
 
         $notification = array(
-            'message' => 'Product Updated Without Image Successfully',
+            'message' => 'Đã cập nhật sản phẩm không có hình ảnh thành công',
             'alert-type' => 'success'
         );
 
@@ -317,7 +317,7 @@ class ProductController extends Controller
         } // end foreach
 
         $notification = array(
-            'message' => 'Product Image Updated Successfully',
+            'message' => 'Hình ảnh sản phẩm được cập nhật thành công',
             'alert-type' => 'info'
         );
 
@@ -344,7 +344,7 @@ class ProductController extends Controller
         ]);
 
         $notification = array(
-            'message' => 'Product Image Thambnail Updated Successfully',
+            'message' => 'Đã cập nhật hình thu nhỏ hình ảnh sản phẩm thành công',
             'alert-type' => 'info'
         );
 
@@ -360,7 +360,7 @@ class ProductController extends Controller
         MultiImg::findOrFail($id)->delete();
 
         $notification = array(
-            'message' => 'Product Image Deleted Successfully',
+            'message' => 'Đã xóa hình ảnh sản phẩm thành công',
             'alert-type' => 'success'
         );
 
@@ -373,7 +373,7 @@ class ProductController extends Controller
     {
         Product::findOrFail($id)->update(['status' => 0]);
         $notification = array(
-            'message' => 'Product Inactive',
+            'message' => 'Sản phẩm không hoạt động',
             'alert-type' => 'success'
         );
 
@@ -385,7 +385,7 @@ class ProductController extends Controller
     {
         Product::findOrFail($id)->update(['status' => 1]);
         $notification = array(
-            'message' => 'Product Active',
+            'message' => 'Sản phẩm đang hoạt động',
             'alert-type' => 'success'
         );
 
@@ -408,7 +408,7 @@ class ProductController extends Controller
         }
 
         $notification = array(
-            'message' => 'Product Deleted Successfully',
+            'message' => 'Đã xóa sản phẩm thành công',
             'alert-type' => 'success'
         );
 

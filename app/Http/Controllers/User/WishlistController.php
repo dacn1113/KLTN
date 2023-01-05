@@ -24,6 +24,6 @@ class WishlistController extends Controller
     {
 
         Wishlist::where('user_id', Auth::id())->where('id', $id)->delete();
-        return response()->json(['success' => 'Successfully Product Remove']);
+        return response()->json(['success' => 'Loại bỏ sản phẩm thành công']);
     }
 }

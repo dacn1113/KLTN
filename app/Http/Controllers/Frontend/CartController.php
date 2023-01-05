@@ -72,7 +72,7 @@ class CartController extends Controller
                 'size' => $request->size,
             ],
         ]);
-        return response()->json(['success' => 'Successfully Added on Your Cart']);
+        return response()->json(['success' => 'Đã thêm thành công vào giỏ hàng của bạn']);
         // }
     } // end mehtod 
 
@@ -101,7 +101,7 @@ class CartController extends Controller
             Session::forget('coupon');
         }
         Cart::remove($rowId);
-        return response()->json(['success' => 'Product Remove from Cart']);
+        return response()->json(['success' => 'Xóa sản phẩm khỏi giỏ hàng']);
     } // end mehtod 
 
 
@@ -120,14 +120,14 @@ class CartController extends Controller
                     'product_id' => $product_id,
                     'created_at' => Carbon::now(),
                 ]);
-                return response()->json(['success' => 'Successfully Added On Your Wishlist']);
+                return response()->json(['success' => 'Đã thêm thành công vào danh sách yêu thích của bạn']);
             } else {
 
-                return response()->json(['error' => 'This Product has Already on Your Wishlist']);
+                return response()->json(['error' => 'Sản phẩm này đã có trong danh sách yêu thích của bạn']);
             }
         } else {
 
-            return response()->json(['error' => 'At First Login Your Account']);
+            return response()->json(['error' => 'Đăng nhập tài khoản của bạn để sử dụng']);
         }
     } // end method 
 
@@ -151,10 +151,10 @@ class CartController extends Controller
 
             return response()->json(array(
                 'validity' => true,
-                'success' => 'Coupon Applied Successfully'
+                'success' => 'Phiếu giảm giá được áp dụng thành công'
             ));
         } else {
-            return response()->json(['error' => 'Invalid Coupon']);
+            return response()->json(['error' => 'Phiếu giảm giá không hợp lệ']);
         }
     } // end method 
 
@@ -182,7 +182,7 @@ class CartController extends Controller
     public function CouponRemove()
     {
         Session::forget('coupon');
-        return response()->json(['success' => 'Coupon Remove Successfully']);
+        return response()->json(['success' => 'Loại bỏ phiếu giảm giá thành công']);
     }
 
     // Checkout Method 
@@ -210,7 +210,7 @@ class CartController extends Controller
         } else {
 
             $notification = array(
-                'message' => 'You Need to Login First',
+                'message' => 'Bạn cần phải đăng nhập đầu tiên',
                 'alert-type' => 'error'
             );
 

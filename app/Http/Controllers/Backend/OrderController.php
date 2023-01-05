@@ -21,7 +21,7 @@ class OrderController extends Controller
     // Pending Orders 
     public function PendingOrders()
     {
-        $orders = Order::where('status', 'pending')->orderBy('id', 'DESC')->get();
+        $orders = Order::where('status', 'Chưa giải quyết')->orderBy('id', 'DESC')->get();
         return view('backend.orders.pending_orders', compact('orders'));
     } // end mehtod 
 
@@ -40,7 +40,7 @@ class OrderController extends Controller
     // Confirmed Orders 
     public function ConfirmedOrders()
     {
-        $orders = Order::where('status', 'confirm')->orderBy('id', 'DESC')->get();
+        $orders = Order::where('status', 'Xác nhận')->orderBy('id', 'DESC')->get();
         return view('backend.orders.confirmed_orders', compact('orders'));
     } // end mehtod 
 
@@ -48,7 +48,7 @@ class OrderController extends Controller
     // Processing Orders 
     public function ProcessingOrders()
     {
-        $orders = Order::where('status', 'processing')->orderBy('id', 'DESC')->get();
+        $orders = Order::where('status', 'Nhận đơn')->orderBy('id', 'DESC')->get();
         return view('backend.orders.processing_orders', compact('orders'));
     } // end mehtod 
 
@@ -56,7 +56,7 @@ class OrderController extends Controller
     // Picked Orders 
     public function PickedOrders()
     {
-        $orders = Order::where('status', 'picked')->orderBy('id', 'DESC')->get();
+        $orders = Order::where('status', 'Chờ vận chuyển')->orderBy('id', 'DESC')->get();
         return view('backend.orders.picked_orders', compact('orders'));
     } // end mehtod 
 
@@ -65,7 +65,7 @@ class OrderController extends Controller
     // Shipped Orders 
     public function ShippedOrders()
     {
-        $orders = Order::where('status', 'shipped')->orderBy('id', 'DESC')->get();
+        $orders = Order::where('status', 'Đang vận chuyển')->orderBy('id', 'DESC')->get();
         return view('backend.orders.shipped_orders', compact('orders'));
     } // end mehtod 
 
@@ -73,7 +73,7 @@ class OrderController extends Controller
     // Delivered Orders 
     public function DeliveredOrders()
     {
-        $orders = Order::where('status', 'delivered')->orderBy('id', 'DESC')->get();
+        $orders = Order::where('status', 'Đã giao')->orderBy('id', 'DESC')->get();
         return view('backend.orders.delivered_orders', compact('orders'));
     } // end mehtod 
 
@@ -81,7 +81,7 @@ class OrderController extends Controller
     // Cancel Orders 
     public function CancelOrders()
     {
-        $orders = Order::where('status', 'cancel')->orderBy('id', 'DESC')->get();
+        $orders = Order::where('status', 'Hủy đơn')->orderBy('id', 'DESC')->get();
         return view('backend.orders.cancel_orders', compact('orders'));
     } // end mehtod 
 
@@ -91,10 +91,10 @@ class OrderController extends Controller
     public function PendingToConfirm($order_id)
     {
 
-        Order::findOrFail($order_id)->update(['status' => 'confirm']);
+        Order::findOrFail($order_id)->update(['status' => 'Xác nhận']);
 
         $notification = array(
-            'message' => 'Order Confirm Successfully',
+            'message' => 'Xác nhận đơn hàng thành công',
             'alert-type' => 'success'
         );
 
@@ -108,10 +108,10 @@ class OrderController extends Controller
     public function ConfirmToProcessing($order_id)
     {
 
-        Order::findOrFail($order_id)->update(['status' => 'processing']);
+        Order::findOrFail($order_id)->update(['status' => 'Nhận đơn']);
 
         $notification = array(
-            'message' => 'Order Processing Successfully',
+            'message' => 'Xử lý đơn hàng thành công',
             'alert-type' => 'success'
         );
 
@@ -123,10 +123,10 @@ class OrderController extends Controller
     public function ProcessingToPicked($order_id)
     {
 
-        Order::findOrFail($order_id)->update(['status' => 'picked']);
+        Order::findOrFail($order_id)->update(['status' => 'Chờ vận chuyển']);
 
         $notification = array(
-            'message' => 'Order Picked Successfully',
+            'message' => 'Đặt hàng được chọn thành công',
             'alert-type' => 'success'
         );
 
@@ -137,10 +137,10 @@ class OrderController extends Controller
     public function PickedToShipped($order_id)
     {
 
-        Order::findOrFail($order_id)->update(['status' => 'shipped']);
+        Order::findOrFail($order_id)->update(['status' => 'Đang vận chuyển']);
 
         $notification = array(
-            'message' => 'Order Shipped Successfully',
+            'message' => 'Đơn hàng đã vận chuyển thành công',
             'alert-type' => 'success'
         );
 
@@ -157,16 +157,28 @@ class OrderController extends Controller
                 ->update(['product_qty' => DB::raw('product_qty-' . $item->qty)]);
         }
 
-        Order::findOrFail($order_id)->update(['status' => 'delivered']);
+        Order::findOrFail($order_id)->update(['status' => 'Đã giao']);
 
         $notification = array(
-            'message' => 'Order Delivered Successfully',
+            'message' => 'Đơn hàng được giao thành công',
             'alert-type' => 'success'
         );
 
         return redirect()->route('shipped-orders')->with($notification);
     } // end method
 
+    public function Cancel($order_id)
+    {
+
+        Order::findOrFail($order_id)->update(['status' => 'Hủy đơn']);
+
+        $notification = array(
+            'message' => 'Đơn hàng đã hủy thành công',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('cancel-orders')->with($notification);
+    } // end method
 
     public function AdminInvoiceDownload($order_id)
     {

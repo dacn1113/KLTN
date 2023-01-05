@@ -120,7 +120,7 @@
         <td align="center">
             <img src="{{ public_path($item->product->product_thambnail)  }}" height="60px;" width="60px;" alt="">
         </td>
-        <td align="center"> {{ $item->product->product_name_en }}</td>
+        <td align="center"> {{ $item->product->product_name_hin }}</td>
         <td align="center">
 
           @if($item->size == NULL)
@@ -133,8 +133,13 @@
         <td align="center">{{ $item->color }}</td>
         <td align="center">{{ $item->product->product_code }}</td>
         <td align="center">{{ $item->qty }}</td>
+        @if($order->payment_method == 'Stripe')
+        <td align="center">{{ number_format($item->price) }} Dolar</td>
+        <td align="center">{{ number_format($item->price * $item->qty) }} Dolar</td>
+        @else
         <td align="center">{{ number_format($item->price) }} Vnd</td>
         <td align="center">{{ number_format($item->price * $item->qty) }} Vnd</td>
+        @endif
       </tr>
       @endforeach
       
@@ -144,7 +149,11 @@
   <table width="100%" style=" padding:0 10px 0 10px;">
     <tr>
         <td align="right" >
-            <h2><span style="color: green;">Total:</span>{{ number_format($order->amount )}}Vnd</h2>
+          @if($order->payment_method == 'Stripe')
+          <h2><span style="color: green;">Thanh toán:</span>{{ number_format($order->amount )}} Dolar</h2>
+          @else
+            <h2><span style="color: green;">Thanh toán:</span>{{ number_format($order->amount )}}Vnd</h2>
+          @endif
             {{-- <h2><span style="color: green;">Full Payment PAID</h2> --}}
         </td>
     </tr>

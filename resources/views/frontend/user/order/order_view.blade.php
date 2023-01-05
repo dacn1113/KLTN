@@ -51,12 +51,20 @@
                 </td>
 
                 <td class="col-md-3">
+                  @if($order->payment_method == 'Stripe')
+                  <label for=""> {{ number_format($order->amount) }} $</label>
+                  @else
                   <label for=""> {{ number_format($order->amount) }} đ</label>
+                  @endif
                 </td>
 
 
                  <td class="col-md-3">
+                  @if($order->payment_method == 'Stripe')
                   <label for=""> {{ $order->payment_method }}</label>
+                  @else
+                  <label for=""> Trả sau </label>
+                  @endif
                 </td>
 
                 <td class="col-md-2">
@@ -66,21 +74,21 @@
          <td class="col-md-2">
           <label for=""> 
 
-    @if($order->status == 'Pending')        
+    @if($order->status == 'Chưa giải quyết')        
         <span class="badge badge-pill badge-warning" style="background: #800080;"> Chưa giải quyết </span>
-        @elseif($order->status == 'confirm')
+        @elseif($order->status == 'Xác nhận')
          <span class="badge badge-pill badge-warning" style="background: #0000FF;"> Xác nhận </span>
 
-          @elseif($order->status == 'processing')
+          @elseif($order->status == 'Nhận đơn')
          <span class="badge badge-pill badge-warning" style="background: #FFA500;"> Xử lý </span>
 
-          @elseif($order->status == 'picked')
+          @elseif($order->status == 'Chờ vận chuyển')
          <span class="badge badge-pill badge-warning" style="background: #808000;">Chờ vận chuyển</span>
 
-          @elseif($order->status == 'shipped')
+          @elseif($order->status == 'Đang vận chuyển')
          <span class="badge badge-pill badge-warning" style="background: #808080;">Đang vận chuyển </span>
 
-          @elseif($order->status == 'delivered')
+          @elseif($order->status == 'Đã giao')
          <span class="badge badge-pill badge-warning" style="background: #008000;"> Đã giao hàng </span>
 
           @if($order->return_order == 1) 

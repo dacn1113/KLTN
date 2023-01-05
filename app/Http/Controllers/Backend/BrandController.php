@@ -40,7 +40,7 @@ class BrandController extends Controller
         ]);
 
         $notification = array(
-            'message' => 'Brand Profile Updated Successfully',
+            'message' => 'Hồ sơ thương hiệu được cập nhật thành công',
             'alert-type' => 'success'
         );
 

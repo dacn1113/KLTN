@@ -53,7 +53,7 @@
 		  </td>
 
 		<td width="25%">
-  <span class="badge badge-success">Trả lại thành côngTrả lại thành công </span>
+  <span class="badge badge-success">Trả lại thành công</span>
 		</td>
 
 	 </tr>

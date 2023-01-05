@@ -35,7 +35,7 @@ class CouponController extends Controller
         ]);
 
         $notification = array(
-            'message' => 'Coupon Inserted Successfully',
+            'message' => 'Thêm phiếu giảm giá thành công',
             'alert-type' => 'success'
         );
 
@@ -60,7 +60,7 @@ class CouponController extends Controller
         ]);
 
         $notification = array(
-            'message' => 'Coupon Updated Successfully',
+            'message' => 'Cập nhật phiếu giảm giá thành công',
             'alert-type' => 'info'
         );
 
@@ -73,7 +73,7 @@ class CouponController extends Controller
 
         Coupon::findOrFail($id)->delete();
         $notification = array(
-            'message' => 'Coupon Deleted Successfully',
+            'message' => 'Phiếu giảm giá đã được xóa thành công',
             'alert-type' => 'info'
         );
 

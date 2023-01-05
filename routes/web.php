@@ -162,6 +162,7 @@ Route::prefix('product')->group(function () {
     Route::get('/add', [ProductController::class, 'AddProduct'])->name('add-product');
 
     Route::post('/store', [ProductController::class, 'StoreProduct'])->name('product-store');
+
     Route::get('/manage', [ProductController::class, 'ManageProduct'])->name('manage-product');
 
     Route::get('/edit/{id}', [ProductController::class, 'EditProduct'])->name('product.edit');
@@ -214,11 +215,13 @@ Route::get('/language/english', [LanguageController::class, 'English'])->name('e
 
 // Frontend Product Details Page url 
 Route::get('/product/details/{id}/{slug}', [IndexController::class, 'ProductDetails']);
+
 Route::get('selectSize', [IndexController::class, 'selectSize']);
 
 
 // Frontend Product Tags Page 
 Route::get('/product/tagen/{tag}', [IndexController::class, 'TagWiseProducten']);
+
 Route::get('/product/tagvn/{tag}', [IndexController::class, 'TagWiseProductvn']);
 // Frontend SubCategory wise Data
 Route::get('/subcategory/product/{subcat_id}/{slug}', [IndexController::class, 'SubCatWiseProduct']);
@@ -297,6 +300,7 @@ Route::prefix('coupons')->group(function () {
     Route::post('/store', [CouponController::class, 'CouponStore'])->name('coupon.store');
 
     Route::get('/edit/{id}', [CouponController::class, 'CouponEdit'])->name('coupon.edit');
+
     Route::post('/update/{id}', [CouponController::class, 'CouponUpdate'])->name('coupon.update');
 
     Route::get('/delete/{id}', [CouponController::class, 'CouponDelete'])->name('coupon.delete');
@@ -364,6 +368,7 @@ Route::get('/district-get/ajax/{division_id}', [CheckoutController::class, 'Dist
 Route::get('/state-get/ajax/{district_id}', [CheckoutController::class, 'StateGetAjax']);
 
 Route::post('/checkout/store', [CheckoutController::class, 'CheckoutStore'])->name('checkout.store');
+
 Route::get('/checkout/store/test', [CheckoutController::class, 'Test'])->name('checkout.test');
 
 
@@ -390,6 +395,7 @@ Route::prefix('orders')->group(function () {
 
     // Update Status 
     Route::get('/pending/confirm/{order_id}', [OrderController::class, 'PendingToConfirm'])->name('pending-confirm');
+    Route::get('/cancel/confirm/{order_id}', [OrderController::class, 'Cancel'])->name('cancel-confirm');
 
     Route::get('/confirm/processing/{order_id}', [OrderController::class, 'ConfirmToProcessing'])->name('confirm.processing');
 
@@ -458,6 +464,7 @@ Route::get('/blog/category/post/{category_id}', [HomeBlogController::class, 'Hom
 Route::prefix('setting')->group(function () {
 
     Route::get('/site', [SiteSettingController::class, 'SiteSetting'])->name('site.setting');
+
     Route::post('/site/update', [SiteSettingController::class, 'SiteSettingUpdate'])->name('update.sitesetting');
 
     Route::get('/seo', [SiteSettingController::class, 'SeoSetting'])->name('seo.setting');
@@ -529,4 +536,5 @@ Route::post('search-product', [IndexController::class, 'SearchProduct']);
 
 // Shop Page Route 
 Route::get('/shop', [ShopController::class, 'ShopPage'])->name('shop.page');
+
 Route::post('/shop/filter', [ShopController::class, 'ShopFilter'])->name('shop.filter');

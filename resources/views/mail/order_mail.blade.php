@@ -56,9 +56,9 @@ width: 100% !important;
 
 </td>
 
-<td> Invoice No : {{ $order['invoice_no'] }}</td>
-<td> Amount : {{ $order['amount'] }}</td>
-<td> Name : {{ $order['name'] }}</td>
+<td> Hóa đơn : {{ $order['invoice_no'] }}</td>
+<td> Giá tiền : {{ $order['amount'] }} $</td>
+<td> Tên : {{ $order['name'] }}</td>
 <td> Email : {{ $order['email'] }}</td>
 
 </tr>

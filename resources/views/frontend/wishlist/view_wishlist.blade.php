@@ -2,11 +2,11 @@
 @section('content')
 
 @section('title')
-Trang sản phẩm yêu thích
+Sản phẩm yêu thích 
 @endsection
 
 
-<div class="breadcrumb">
+{{-- <div class="breadcrumb">
 	<div class="container">
 		<div class="breadcrumb-inner">
 			<ul class="list-inline list-unstyled">
@@ -15,7 +15,7 @@ Trang sản phẩm yêu thích
 			</ul>
 		</div><!-- /.breadcrumb-inner -->
 	</div><!-- /.container -->
-</div><!-- /.breadcrumb -->
+</div><!-- /.breadcrumb --> --}}
 
 <div class="body-content">
 	<div class="container">
@@ -26,7 +26,7 @@ Trang sản phẩm yêu thích
 		<table class="table">
 			<thead>
 				<tr>
-					<th colspan="4" class="heading-title">Danh sách yêu thích</th>
+					<th colspan="4" class="heading-title">Sản phẩm yêu thích</th>
 				</tr>
 			</thead>
 			<tbody id="wishlist">

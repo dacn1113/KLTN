@@ -2,7 +2,7 @@
 @section('content')
 
 @section('title')
-Order Traking Page 
+Trang tra cứu đơn hàng
 @endsection
 
 <style type="text/css">
@@ -165,7 +165,7 @@ Order Traking Page
 
 <div class="container">
     <article class="card">
-        <header class="card-header"> <b> My Orders / Tracking </b> </header>
+        <header class="card-header"> <b> Đơn hàng của bạn / Theo đõi </b> </header>
         <div class="card-body">
            
      <div class="row" style="margin-left: 30px; margin-top: 20px;">
@@ -180,17 +180,17 @@ Order Traking Page
      	</div> <!-- // end col md 2 -->
 
      	<div class="col-md-2">
-     		<b> Vận chuyển cho - {{ $track->name }} </b><br>
+     		<b> Khác hàng: {{ $track->name }} </b><br>
       {{ $track->division->division_name }} / {{ $track->district->district_name }}
      	</div> <!-- // end col md 2 -->
 
      	<div class="col-md-2">
-     		<b> Số điện thoại người nhận </b><br>
+     		<b> Số điện thoại </b><br>
      		{{ $track->phone }}
      	</div> <!-- // end col md 2 -->
 
      	<div class="col-md-2">
-     	<b> Phương thức thanh toán  </b><br>
+     	<b> Phương thức</b><br>
      		{{ $track->payment_method  }}
      	</div> <!-- // end col md 2 -->
 
@@ -214,95 +214,99 @@ Order Traking Page
 
             <div class="track">
 
-     @if($track->status == 'pending')
+     @if($track->status == 'Chưa giải quyết')
 
- <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Order Pending</span> </div>
-
-
-<div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text"> Order Confirmed</span> </div>
-
-    <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text"> Order Processing  </span> </div>
-
-    <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Order Picked</span> </div>
-
-    <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Order Shipped </span> </div>
-
-     <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Delivered </span> </div>
+ <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Chờ xử lý</span> </div>
 
 
+<div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text"> Xác nhận</span> </div>
 
-  @elseif($track->status == 'confirm')
+    <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text"> Nhận đơn  </span> </div>
 
-  <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Order Pending</span> </div>
+    <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Chờ vận Chuyển <span> </div>
 
-<div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text"> Order Confirmed</span> </div>
+    <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Đang vận chuyển</span> </div>
 
- <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text"> Order Processing  </span> </div>
-
-    <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Order Picked</span> </div>
-
-    <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Order Shipped </span> </div>
-
-     <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Delivered </span> </div>
-
- @elseif($track->status == 'processing')
-
-  <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Order Pending</span> </div>
-
-<div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text"> Order Confirmed</span> </div>
-
- <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text"> Order Processing  </span> </div>
-
- <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Order Picked</span> </div>
-
-    <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Order Shipped </span> </div>
-
-     <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Delivered </span> </div>
+     <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Đã giao </span> </div>
 
 
 
- @elseif($track->status == 'picked')
+  @elseif($track->status == 'Xác nhận')
 
-   <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Order Pending</span> </div>
-
-<div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text"> Order Confirmed</span> </div>
-
- <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text"> Order Processing  </span> </div>
-
- <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Order Picked</span> </div>
-
-    <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Order Shipped </span> </div>
-
-     <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Delivered </span> </div>
+  <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Chờ xử lý</span> </div>
 
 
- @elseif($track->status == 'shipped')
+  <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text"> Xác nhận</span> </div>
+  
+      <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text"> Nhận đơn  </span> </div>
+  
+      <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Chờ vận Chuyển <span> </div>
+  
+      <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Đang vận chuyển</span> </div>
+  
+       <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Đã giao </span> </div>
 
-    <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Đơn đặt hàng đang chờ xử lý</span> </div>
+ @elseif($track->status == 'Nhận đơn')
+ <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Chờ xử lý</span> </div>
 
-<div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text"> Xác nhận đặt hàng</span> </div>
 
- <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text"> Xử lý đơn hàng  </span> </div>
+<div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text"> Xác nhận</span> </div>
 
- <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Đặt hàng đã chọn</span> </div>
+    <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text"> Nhận đơn  </span> </div>
 
- <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Đang giao hàng </span> </div>
+    <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Chờ vận Chuyển <span> </div>
 
-   <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Đã giao hàng </span> </div>
+    <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Đang vận chuyển</span> </div>
 
-    @elseif($track->status == 'delivered')
+     <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Đã giao </span> </div>
 
-  <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Order Pending</span> </div>
 
-<div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text"> Order Confirmed</span> </div>
 
- <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text"> Order Processing  </span> </div>
+ @elseif($track->status == 'Chờ vận chuyển')
 
- <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Order Picked</span> </div>
+ <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Chờ xử lý</span> </div>
 
- <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Order Shipped </span> </div>
 
- <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Delivered </span> </div>
+ <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text"> Xác nhận</span> </div>
+ 
+     <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text"> Nhận đơn  </span> </div>
+ 
+     <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Chờ vận Chuyển <span> </div>
+ 
+     <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Đang vận chuyển</span> </div>
+ 
+      <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Đã giao </span> </div>
+
+
+ @elseif($track->status == 'Đang vận chuyển')
+
+ <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Chờ xử lý</span> </div>
+
+
+ <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text"> Xác nhận</span> </div>
+ 
+     <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text"> Nhận đơn  </span> </div>
+ 
+     <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Chờ vận Chuyển <span> </div>
+ 
+     <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Đang vận chuyển</span> </div>
+ 
+      <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Đã giao </span> </div>
+
+    @elseif($track->status == 'Đã giao')
+
+    <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Chờ xử lý</span> </div>
+
+
+    <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text"> Xác nhận</span> </div>
+    
+        <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text"> Nhận đơn  </span> </div>
+    
+        <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Chờ vận Chuyển <span> </div>
+    
+        <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Đang vận chuyển</span> </div>
+    
+         <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Đã giao </span> </div>
 
      @endif  
 
